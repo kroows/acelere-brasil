@@ -48,9 +48,9 @@ const Benefits = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            A MISSÃO <span className="text-cyan-400">ACELERE BRASIL</span> GARANTE
+            A <span className="text-cyan-400">IMERSÃO ACELERE BRASIL</span> GARANTE
             <br />
-            <span className="text-cyan-400">5 VANTAGENS</span> NESTA NOVA EDIÇÃO
+            <span className="text-cyan-400">8 VANTAGENS</span> NESTA NOVA EDIÇÃO
           </h2>
         </div>
 
@@ -72,7 +72,7 @@ const Benefits = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-black font-bold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
+          <button className="bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold px-8 py-6 h-auto text-xl rounded-xl transition-all duration-300 transform hover:scale-105">
             ME IDENTIFIQUEI, QUERO PARTICIPAR
           </button>
         </div>

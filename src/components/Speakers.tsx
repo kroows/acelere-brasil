@@ -48,23 +48,43 @@ const Speakers = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent rounded-xl"></div>
               </div>
               
-              <h3 className="text-xl font-bold text-white mb-2">
-                {speaker.name}
-              </h3>
-              <p className="text-cyan-400 font-semibold mb-3">
-                {speaker.title}
-              </p>
-              <p className="text-gray-300 text-sm leading-relaxed">
-                {speaker.description}
-              </p>
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {speaker.name}
+                </h3>
+                <p className="text-cyan-400 font-semibold mb-3">
+                  {speaker.title}
+                </p>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  {speaker.description}
+                </p>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <button className="bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-black font-bold px-8 py-4 rounded-lg transition-all duration-300 transform hover:scale-105">
-            MAIS PALESTRANTES EM BREVE
-          </button>
+        <div className="grid md:grid-cols-2 gap-8 mt-8">
+          <div className="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-2xl p-6 hover:border-cyan-400 transition-all duration-300 transform hover:scale-105">
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-cyan-400 mb-4">
+                MAIS PALESTRANTES EM BREVE
+              </h3>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                Estamos confirmando mais especialistas para compartilhar conhecimento exclusivo
+              </p>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-2xl p-6 hover:border-cyan-400 transition-all duration-300 transform hover:scale-105">
+            <div className="text-center">
+              <h3 className="text-xl font-bold text-white mb-4">
+                QUER SABER MAIS?
+              </h3>
+              <button className="bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold px-6 py-3 h-auto text-lg rounded-xl transition-all duration-300 transform hover:scale-105">
+                MAIS INFORMAÇÕES
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

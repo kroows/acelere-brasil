@@ -40,7 +40,7 @@ const VideoSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold px-8 py-6 h-auto text-xl rounded-lg transition-all duration-300 transform hover:scale-105">
+          <button className="bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold px-8 py-6 h-auto text-xl rounded-xl transition-all duration-300 transform hover:scale-105">
             BAIXE AGORA O EBOOK GRATUITO DO EVENTO
           </button>
         </div>

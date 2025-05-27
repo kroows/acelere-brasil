@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -10,6 +10,33 @@ const Hero = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [agreed, setAgreed] = useState(false);
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    // Set target date to December 4, 2024
+    const targetDate = new Date('2024-12-04T00:00:00');
+    
+    const timer = setInterval(() => {
+      const now = new Date();
+      const difference = targetDate.getTime() - now.getTime();
+      
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60)
+        });
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,9 +65,9 @@ const Hero = () => {
         <div className="bg-slate-900/80 backdrop-blur-sm border border-slate-700 rounded-3xl overflow-hidden">
           <div className="grid lg:grid-cols-2 gap-0 items-center min-h-[600px]">
             {/* Left side - Form */}
-            <div className="p-8 lg:p-12 space-y-6">
-              <div className="text-white space-y-4">
-                <h1 className="text-2xl lg:text-3xl font-bold leading-tight">
+            <div className="p-6 lg:p-8 space-y-4">
+              <div className="text-white space-y-3">
+                <h1 className="text-xl lg:text-2xl font-bold leading-tight">
                   Aprenda com os <span className="text-cyan-400">maiores nomes</span> do mercado
                   <br />
                   para <span className="text-cyan-400">acelerar o faturamento</span> da sua empresa
@@ -49,13 +76,13 @@ const Hero = () => {
                 </h1>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <Input
                   type="text"
                   placeholder="Nome"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-10 rounded-full px-4"
                   required
                 />
                 <Input
@@ -63,7 +90,7 @@ const Hero = () => {
                   placeholder="Whatsapp com DDD"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-10 rounded-full px-4"
                   required
                 />
                 <Input
@@ -71,18 +98,18 @@ const Hero = () => {
                   placeholder="E-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-10 rounded-full px-4"
                   required
                 />
                 
-                <div className="flex items-start space-x-3 pt-2">
+                <div className="flex items-start space-x-2 pt-1">
                   <Checkbox
                     id="agree"
                     checked={agreed}
                     onCheckedChange={(checked) => setAgreed(checked as boolean)}
                     className="mt-0.5 border-white data-[state=checked]:bg-cyan-400 data-[state=checked]:border-cyan-400"
                   />
-                  <label htmlFor="agree" className="text-sm text-white leading-relaxed">
+                  <label htmlFor="agree" className="text-xs text-white leading-relaxed">
                     Concordo em fornecer meus dados para receber
                     <br />
                     conteúdos do evento por e-mail ou outros meios
@@ -91,7 +118,7 @@ const Hero = () => {
                 
                 <Button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold text-xl py-8 h-auto rounded-full transition-all duration-300 transform hover:scale-105 mt-6"
+                  className="w-full bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold text-lg py-6 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-4"
                 >
                   QUERO PARTICIPAR
                 </Button>
@@ -99,12 +126,44 @@ const Hero = () => {
             </div>
 
             {/* Right side - Image */}
-            <div className="relative h-full min-h-[600px] bg-gradient-to-br from-slate-800 to-slate-900">
+            <div className="relative h-full min-h-[600px] bg-gradient-to-br from-slate-800 to-slate-900 rounded-r-3xl">
               <img
                 src="/lovable-uploads/7227757b-308b-4a4c-978e-036f0da508e0.png"
                 alt="Acelere Brasil - Paulo Canargo, Mateus Maia, Juliano Custódio"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-r-3xl"
               />
+            </div>
+          </div>
+        </div>
+
+        {/* Countdown Timer */}
+        <div className="mt-6 flex justify-center">
+          <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-2xl px-8 py-4">
+            <div className="text-center text-white mb-2">
+              <p className="text-lg font-bold">04 E 05 DE DEZEMBRO</p>
+              <p className="text-sm">EM SÃO PAULO</p>
+              <p className="text-sm text-cyan-400 font-bold">IMERSÃO PRESENCIAL</p>
+            </div>
+            <div className="flex space-x-4">
+              <div className="bg-cyan-400 rounded-xl px-4 py-3 text-center min-w-[60px]">
+                <div className="text-2xl font-bold text-black">{String(timeLeft.days).padStart(2, '0')}</div>
+                <div className="text-xs text-black font-semibold">DIAS</div>
+              </div>
+              <div className="flex items-center text-cyan-400 text-2xl font-bold">:</div>
+              <div className="bg-cyan-400 rounded-xl px-4 py-3 text-center min-w-[60px]">
+                <div className="text-2xl font-bold text-black">{String(timeLeft.hours).padStart(2, '0')}</div>
+                <div className="text-xs text-black font-semibold">HORAS</div>
+              </div>
+              <div className="flex items-center text-cyan-400 text-2xl font-bold">:</div>
+              <div className="bg-cyan-400 rounded-xl px-4 py-3 text-center min-w-[60px]">
+                <div className="text-2xl font-bold text-black">{String(timeLeft.minutes).padStart(2, '0')}</div>
+                <div className="text-xs text-black font-semibold">MINUTOS</div>
+              </div>
+              <div className="flex items-center text-cyan-400 text-2xl font-bold">:</div>
+              <div className="bg-cyan-400 rounded-xl px-4 py-3 text-center min-w-[60px]">
+                <div className="text-2xl font-bold text-black">{String(timeLeft.seconds).padStart(2, '0')}</div>
+                <div className="text-xs text-black font-semibold">SEGUNDOS</div>
+              </div>
             </div>
           </div>
         </div>

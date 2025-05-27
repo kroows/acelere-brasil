@@ -38,7 +38,7 @@ const Mission = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            A MISSÃO ACELERE BRASIL GARANTE
+            A IMERSÃO ACELERE BRASIL GARANTE
             <br />
             <span className="text-cyan-400">5 VANTAGENS</span> NESTA NOVA EDIÇÃO
           </h2>
