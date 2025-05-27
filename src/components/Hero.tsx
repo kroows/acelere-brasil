@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,15 +10,15 @@ const Hero = () => {
   const [phone, setPhone] = useState("");
   const [agreed, setAgreed] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0
+    days: 88,
+    hours: 88,
+    minutes: 88,
+    seconds: 88
   });
 
   useEffect(() => {
-    // Set target date to December 4, 2024
-    const targetDate = new Date('2024-12-04T00:00:00');
+    // Set target date to October 4, 2025
+    const targetDate = new Date('2025-10-04T00:00:00');
     
     const timer = setInterval(() => {
       const now = new Date();
@@ -53,36 +52,60 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center px-4 py-12">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-32 h-32 border-2 border-cyan-400 rotate-45"></div>
-        <div className="absolute bottom-20 right-20 w-24 h-24 border-2 border-cyan-400 rotate-12"></div>
-        <div className="absolute top-1/2 left-1/4 w-16 h-16 border-2 border-cyan-400 rotate-45"></div>
+    <div className="relative min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+      {/* Top Banner */}
+      <div style={{ backgroundColor: '#00f0a7' }} className="text-center py-4 md:py-5">
+        <p className="text-black font-gilroy-black font-black text-sm md:text-lg lg:text-xl">
+          PRIMEIRO LOTE, APROVEITE ANTES QUE O PREÇO AUMENTE
+        </p>
       </div>
 
-      <div className="container mx-auto max-w-7xl">
-        <div className="bg-slate-900/80 backdrop-blur-sm border border-slate-700 rounded-3xl overflow-hidden">
+      {/* Geometric Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Large triangular shapes */}
+        <div className="absolute top-20 right-10 w-0 h-0 border-l-[100px] border-l-transparent border-r-[100px] border-r-transparent border-b-[80px] border-b-cyan-400/20"></div>
+        <div className="absolute bottom-40 left-20 w-0 h-0 border-l-[60px] border-l-transparent border-r-[60px] border-r-transparent border-b-[50px] border-b-cyan-400/30"></div>
+        <div className="absolute top-1/2 left-10 w-0 h-0 border-l-[40px] border-l-transparent border-r-[40px] border-r-transparent border-b-[35px] border-b-cyan-400/25"></div>
+        
+        {/* Play button style triangles */}
+        <div className="absolute top-32 left-1/4 w-0 h-0 border-t-[15px] border-t-transparent border-l-[25px] border-l-cyan-400/40 border-b-[15px] border-b-transparent"></div>
+        <div className="absolute bottom-60 right-1/3 w-0 h-0 border-t-[20px] border-t-transparent border-l-[35px] border-l-cyan-400/30 border-b-[20px] border-b-transparent"></div>
+        <div className="absolute top-2/3 right-20 w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-cyan-400/50 border-b-[12px] border-b-transparent"></div>
+      </div>
+
+      <div className="container mx-auto max-w-7xl px-4 py-12">
+        {/* Main Title */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-gilroy-black font-black text-white leading-tight" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
+            TERMINE 2025 PLANEJANDO COMO{" "}
+            <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>ACELERAR</span>
+            <br />
+            O CRESCIMENTO DO SEU NEGÓCIO EM 2026
+          </h1>
+        </div>
+
+        {/* Main Content Card */}
+        <div className="bg-black border border-slate-700 rounded-3xl overflow-hidden mb-12">
           <div className="grid lg:grid-cols-2 gap-0 items-center min-h-[600px]">
             {/* Left side - Form */}
-            <div className="p-6 lg:p-8 space-y-4">
-              <div className="text-white space-y-3">
-                <h1 className="text-xl lg:text-2xl font-bold leading-tight">
-                  Aprenda com os <span className="text-cyan-400">maiores nomes</span> do mercado
+            <div className="p-8 lg:p-12 space-y-6">
+              <div className="text-white space-y-4 text-center">
+                <p className="text-lg leading-relaxed font-rotunda" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(6, 182, 212, 0.15)' }}>
+                  Aprenda com os <span className="text-white font-bold" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>maiores nomes</span> do mercado
                   <br />
-                  para <span className="text-cyan-400">acelerar o faturamento</span> da sua empresa
+                  para <span className="text-white font-bold" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>acelerar o faturamento</span> da sua empresa
                   <br />
                   ou construir um negócio do zero.
-                </h1>
+                </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-3">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <Input
                   type="text"
                   placeholder="Nome"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-10 rounded-full px-4"
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-14 rounded-full px-6 text-base font-rotunda"
                   required
                 />
                 <Input
@@ -90,7 +113,7 @@ const Hero = () => {
                   placeholder="Whatsapp com DDD"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-10 rounded-full px-4"
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-14 rounded-full px-6 text-base font-rotunda"
                   required
                 />
                 <Input
@@ -98,71 +121,111 @@ const Hero = () => {
                   placeholder="E-mail"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-10 rounded-full px-4"
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-14 rounded-full px-6 text-base font-rotunda"
                   required
                 />
                 
-                <div className="flex items-start space-x-2 pt-1">
+                <div className="flex items-start space-x-3 pt-2">
                   <Checkbox
                     id="agree"
                     checked={agreed}
                     onCheckedChange={(checked) => setAgreed(checked as boolean)}
-                    className="mt-0.5 border-white data-[state=checked]:bg-cyan-400 data-[state=checked]:border-cyan-400"
+                    className="mt-1 border-white data-[state=checked]:bg-cyan-400 data-[state=checked]:border-cyan-400"
                   />
-                  <label htmlFor="agree" className="text-xs text-white leading-relaxed">
+                  <label htmlFor="agree" className="text-sm text-white leading-relaxed font-rotunda" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.2)' }}>
                     Concordo em fornecer meus dados para receber
                     <br />
                     conteúdos do evento por e-mail ou outros meios
                   </label>
                 </div>
                 
-                <Button 
+                <button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold text-xl py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6"
+                  className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-gilroy-black font-black text-5xl py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-8 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-xl before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30"
+                  style={{
+                    boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
+                  }}
                 >
                   QUERO PARTICIPAR
-                </Button>
+                </button>
               </form>
             </div>
 
             {/* Right side - Image */}
-            <div className="relative h-full min-h-[600px] bg-gradient-to-br from-slate-800 to-slate-900 rounded-r-3xl">
+            <div className="relative h-full min-h-[600px] bg-gradient-to-br from-slate-800 to-slate-900">
               <img
-                src="/lovable-uploads/7227757b-308b-4a4c-978e-036f0da508e0.png"
+                src="https://prnt.sc/ew3utIiRRerQ"
                 alt="Acelere Brasil - Paulo Canargo, Mateus Maia, Juliano Custódio"
-                className="w-full h-full object-cover rounded-r-3xl"
+                className="w-full h-full object-cover"
+                onError={(e) => {
+                  e.currentTarget.src = "https://img001.prntscr.com/file/img001/XSeiU5m5Q3qcfdXrajnYjg.png";
+                }}
               />
+              {/* Logo overlay */}
+              <div className="absolute top-8 right-8">
+                <div className="text-cyan-400 font-bold text-2xl">
+                  ▷ ACELERE<br />
+                  <span className="text-white text-lg">BRASIL</span><br />
+                  <span className="text-cyan-400 text-sm">Joinville</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Countdown Timer */}
-        <div className="mt-6 flex justify-center">
-          <div className="bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-2xl px-8 py-4">
-            <div className="text-center text-white mb-2">
-              <p className="text-lg font-bold">04 E 05 DE DEZEMBRO</p>
-              <p className="text-sm">EM SÃO PAULO</p>
-              <p className="text-sm text-cyan-400 font-bold">IMERSÃO PRESENCIAL</p>
-            </div>
-            <div className="flex space-x-4">
-              <div className="bg-cyan-400 rounded-xl px-4 py-3 text-center min-w-[60px]">
-                <div className="text-2xl font-bold text-black">{String(timeLeft.days).padStart(2, '0')}</div>
-                <div className="text-xs text-black font-semibold">DIAS</div>
+        <div className="flex justify-center">
+          <div className="bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-2xl px-8 py-6 shadow-lg" style={{ backgroundColor: 'rgba(34, 197, 94, 0.15)' }}>
+            <div className="flex items-start space-x-8">
+              {/* Left side - Event info */}
+              <div className="text-white space-y-2 text-center">
+                <p className="text-3xl lg:text-4xl font-gilroy-black font-black" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>04 E 05 DE OUTUBRO</p>
+                <p className="text-base lg:text-lg font-gilroy-black font-black" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.2)' }}>EM JOINVILLE</p>
+                <p className="text-xl lg:text-2xl font-gilroy-black font-black" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>IMERSÃO PRESENCIAL</p>
               </div>
-              <div className="flex items-center text-cyan-400 text-2xl font-bold">:</div>
-              <div className="bg-cyan-400 rounded-xl px-4 py-3 text-center min-w-[60px]">
-                <div className="text-2xl font-bold text-black">{String(timeLeft.hours).padStart(2, '0')}</div>
-                <div className="text-xs text-black font-semibold">HORAS</div>
-              </div>
-              <div className="flex items-center text-cyan-400 text-2xl font-bold">:</div>
-              <div className="bg-cyan-400 rounded-xl px-4 py-3 text-center min-w-[60px]">
-                <div className="text-2xl font-bold text-black">{String(timeLeft.minutes).padStart(2, '0')}</div>
-                <div className="text-xs text-black font-semibold">MINUTOS</div>
-              </div>
-              <div className="flex items-center text-cyan-400 text-2xl font-bold">:</div>
-              <div className="bg-cyan-400 rounded-xl px-4 py-3 text-center min-w-[60px]">
-                <div className="text-2xl font-bold text-black">{String(timeLeft.seconds).padStart(2, '0')}</div>
-                <div className="text-xs text-black font-semibold">SEGUNDOS</div>
+              
+              {/* Right side - Countdown */}
+              <div className="flex space-x-1 items-start">
+                {/* Days */}
+                <div className="flex flex-col items-center">
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl px-4 py-3 text-center min-w-[80px] shadow-lg">
+                    <div className="text-4xl font-gilroy-black font-black text-white">{String(timeLeft.days).padStart(2, '0')}</div>
+                  </div>
+                  <div className="text-xs text-white font-gilroy-black font-black mt-1" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>DIAS</div>
+                </div>
+                
+                {/* Separator */}
+                <div className="text-white text-3xl font-gilroy-black font-black pt-2" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>:</div>
+                
+                {/* Hours */}
+                <div className="flex flex-col items-center">
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl px-4 py-3 text-center min-w-[80px] shadow-lg">
+                    <div className="text-4xl font-gilroy-black font-black text-white">{String(timeLeft.hours).padStart(2, '0')}</div>
+                  </div>
+                  <div className="text-xs text-white font-gilroy-black font-black mt-1" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>HORAS</div>
+                </div>
+                
+                {/* Separator */}
+                <div className="text-white text-3xl font-gilroy-black font-black pt-2" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>:</div>
+                
+                {/* Minutes */}
+                <div className="flex flex-col items-center">
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl px-4 py-3 text-center min-w-[80px] shadow-lg">
+                    <div className="text-4xl font-gilroy-black font-black text-white">{String(timeLeft.minutes).padStart(2, '0')}</div>
+                  </div>
+                  <div className="text-xs text-white font-gilroy-black font-black mt-1" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>MINUTOS</div>
+                </div>
+                
+                {/* Separator */}
+                <div className="text-white text-3xl font-gilroy-black font-black pt-2" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>:</div>
+                
+                {/* Seconds */}
+                <div className="flex flex-col items-center">
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl px-4 py-3 text-center min-w-[80px] shadow-lg">
+                    <div className="text-4xl font-gilroy-black font-black text-white">{String(timeLeft.seconds).padStart(2, '0')}</div>
+                  </div>
+                  <div className="text-xs text-white font-gilroy-black font-black mt-1" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>SEGUNDOS</div>
+                </div>
               </div>
             </div>
           </div>

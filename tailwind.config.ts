@@ -18,6 +18,11 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'gilroy': ['Gilroy Black', 'Gilroy', 'Inter', 'sans-serif'],
+				'gilroy-black': ['Gilroy Black', 'Inter', 'sans-serif'],
+				'rotunda': ['Rotunda Extra Bold', 'Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',

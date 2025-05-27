@@ -1,4 +1,3 @@
-
 const steps = [
   {
     number: "1",
@@ -37,10 +36,10 @@ const Mission = () => {
     <section className="py-20 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            A IMERSÃO ACELERE BRASIL GARANTE
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
+            A <span className="text-white">IMERSÃO ACELERE BRASIL</span> GARANTE
             <br />
-            <span className="text-cyan-400">5 VANTAGENS</span> NESTA NOVA EDIÇÃO
+            <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>5 VANTAGENS</span> NESTA NOVA EDIÇÃO
           </h2>
         </div>
 
@@ -65,11 +64,11 @@ const Mission = () => {
                   <div className="w-16 h-16 bg-gradient-to-r from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center">
                     <span className="text-2xl font-bold text-black">{step.number}</span>
                   </div>
-                  <h3 className="text-2xl lg:text-3xl font-bold text-white">
+                  <h3 className="text-2xl lg:text-3xl font-bold text-white" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>
                     {step.title}
                   </h3>
                 </div>
-                <p className="text-gray-300 text-lg leading-relaxed">
+                <p className="text-gray-300 text-lg leading-relaxed" style={{ textShadow: '0 0 10px rgba(209, 213, 219, 0.3)' }}>
                   {step.description}
                 </p>
               </div>

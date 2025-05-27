@@ -1,4 +1,3 @@
-
 const benefits = [
   {
     icon: "🚀",
@@ -47,10 +46,10 @@ const Benefits = () => {
     <section className="py-20 px-4 bg-slate-900/50">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            A <span className="text-cyan-400">IMERSÃO ACELERE BRASIL</span> GARANTE
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
+            A <span className="text-white">IMERSÃO ACELERE BRASIL</span> GARANTE
             <br />
-            <span className="text-cyan-400">8 VANTAGENS</span> NESTA NOVA EDIÇÃO
+            <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>8 VANTAGENS</span> NESTA NOVA EDIÇÃO
           </h2>
         </div>
 
@@ -61,10 +60,10 @@ const Benefits = () => {
               className="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700 rounded-xl p-6 hover:border-cyan-400 transition-all duration-300 transform hover:scale-105"
             >
               <div className="text-4xl mb-4">{benefit.icon}</div>
-              <h3 className="text-lg font-bold text-cyan-400 mb-3">
+              <h3 className="text-lg font-bold text-cyan-400 mb-3" style={{ textShadow: '0 0 15px rgba(6, 182, 212, 0.4)' }}>
                 {benefit.title}
               </h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-gray-300 text-sm leading-relaxed" style={{ textShadow: '0 0 10px rgba(209, 213, 219, 0.3)' }}>
                 {benefit.description}
               </p>
             </div>
@@ -72,7 +71,11 @@ const Benefits = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold px-8 py-6 h-auto text-xl rounded-xl transition-all duration-300 transform hover:scale-105">
+          <button className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-gilroy-black font-black text-5xl py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-xl before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30"
+            style={{
+              boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
+            }}
+          >
             ME IDENTIFIQUEI, QUERO PARTICIPAR
           </button>
         </div>
