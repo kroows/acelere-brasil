@@ -91,7 +91,7 @@ const Hero = () => {
                 
                 <Button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-black font-bold text-lg py-6 rounded-full transition-all duration-300 transform hover:scale-105 mt-6"
+                  className="w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold text-xl py-8 h-auto rounded-full transition-all duration-300 transform hover:scale-105 mt-6"
                 >
                   QUERO PARTICIPAR
                 </Button>
