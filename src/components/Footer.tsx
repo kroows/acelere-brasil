@@ -40,7 +40,7 @@ const Footer = () => {
             <p className="text-gray-300 mb-6">
               Restam poucas vagas disponíveis
             </p>
-            <button className="w-full bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-white font-bold py-6 h-auto text-xl rounded-xl transition-all duration-300 transform hover:scale-105">
+            <button className="w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold text-xl py-6 h-auto rounded-xl transition-all duration-300 transform hover:scale-105">
               QUERO MEU EBOOK
             </button>
           </div>
