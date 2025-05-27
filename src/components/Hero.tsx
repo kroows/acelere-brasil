@@ -2,16 +2,18 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "@/hooks/use-toast";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [agreed, setAgreed] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email && name && phone) {
+    if (email && name && phone && agreed) {
       toast({
         title: "Inscrição realizada!",
         description: "Você receberá mais informações em breve.",
@@ -19,6 +21,7 @@ const Hero = () => {
       setEmail("");
       setName("");
       setPhone("");
+      setAgreed(false);
     }
   };
 
@@ -31,86 +34,78 @@ const Hero = () => {
         <div className="absolute top-1/2 left-1/4 w-16 h-16 border-2 border-cyan-400 rotate-45"></div>
       </div>
 
-      <div className="container mx-auto max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
-        <div className="text-white space-y-6">
-          <div className="inline-block bg-cyan-400 text-black px-4 py-2 rounded-full text-sm font-bold">
-            TERMINE 2025 PLANEJANDO COMO ACELERAR O CRESCIMENTO DO SEU NEGÓCIO EM 2026
-          </div>
-          
-          <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-            ACELERE
-            <span className="block text-cyan-400">BRASIL</span>
-          </h1>
-          
-          <p className="text-xl text-gray-300 leading-relaxed">
-            Junte-se aos maiores empreendedores e líderes empresariais do Brasil 
-            no evento que vai transformar sua visão de negócios para 2026.
-          </p>
+      <div className="container mx-auto max-w-7xl">
+        <div className="bg-slate-900/80 backdrop-blur-sm border border-slate-700 rounded-3xl overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-0 items-center min-h-[600px]">
+            {/* Left side - Form */}
+            <div className="p-8 lg:p-12 space-y-6">
+              <div className="text-white space-y-4">
+                <h1 className="text-2xl lg:text-3xl font-bold leading-tight">
+                  Aprenda com os <span className="text-cyan-400">maiores nomes</span> do mercado
+                  <br />
+                  para <span className="text-cyan-400">acelerar o faturamento</span> da sua empresa
+                  <br />
+                  ou construir um negócio do zero.
+                </h1>
+              </div>
 
-          <div className="flex items-center space-x-8 text-sm">
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-cyan-400 rounded-full"></div>
-              <span>04 • 05</span>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <Input
+                  type="text"
+                  placeholder="Nome"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
+                  required
+                />
+                <Input
+                  type="tel"
+                  placeholder="Whatsapp com DDD"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
+                  required
+                />
+                <Input
+                  type="email"
+                  placeholder="E-mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
+                  required
+                />
+                
+                <div className="flex items-start space-x-3 pt-2">
+                  <Checkbox
+                    id="agree"
+                    checked={agreed}
+                    onCheckedChange={(checked) => setAgreed(checked as boolean)}
+                    className="mt-0.5 border-white data-[state=checked]:bg-cyan-400 data-[state=checked]:border-cyan-400"
+                  />
+                  <label htmlFor="agree" className="text-sm text-white leading-relaxed">
+                    Concordo em fornecer meus dados para receber
+                    <br />
+                    conteúdos do evento por e-mail ou outros meios
+                  </label>
+                </div>
+                
+                <Button 
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-black font-bold text-lg py-6 rounded-full transition-all duration-300 transform hover:scale-105 mt-6"
+                >
+                  QUERO PARTICIPAR
+                </Button>
+              </form>
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-cyan-400 rounded-full"></div>
-              <span>DEZEMBRO</span>
+
+            {/* Right side - Image */}
+            <div className="relative h-full min-h-[600px] bg-gradient-to-br from-slate-800 to-slate-900">
+              <img
+                src="/lovable-uploads/7227757b-308b-4a4c-978e-036f0da508e0.png"
+                alt="Acelere Brasil - Paulo Canargo, Mateus Maia, Juliano Custódio"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <div className="flex items-center space-x-2">
-              <div className="w-3 h-3 bg-cyan-400 rounded-full"></div>
-              <span>SÃO PAULO</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8">
-          <div className="text-center mb-6">
-            <h2 className="text-2xl font-bold text-white mb-2">
-              GARANTA SUA VAGA
-            </h2>
-            <p className="text-gray-400">
-              Vagas limitadas - Inscreva-se agora
-            </p>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <Input
-              type="text"
-              placeholder="Seu nome completo"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-400"
-              required
-            />
-            <Input
-              type="email"
-              placeholder="Seu melhor e-mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-400"
-              required
-            />
-            <Input
-              type="tel"
-              placeholder="Seu WhatsApp"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="bg-slate-700 border-slate-600 text-white placeholder:text-gray-400"
-              required
-            />
-            
-            <Button 
-              type="submit"
-              className="w-full bg-gradient-to-r from-cyan-400 to-cyan-600 hover:from-cyan-500 hover:to-cyan-700 text-black font-bold text-lg py-6 rounded-lg transition-all duration-300 transform hover:scale-105"
-            >
-              QUERO PARTICIPAR
-            </Button>
-          </form>
-
-          <div className="mt-6 text-center">
-            <p className="text-xs text-gray-500">
-              Últimas 48 horas com desconto especial
-            </p>
           </div>
         </div>
       </div>
