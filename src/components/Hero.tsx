@@ -52,9 +52,9 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
+    <div className="relative bg-gradient-to-b from-slate-900 via-slate-800 via-70% to-slate-900">
       {/* Top Banner */}
-      <div style={{ backgroundColor: '#00f0a7' }} className="text-center py-4 md:py-5">
+      <div className="bg-gradient-to-r from-green-400 to-cyan-400 text-center py-4 md:py-5">
         <p className="text-black font-gilroy-black font-black text-sm md:text-lg lg:text-xl">
           PRIMEIRO LOTE, APROVEITE ANTES QUE O PREÇO AUMENTE
         </p>
@@ -73,10 +73,10 @@ const Hero = () => {
         <div className="absolute top-2/3 right-20 w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-cyan-400/50 border-b-[12px] border-b-transparent"></div>
       </div>
 
-      <div className="container mx-auto max-w-7xl px-4 py-12">
+      <div className="container mx-auto max-w-7xl px-4 py-20">
         {/* Main Title */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-gilroy-black font-black text-white leading-tight" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
+        <div className="text-center mb-20">
+          <h1 className="text-2xl md:text-4xl lg:text-5xl font-gilroy-black font-black text-white leading-tight" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
             TERMINE 2025 PLANEJANDO COMO{" "}
             <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>ACELERAR</span>
             <br />
@@ -85,12 +85,12 @@ const Hero = () => {
         </div>
 
         {/* Main Content Card */}
-        <div className="bg-black border border-slate-700 rounded-3xl overflow-hidden mb-12">
+        <div className="bg-black border border-slate-700 rounded-3xl overflow-hidden mb-20">
           <div className="grid lg:grid-cols-2 gap-0 items-center min-h-[600px]">
             {/* Left side - Form */}
             <div className="p-8 lg:p-12 space-y-6">
               <div className="text-white space-y-4 text-center">
-                <p className="text-lg leading-relaxed font-rotunda" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(6, 182, 212, 0.15)' }}>
+                <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-rotunda" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(6, 182, 212, 0.15)' }}>
                   Aprenda com os <span className="text-white font-bold" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>maiores nomes</span> do mercado
                   <br />
                   para <span className="text-white font-bold" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>acelerar o faturamento</span> da sua empresa
@@ -139,15 +139,17 @@ const Hero = () => {
                   </label>
                 </div>
                 
-                <button 
-                  type="submit"
-                  className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-gilroy-black font-black text-5xl py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-8 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-xl before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30"
+                <a 
+                  href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-gilroy-black font-black text-5xl py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-8 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-xl before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30 flex items-center justify-center text-center"
                   style={{
                     boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
                   }}
                 >
                   QUERO PARTICIPAR
-                </button>
+                </a>
               </form>
             </div>
 
@@ -158,24 +160,16 @@ const Hero = () => {
                 alt="Acelere Brasil - Paulo Canargo, Mateus Maia, Juliano Custódio"
                 className="w-full h-full object-cover"
                 onError={(e) => {
-                  e.currentTarget.src = "https://img001.prntscr.com/file/img001/XSeiU5m5Q3qcfdXrajnYjg.png";
+                  e.currentTarget.src = "https://acelerebrasil.com.br/wp-content/uploads/2025/05/header-acelere-brasil.webp";
                 }}
               />
-              {/* Logo overlay */}
-              <div className="absolute top-8 right-8">
-                <div className="text-cyan-400 font-bold text-2xl">
-                  ▷ ACELERE<br />
-                  <span className="text-white text-lg">BRASIL</span><br />
-                  <span className="text-cyan-400 text-sm">Joinville</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
 
         {/* Countdown Timer */}
         <div className="flex justify-center">
-          <div className="bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-2xl px-8 py-6 shadow-lg" style={{ backgroundColor: 'rgba(34, 197, 94, 0.15)' }}>
+          <div className="bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-2xl px-10 py-6 shadow-lg" style={{ backgroundColor: 'rgba(34, 197, 94, 0.15)' }}>
             <div className="flex items-start space-x-8">
               {/* Left side - Event info */}
               <div className="text-white space-y-2 text-center">
@@ -185,46 +179,46 @@ const Hero = () => {
               </div>
               
               {/* Right side - Countdown */}
-              <div className="flex space-x-1 items-start">
+              <div className="flex space-x-4 items-center">
                 {/* Days */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl px-4 py-3 text-center min-w-[80px] shadow-lg">
-                    <div className="text-4xl font-gilroy-black font-black text-white">{String(timeLeft.days).padStart(2, '0')}</div>
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg" style={{ width: '100px', height: '100px' }}>
+                    <div className="text-5xl font-gilroy-black font-black text-white">{String(timeLeft.days).padStart(2, '0')}</div>
                   </div>
-                  <div className="text-xs text-white font-gilroy-black font-black mt-1" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>DIAS</div>
+                  <div className="text-xs text-white font-gilroy-black font-black mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>DIAS</div>
                 </div>
                 
                 {/* Separator */}
-                <div className="text-white text-3xl font-gilroy-black font-black pt-2" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>:</div>
+                <div className="text-white text-5xl font-gilroy-black font-black flex items-center" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)', height: '100px' }}>:</div>
                 
                 {/* Hours */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl px-4 py-3 text-center min-w-[80px] shadow-lg">
-                    <div className="text-4xl font-gilroy-black font-black text-white">{String(timeLeft.hours).padStart(2, '0')}</div>
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg" style={{ width: '100px', height: '100px' }}>
+                    <div className="text-5xl font-gilroy-black font-black text-white">{String(timeLeft.hours).padStart(2, '0')}</div>
                   </div>
-                  <div className="text-xs text-white font-gilroy-black font-black mt-1" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>HORAS</div>
+                  <div className="text-xs text-white font-gilroy-black font-black mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>HORAS</div>
                 </div>
                 
                 {/* Separator */}
-                <div className="text-white text-3xl font-gilroy-black font-black pt-2" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>:</div>
+                <div className="text-white text-5xl font-gilroy-black font-black flex items-center" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)', height: '100px' }}>:</div>
                 
                 {/* Minutes */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl px-4 py-3 text-center min-w-[80px] shadow-lg">
-                    <div className="text-4xl font-gilroy-black font-black text-white">{String(timeLeft.minutes).padStart(2, '0')}</div>
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg" style={{ width: '100px', height: '100px' }}>
+                    <div className="text-5xl font-gilroy-black font-black text-white">{String(timeLeft.minutes).padStart(2, '0')}</div>
                   </div>
-                  <div className="text-xs text-white font-gilroy-black font-black mt-1" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>MINUTOS</div>
+                  <div className="text-xs text-white font-gilroy-black font-black mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>MINUTOS</div>
                 </div>
                 
                 {/* Separator */}
-                <div className="text-white text-3xl font-gilroy-black font-black pt-2" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>:</div>
+                <div className="text-white text-5xl font-gilroy-black font-black flex items-center" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)', height: '100px' }}>:</div>
                 
                 {/* Seconds */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl px-4 py-3 text-center min-w-[80px] shadow-lg">
-                    <div className="text-4xl font-gilroy-black font-black text-white">{String(timeLeft.seconds).padStart(2, '0')}</div>
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg" style={{ width: '100px', height: '100px' }}>
+                    <div className="text-5xl font-gilroy-black font-black text-white">{String(timeLeft.seconds).padStart(2, '0')}</div>
                   </div>
-                  <div className="text-xs text-white font-gilroy-black font-black mt-1" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>SEGUNDOS</div>
+                  <div className="text-xs text-white font-gilroy-black font-black mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>SEGUNDOS</div>
                 </div>
               </div>
             </div>

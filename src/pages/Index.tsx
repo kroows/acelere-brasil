@@ -1,4 +1,3 @@
-
 import Hero from "@/components/Hero";
 import Speakers from "@/components/Speakers";
 import Benefits from "@/components/Benefits";
@@ -11,8 +10,8 @@ const Index = () => {
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900">
       <Hero />
       <Speakers />
-      <Benefits />
       <Mission />
+      <Benefits />
       <VideoSection />
       <Footer />
     </div>
