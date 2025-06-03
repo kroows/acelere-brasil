@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+const isDevelopment = import.meta.env.DEV;
+const baseURL = isDevelopment ? '' : '/api';
+
 const api = axios.create({
-  baseURL: 'https://acelerebrasil.com.br'
+  baseURL
 });
 
 export const submitHeroForm = async (data: {
@@ -19,8 +22,10 @@ export const submitHeroForm = async (data: {
   formData.append('_wpcf7_version', '5.8.4');
   formData.append('_wpcf7_locale', 'pt_BR');
   formData.append('_wpcf7_unit_tag', 'wpcf7-f108');
+  formData.append('action', 'wpcf7_submit');
 
-  return api.post('/wp-admin/admin-ajax.php', formData, {
+  const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/proxy';
+  return api.post(endpoint, formData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }
@@ -42,8 +47,10 @@ export const submitEbookForm = async (data: {
   formData.append('_wpcf7_version', '5.8.4');
   formData.append('_wpcf7_locale', 'pt_BR');
   formData.append('_wpcf7_unit_tag', 'wpcf7-f115');
+  formData.append('action', 'wpcf7_submit');
 
-  return api.post('/wp-admin/admin-ajax.php', formData, {
+  const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/proxy';
+  return api.post(endpoint, formData, {
     headers: {
       'Content-Type': 'multipart/form-data'
     }

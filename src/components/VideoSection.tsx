@@ -445,10 +445,20 @@ const VideoSection = () => {
 
                 <Button
                   type="submit"
-                  disabled={isSubmitting || !name || !phone || !email || !niche}
-                  className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-2xl lg:text-3xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
+                  aria-disabled={isSubmitting || !name || !phone || !email || !niche}
+                  className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-2xl lg:text-3xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30 disabled:cursor-not-allowed"
                   style={{
                     boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
+                  }}
+                  onClick={(e) => {
+                    if (isSubmitting || !name || !phone || !email || !niche) {
+                      e.preventDefault();
+                      toast({
+                        title: "Preencha todos os campos",
+                        description: "Por favor, preencha todos os campos para receber o ebook.",
+                        variant: "destructive"
+                      });
+                    }
                   }}
                 >
                   {isSubmitting ? "ENVIANDO..." : "QUERO MEU EBOOK"}
@@ -463,33 +473,6 @@ const VideoSection = () => {
                 alt="Ebook Acelere Brasil"
                 className="w-full h-auto rounded-2xl"
               />
-              
-              <a 
-                href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-2xl lg:text-3xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
-                style={{
-                  boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
-                }}
-              >
-                QUERO MEU EBOOK
-              </a>
-            </div>
-
-            {/* Botão (mobile) */}
-            <div className="lg:hidden">
-              <a 
-                href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-3xl lg:text-4xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
-                style={{
-                  boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
-                }}
-              >
-                QUERO MEU EBOOK
-              </a>
             </div>
           </div>
         </div>
