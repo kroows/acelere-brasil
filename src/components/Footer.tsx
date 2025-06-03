@@ -67,7 +67,7 @@ const Footer = () => {
                 strokeLinecap="round"
               />
             </svg>
-            <div className="flex flex-col">
+            <div className="flex flex-col text-center md:text-left">
               <span className="text-[2.5rem] font-bold text-white tracking-tight leading-none">
                 <span className="mr-1">04</span>•<span className="ml-1">05</span>
               </span>
@@ -89,7 +89,7 @@ const Footer = () => {
                 strokeWidth="2"
               />
             </svg>
-            <div className="flex flex-col">
+            <div className="flex flex-col text-center md:text-left">
               <span className="text-lg uppercase text-white tracking-wide">LOCAL</span>
               <span className="text-[2.5rem] font-bold text-white tracking-wider leading-none">EXPOVILLE</span>
             </div>
