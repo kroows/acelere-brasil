@@ -20,13 +20,16 @@ export default async function handler(request, response) {
     const contentType = request.headers['content-type'] || '';
     console.log('[Proxy] Content-Type:', contentType);
     console.log('[Proxy] Request Headers:', request.headers);
+    console.log('[Proxy] Request Method:', request.method);
 
     if (contentType.includes('application/x-www-form-urlencoded')) {
       try {
         const body = await request.text();
+        console.log('[Proxy] Raw body:', body);
+        
         const params = new URLSearchParams(body);
         formDataObject = Object.fromEntries(params);
-        console.log('[Proxy] Form Data:', formDataObject);
+        console.log('[Proxy] Parsed Form Data:', formDataObject);
       } catch (error) {
         console.error('[Proxy] Error parsing form data:', error);
         return response.status(400).json({
@@ -53,7 +56,8 @@ export default async function handler(request, response) {
       return response.status(400).json({
         status: 'error',
         message: 'Missing required fields',
-        missingFields
+        missingFields,
+        receivedFields: Object.keys(formDataObject)
       });
     }
 

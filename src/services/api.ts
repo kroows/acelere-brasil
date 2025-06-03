@@ -48,7 +48,7 @@ export const submitHeroForm = async (data: {
   formData.append('your-email', data.email);
   formData.append('acceptance-119', data.agreed ? '1' : '');
 
-  const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/proxy';
+  const endpoint = '/proxy';
   
   try {
     console.log('Enviando requisição para:', endpoint);
