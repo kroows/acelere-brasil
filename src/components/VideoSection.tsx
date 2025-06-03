@@ -1,12 +1,45 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const VideoSection = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [niche, setNiche] = useState("");
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Verifica se está próximo ao final da página
+      const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 100;
+      setIsAtBottom(bottom);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToPosition = () => {
+    if (isAtBottom) {
+      // Scroll para o topo
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    } else {
+      // Scroll para o final
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const handleEbookSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +56,7 @@ const VideoSection = () => {
   };
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-slate-900 via-slate-900 via-70% to-slate-800">
+    <section className="py-20 px-4 bg-black relative">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
@@ -58,9 +91,227 @@ const VideoSection = () => {
           ))}
         </div>
 
+        {/* Container do mapa e informações */}
+        <div className="rounded-[20px] overflow-hidden mt-20" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+            {/* Coluna do Mapa */}
+            <div className="w-full h-full min-h-[300px] rounded-xl overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.5751642816837!2d-48.85129772374376!3d-26.276446571039267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deb04401d49f3d%3A0x7555af43bbcd2112!2sRua%20XV%20de%20Novembro%2C%204315%20-%20Gl%C3%B3ria%2C%20Joinville%20-%20SC%2C%2089216-201!5e0!3m2!1spt-BR!2sbr!4v1709926926800!5m2!1spt-BR!2sbr"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '300px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+
+            {/* Coluna das Informações */}
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <svg 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    className="w-8 h-8"
+                  >
+                    <path 
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z" 
+                      className="fill-transparent"
+                      stroke="url(#gradient1)"
+                      strokeWidth="1.5"
+                    />
+                    <circle 
+                      cx="12" 
+                      cy="9" 
+                      r="2.5" 
+                      className="fill-transparent"
+                      stroke="url(#gradient1)"
+                      strokeWidth="1.5"
+                    />
+                    <defs>
+                      <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#4ade80" />
+                        <stop offset="100%" stopColor="#22d3ee" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-3xl font-bold text-white mb-1">EXPOVILLE</h3>
+                  <p className="text-lg text-white">Rua XV Novembro, 4315</p>
+                  <p className="text-lg font-bold text-white">Glória Joinville – SC</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-4">
+                <div className="w-8 h-8 flex items-center justify-center">
+                  <svg 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    className="w-8 h-8"
+                  >
+                    <path 
+                      d="M19 4h-1V3c0-.55-.45-1-1-1s-1 .45-1 1v1H8V3c0-.55-.45-1-1-1s-1 .45-1 1v1H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z" 
+                      className="fill-transparent"
+                      stroke="url(#gradient2)"
+                      strokeWidth="1.5"
+                    />
+                    <defs>
+                      <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#4ade80" />
+                        <stop offset="100%" stopColor="#22d3ee" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <p className="text-lg sm:text-xl md:text-2xl leading-relaxed font-rotunda text-white">
+                  04 e 05 de outubro
+                </p>
+              </div>
+
+              <p className="text-lg sm:text-xl md:text-2xl leading-relaxed font-rotunda text-white text-center">
+                Dois dias intensos para <span className="font-bold">transformar</span> sua vida e
+                <br />
+                <span className="font-bold">acelerar</span> seu negócio
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Grid de imagens do local */}
+        <div className="hidden md:grid md:grid-cols-4 gap-4 mt-8">
+          <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
+            <img
+              loading="lazy"
+              decoding="async"
+              width="700"
+              height="465"
+              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp"
+              alt="Expoville 01"
+              className="rounded-xl w-full h-full object-cover"
+              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01-480x319.webp 480w"
+              sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
+            />
+          </div>
+          <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
+            <img
+              loading="lazy"
+              decoding="async"
+              width="700"
+              height="465"
+              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp"
+              alt="Expoville 02"
+              className="rounded-xl w-full h-full object-cover"
+              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02-480x319.webp 480w"
+              sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
+            />
+          </div>
+          <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
+            <img
+              loading="lazy"
+              decoding="async"
+              width="700"
+              height="465"
+              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp"
+              alt="Expoville 03"
+              className="rounded-xl w-full h-full object-cover"
+              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03-480x319.webp 480w"
+              sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
+            />
+          </div>
+          <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
+            <img
+              loading="lazy"
+              decoding="async"
+              width="700"
+              height="465"
+              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp"
+              alt="Expoville 04"
+              className="rounded-xl w-full h-full object-cover"
+              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04-480x319.webp 480w"
+              sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
+            />
+          </div>
+        </div>
+
+        {/* Swiper para versão mobile */}
+        <div className="md:hidden mt-8">
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={16}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            className="w-full"
+          >
+            <SwiperSlide>
+              <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  width="700"
+                  height="465"
+                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp"
+                  alt="Expoville 01"
+                  className="rounded-xl w-full h-full object-cover"
+                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01-480x319.webp 480w"
+                  sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
+                />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  width="700"
+                  height="465"
+                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp"
+                  alt="Expoville 02"
+                  className="rounded-xl w-full h-full object-cover"
+                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02-480x319.webp 480w"
+                  sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
+                />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  width="700"
+                  height="465"
+                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp"
+                  alt="Expoville 03"
+                  className="rounded-xl w-full h-full object-cover"
+                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03-480x319.webp 480w"
+                  sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
+                />
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
+                <img
+                  loading="lazy"
+                  decoding="async"
+                  width="700"
+                  height="465"
+                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp"
+                  alt="Expoville 04"
+                  className="rounded-xl w-full h-full object-cover"
+                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04-480x319.webp 480w"
+                  sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
+                />
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+
         {/* Ebook Form Section */}
-        <div className="mt-16 bg-gradient-to-r from-slate-800 to-slate-700 rounded-3xl p-8">
-          <div className="grid lg:grid-cols-2 gap-8 items-start">
+        <div className="mt-16 rounded-[20px] overflow-hidden" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
+          <div className="grid lg:grid-cols-2 gap-8 items-start p-8">
             {/* Left side - Form */}
             <div className="space-y-6">
               <div className="text-white space-y-4">
@@ -138,7 +389,78 @@ const VideoSection = () => {
             </div>
           </div>
         </div>
+
+        {/* Seção de Patrocinadores */}
+        <div className="mt-20 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+            <span className="text-white">SEJA UM </span>
+            <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>PATROCINADOR</span>
+            <span className="text-white"> DESSA EDIÇÃO</span>
+          </h2>
+
+          <div className="max-w-3xl mx-auto mb-10">
+            <p className="text-lg text-gray-300">
+              Nessa edição esperamos impactar mais de 1300 pessoas em dois dias de imersão.
+              <br />
+              Quer ter sua marca em destaque em nosso evento, matérias e mídia?
+              <br />
+              Deseja ter um Stand no espaço durante os dois dias de evento, de 14 x 14 ou até de
+              14 x 21, recebendo clientes e impactando pessoas?
+              <br />
+              Vai ser um grande prazer ter a sua empresa apoiando e se conectando com o nosso propósito.
+            </p>
+          </div>
+
+          <a 
+            href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-gilroy-black font-black text-3xl lg:text-4xl py-6 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-xl before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30 flex items-center justify-center text-center"
+            style={{
+              boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
+            }}
+          >
+            ENTRE EM CONTATO COM NOSSA EQUIPE
+          </a>
+        </div>
       </div>
+
+      {/* Botão flutuante circular */}
+      <button
+        onClick={scrollToPosition}
+        className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white w-12 h-12 rounded-full transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-full before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30 flex items-center justify-center"
+        style={{
+          boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
+        }}
+      >
+        {isAtBottom ? (
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-6 w-6" 
+            viewBox="0 0 20 20" 
+            fill="currentColor"
+          >
+            <path 
+              fillRule="evenodd" 
+              d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" 
+              clipRule="evenodd" 
+            />
+          </svg>
+        ) : (
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            className="h-6 w-6" 
+            viewBox="0 0 20 20" 
+            fill="currentColor"
+          >
+            <path 
+              fillRule="evenodd" 
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" 
+              clipRule="evenodd" 
+            />
+          </svg>
+        )}
+      </button>
     </section>
   );
 };

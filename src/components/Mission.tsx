@@ -1,3 +1,9 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+
 const steps = [
   {
     number: "1",
@@ -43,7 +49,8 @@ const Mission = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col items-center space-y-6">
+        {/* Desktop - Layout Vertical */}
+        <div className="hidden md:flex md:flex-col md:items-center md:space-y-6">
           {steps.map((step, index) => (
             <div 
               key={index} 
@@ -53,10 +60,38 @@ const Mission = () => {
               <img
                 src={step.image}
                 alt={step.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
           ))}
+        </div>
+
+        {/* Mobile - Carrossel */}
+        <div className="md:hidden">
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            centeredSlides={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            className="pb-12"
+          >
+            {steps.map((step, index) => (
+              <SwiperSlide key={index}>
+                <div className="rounded-3xl shadow-lg overflow-hidden bg-black" style={{ width: '100%', height: '300px' }}>
+                  <img
+                    src={step.image}
+                    alt={step.title}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>

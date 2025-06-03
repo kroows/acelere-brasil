@@ -1,0 +1,30 @@
+.speakers-swiper {
+  padding: 20px 10px 60px !important;
+}
+
+.speakers-swiper .swiper-pagination-bullet {
+  background: #22d3ee;
+  opacity: 0.5;
+}
+
+.speakers-swiper .swiper-pagination-bullet-active {
+  background: #4ade80;
+  opacity: 1;
+}
+
+.speakers-swiper .swiper-button-next,
+.speakers-swiper .swiper-button-prev {
+  color: #4ade80;
+}
+
+.speakers-swiper .swiper-button-next:hover,
+.speakers-swiper .swiper-button-prev:hover {
+  color: #22d3ee;
+}
+
+@media (max-width: 768px) {
+  .speakers-swiper .swiper-button-next,
+  .speakers-swiper .swiper-button-prev {
+    display: none;
+  }
+} 

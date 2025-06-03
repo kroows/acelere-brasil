@@ -90,7 +90,7 @@ const Hero = () => {
             {/* Left side - Form */}
             <div className="p-8 lg:p-12 space-y-6">
               <div className="text-white space-y-4 text-center">
-                <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed font-rotunda" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(6, 182, 212, 0.15)' }}>
+                <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-rotunda" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(6, 182, 212, 0.15)' }}>
                   Aprenda com os <span className="text-white font-bold" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>maiores nomes</span> do mercado
                   <br />
                   para <span className="text-white font-bold" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>acelerar o faturamento</span> da sua empresa
@@ -169,7 +169,7 @@ const Hero = () => {
 
         {/* Countdown Timer */}
         <div className="flex justify-center">
-          <div className="bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-2xl px-10 py-6 shadow-lg" style={{ backgroundColor: 'rgba(34, 197, 94, 0.15)' }}>
+          <div className="backdrop-blur-sm border border-slate-600/30 rounded-2xl px-10 py-6 shadow-lg bg-gradient-to-r from-green-400/10 to-cyan-400/10">
             <div className="flex items-start space-x-8">
               {/* Left side - Event info */}
               <div className="text-white space-y-2 text-center">
