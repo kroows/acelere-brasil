@@ -44,12 +44,20 @@ const Hero = () => {
     if (email && name && phone && agreed) {
       try {
         setIsSubmitting(true);
-        await submitHeroForm({
-          name,
-          phone,
-          email,
-          agreed
+        const response = await fetch('/api/proxy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name,
+            phone,
+            email,
+            agreed
+          })
         });
+        
+        const data = await response.json();
         
         toast({
           title: "Inscrição realizada!",

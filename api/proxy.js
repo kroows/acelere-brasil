@@ -1,61 +1,28 @@
-export default async function handler(request, response) {
-  // Configurar CORS
-  response.setHeader('Access-Control-Allow-Credentials', true);
-  response.setHeader('Access-Control-Allow-Origin', '*');
-  response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  response.setHeader(
-    'Access-Control-Allow-Headers',
-    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
-  );
+export default async function handler(req, res) {
+  // Configure aqui a URL do seu WordPress
+  const WORDPRESS_API_URL = 'https://acelerebrasil.com.br/wp-json/form-handler/v1/submit';
 
-  // Retornar para requisições OPTIONS
-  if (request.method === 'OPTIONS') {
-    return response.status(200).end();
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    return res.status(200).end();
   }
 
   try {
-    // Verificar o tipo de conteúdo
-    const contentType = request.headers['content-type'] || '';
-    console.log('[Proxy] Content-Type:', contentType);
-    console.log('[Proxy] Request Headers:', request.headers);
-    console.log('[Proxy] Request Body:', request.body);
-
-    const WORDPRESS_URL = process.env.WORDPRESS_URL || 'https://acelerebrasil.com.br';
-
-    // Enviar diretamente para o WordPress
-    const res = await fetch(`${WORDPRESS_URL}/wp-admin/admin-ajax.php`, {
+    const response = await fetch(WORDPRESS_API_URL, {
       method: 'POST',
-      body: request.body,
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json',
-        'Origin': WORDPRESS_URL,
-        'Referer': WORDPRESS_URL,
-        'User-Agent': 'Mozilla/5.0 (Vercel Serverless Function)',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(req.body),
     });
 
-    console.log('[Proxy] WordPress response status:', res.status);
-    const data = await res.text();
-    console.log('[Proxy] WordPress response:', data);
+    const data = await response.json();
 
-    try {
-      const jsonData = JSON.parse(data);
-      return response.status(res.status).json(jsonData);
-    } catch (e) {
-      return response.status(res.status).json({
-        status: res.ok ? 'mail_sent' : 'error',
-        message: data,
-        response: res.status
-      });
-    }
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.status(200).json(data);
   } catch (error) {
-    console.error('[Proxy] Fatal error:', error);
-    return response.status(500).json({ 
-      status: 'error',
-      message: 'Error forwarding request',
-      details: error.message
-    });
+    res.status(500).json({ error: 'Erro ao processar a requisição' });
   }
 } 
