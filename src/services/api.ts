@@ -44,7 +44,7 @@ export const submitHeroForm = async (data: {
   formData.append('_wpcf7_container_post', '2');
   formData.append('action', 'wpcf7_submit');
   formData.append('your-name', data.name);
-  formData.append('your-whatsapp', data.phone);
+  formData.append('whatsapp', data.phone);
   formData.append('your-email', data.email);
   formData.append('acceptance-119', data.agreed ? '1' : '');
 
@@ -84,9 +84,9 @@ export const submitEbookForm = async (data: {
   formData.append('_wpcf7_container_post', '2');
   formData.append('action', 'wpcf7_submit');
   formData.append('your-name', data.name);
-  formData.append('your-whatsapp', data.phone);
+  formData.append('whatsapp', data.phone);
   formData.append('your-email', data.email);
-  formData.append('your-niche', data.niche);
+  formData.append('nicho', data.niche);
 
   const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/api/proxy';
   
