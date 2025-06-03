@@ -76,31 +76,51 @@ const VideoSection = () => {
     if (name && phone && email && niche) {
       try {
         setIsSubmitting(true);
-        await submitEbookForm({
-          name,
-          phone,
-          email,
-          niche
+        const response = await fetch('/api/proxy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            formType: 'ebook',
+            'your-name': name,
+            'whatsapp': phone,
+            'your-email': email,
+            'nicho': niche
+          })
         });
         
-        toast({
-          title: "Solicitação enviada!",
-          description: "Você receberá o ebook em breve.",
-        });
+        const data = await response.json();
         
-        setName("");
-        setPhone("");
-        setEmail("");
-        setNiche("");
+        if (data.status === 'mail_sent') {
+          toast({
+            title: "E-book enviado!",
+            description: "Verifique seu e-mail para acessar o conteúdo.",
+          });
+          
+          setName("");
+          setPhone("");
+          setEmail("");
+          setNiche("");
+        } else {
+          throw new Error(data.message || 'Erro ao enviar formulário');
+        }
       } catch (error) {
+        console.error('Erro ao enviar formulário:', error);
         toast({
-          title: "Erro ao enviar solicitação",
+          title: "Erro ao enviar",
           description: "Por favor, tente novamente mais tarde.",
           variant: "destructive"
         });
       } finally {
         setIsSubmitting(false);
       }
+    } else {
+      toast({
+        title: "Preencha todos os campos",
+        description: "Por favor, preencha todos os campos para continuar.",
+        variant: "destructive"
+      });
     }
   };
 

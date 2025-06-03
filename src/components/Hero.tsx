@@ -50,25 +50,31 @@ const Hero = () => {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            name,
-            phone,
-            email,
-            agreed
+            formType: 'hero',
+            'your-name': name,
+            'whatsapp': phone,
+            'your-email': email,
+            'acceptance-119': agreed ? '1' : ''
           })
         });
         
         const data = await response.json();
         
-        toast({
-          title: "Inscrição realizada!",
-          description: "Você receberá mais informações em breve.",
-        });
-        
-        setEmail("");
-        setName("");
-        setPhone("");
-        setAgreed(false);
+        if (data.status === 'mail_sent') {
+          toast({
+            title: "Inscrição realizada!",
+            description: "Você receberá mais informações em breve.",
+          });
+          
+          setEmail("");
+          setName("");
+          setPhone("");
+          setAgreed(false);
+        } else {
+          throw new Error(data.message || 'Erro ao enviar formulário');
+        }
       } catch (error) {
+        console.error('Erro ao enviar formulário:', error);
         toast({
           title: "Erro ao realizar inscrição",
           description: "Por favor, tente novamente mais tarde.",
@@ -77,6 +83,12 @@ const Hero = () => {
       } finally {
         setIsSubmitting(false);
       }
+    } else {
+      toast({
+        title: "Preencha todos os campos",
+        description: "Por favor, preencha todos os campos e aceite os termos para continuar.",
+        variant: "destructive"
+      });
     }
   };
 

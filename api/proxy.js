@@ -1,6 +1,9 @@
 export default async function handler(req, res) {
-  // Configure aqui a URL do seu WordPress
-  const WORDPRESS_API_URL = 'https://acelerebrasil.com.br/wp-json/form-handler/v1/submit';
+  // IDs dos formulários
+  const FORM_IDS = {
+    hero: '8335f54',
+    ebook: '567a523'
+  };
 
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -10,19 +13,43 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(WORDPRESS_API_URL, {
+    const { formType, ...formData } = req.body;
+    const formId = FORM_IDS[formType];
+
+    if (!formId) {
+      throw new Error('Tipo de formulário inválido');
+    }
+
+    const url = `https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
+
+    console.log('Enviando dados para o WordPress:', {
+      url,
+      formType,
+      formId,
+      data: formData
+    });
+
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
-      body: JSON.stringify(req.body),
+      body: JSON.stringify(formData)
     });
 
+    console.log('Status da resposta:', response.status);
     const data = await response.json();
+    console.log('Dados da resposta:', data);
 
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.status(200).json(data);
+    res.status(response.status).json(data);
   } catch (error) {
-    res.status(500).json({ error: 'Erro ao processar a requisição' });
+    console.error('Erro na requisição:', error);
+    res.status(500).json({ 
+      error: 'Erro ao processar a requisição', 
+      details: error.message,
+      stack: error.stack 
+    });
   }
 } 
