@@ -18,15 +18,12 @@ export default async function handler(request, response) {
     const contentType = request.headers['content-type'] || '';
     console.log('[Proxy] Content-Type:', contentType);
     console.log('[Proxy] Request Headers:', request.headers);
-
-    // Obter o corpo da requisição como texto
-    const body = await request.text();
-    console.log('[Proxy] Raw body:', body);
+    console.log('[Proxy] Request Body:', request.body);
 
     // Enviar diretamente para o WordPress
     const res = await fetch('https://acelerebrasil.com.br/wp-admin/admin-ajax.php', {
       method: 'POST',
-      body: body,
+      body: request.body,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',

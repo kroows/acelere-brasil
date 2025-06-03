@@ -36,27 +36,27 @@ export const submitHeroForm = async (data: {
 }) => {
   console.log('Iniciando submissão do formulário hero:', data);
   
-  // Construindo a string do formulário manualmente
-  const formString = [
-    `_wpcf7=8335f54`,
-    `_wpcf7_version=5.8.4`,
-    `_wpcf7_locale=pt_BR`,
-    `_wpcf7_unit_tag=wpcf7-f8335f54-p2-o${Math.floor(Math.random() * 1000)}`,
-    `_wpcf7_container_post=2`,
-    `action=wpcf7_submit`,
-    `your-name=${encodeURIComponent(data.name)}`,
-    `whatsapp=${encodeURIComponent(data.phone)}`,
-    `your-email=${encodeURIComponent(data.email)}`,
-    `acceptance-119=${data.agreed ? '1' : ''}`
-  ].join('&');
+  // Construindo o objeto de dados
+  const formData = {
+    _wpcf7: '8335f54',
+    _wpcf7_version: '5.8.4',
+    _wpcf7_locale: 'pt_BR',
+    _wpcf7_unit_tag: `wpcf7-f8335f54-p2-o${Math.floor(Math.random() * 1000)}`,
+    _wpcf7_container_post: '2',
+    action: 'wpcf7_submit',
+    'your-name': data.name,
+    whatsapp: data.phone,
+    'your-email': data.email,
+    'acceptance-119': data.agreed ? '1' : ''
+  };
 
   const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/api/proxy';
   
   try {
     console.log('Enviando requisição para:', endpoint);
-    console.log('Form String:', formString);
+    console.log('FormData:', formData);
     
-    const response = await api.post(endpoint, formString, {
+    const response = await api.post(endpoint, formData, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json'
@@ -71,7 +71,7 @@ export const submitHeroForm = async (data: {
       response: error.response?.data,
       status: error.response?.status,
       headers: error.response?.headers,
-      formData: formString
+      formData
     });
     throw error;
   }
@@ -85,27 +85,27 @@ export const submitEbookForm = async (data: {
 }) => {
   console.log('Iniciando submissão do formulário de e-book:', data);
   
-  // Construindo a string do formulário manualmente
-  const formString = [
-    `_wpcf7=567a523`,
-    `_wpcf7_version=5.8.4`,
-    `_wpcf7_locale=pt_BR`,
-    `_wpcf7_unit_tag=wpcf7-f567a523-p2-o${Math.floor(Math.random() * 1000)}`,
-    `_wpcf7_container_post=2`,
-    `action=wpcf7_submit`,
-    `your-name=${encodeURIComponent(data.name)}`,
-    `whatsapp=${encodeURIComponent(data.phone)}`,
-    `your-email=${encodeURIComponent(data.email)}`,
-    `nicho=${encodeURIComponent(data.niche)}`
-  ].join('&');
+  // Construindo o objeto de dados
+  const formData = {
+    _wpcf7: '567a523',
+    _wpcf7_version: '5.8.4',
+    _wpcf7_locale: 'pt_BR',
+    _wpcf7_unit_tag: `wpcf7-f567a523-p2-o${Math.floor(Math.random() * 1000)}`,
+    _wpcf7_container_post: '2',
+    action: 'wpcf7_submit',
+    'your-name': data.name,
+    whatsapp: data.phone,
+    'your-email': data.email,
+    nicho: data.niche
+  };
 
   const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/api/proxy';
   
   try {
     console.log('Enviando requisição para:', endpoint);
-    console.log('Form String:', formString);
+    console.log('FormData:', formData);
     
-    const response = await api.post(endpoint, formString, {
+    const response = await api.post(endpoint, formData, {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json'
@@ -120,7 +120,7 @@ export const submitEbookForm = async (data: {
       response: error.response?.data,
       status: error.response?.status,
       headers: error.response?.headers,
-      formData: formString
+      formData
     });
     throw error;
   }
