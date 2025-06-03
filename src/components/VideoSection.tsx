@@ -153,8 +153,8 @@ const VideoSection = () => {
         </div>
 
         {/* Container do mapa e informações */}
-        <div className="rounded-[20px] overflow-hidden mt-20" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+        <div className="mt-20 rounded-[20px] overflow-hidden" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 relative z-10">
             {/* Coluna do Mapa */}
             <div className="w-full h-full min-h-[300px] rounded-xl overflow-hidden">
               <iframe

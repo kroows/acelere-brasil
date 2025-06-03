@@ -84,7 +84,7 @@ const SpeakerCard = ({ speaker }) => (
       backgroundImage: `url(${speaker.image})`,
       backgroundColor: '#1f5161',
       borderRadius: '20px',
-      paddingTop: '500px',
+      paddingTop: '450px',
       paddingRight: '1vw',
       paddingBottom: '3vh',
       paddingLeft: '1vw',
@@ -99,14 +99,14 @@ const SpeakerCard = ({ speaker }) => (
   >
     {/* Conteúdo sobreposto */}
     <div 
-      className="absolute bottom-0 left-0 right-0 p-6 space-y-4"
+      className="absolute bottom-0 left-0 right-0 p-4 space-y-2"
       style={{
-        background: 'linear-gradient(to bottom, transparent, rgba(31, 81, 97, 0.9) 20%, #1f5161)',
-        paddingTop: '100px'
+        background: 'linear-gradient(to bottom, transparent, rgba(31, 81, 97, 0.9) 10%, #1f5161)',
+        paddingTop: '40px'
       }}
     >
       {/* Nome */}
-      <h3 className="text-2xl font-bold text-white text-center mb-2">{speaker.name}</h3>
+      <h3 className="text-2xl font-bold text-white text-center">{speaker.name}</h3>
       
       {/* Divisor Gradiente */}
       <div 
@@ -115,7 +115,7 @@ const SpeakerCard = ({ speaker }) => (
           width: '100%',
           background: 'linear-gradient(-90deg, rgba(0, 243, 163), rgba(0, 184, 237))',
           borderRadius: '1px',
-          marginBottom: '1rem'
+          marginBottom: '0.5rem'
         }}
       ></div>
       
@@ -129,7 +129,7 @@ const SpeakerCard = ({ speaker }) => (
 
 const Speakers = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-black via-black via-85% to-slate-900">
+    <section className="py-20 px-4 bg-black">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>

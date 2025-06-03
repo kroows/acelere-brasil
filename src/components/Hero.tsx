@@ -52,28 +52,82 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative bg-gradient-to-b from-slate-900 via-slate-800 via-70% to-slate-900">
+    <div className="relative bg-gradient-to-b from-[#001a2f] via-[#001a2f]/80 via-50% to-black">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(https://i.ibb.co/s7fqbyq/site-1.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          boxShadow: 'inset 0 0 150px 150px rgba(0, 0, 0, 0.8)'
+        }}
+      />
+      {/* Gradient Overlay */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          background: 'radial-gradient(circle at center, transparent 30%, black 100%)'
+        }}
+      />
+
       {/* Top Banner */}
-      <div className="bg-gradient-to-r from-green-400 to-cyan-400 text-center py-4 md:py-5">
+      <div className="relative z-10 bg-gradient-to-r from-green-400 to-cyan-400 text-center py-4 md:py-5">
         <p className="text-black font-gilroy-black font-black text-sm md:text-lg lg:text-xl">
           PRIMEIRO LOTE, APROVEITE ANTES QUE O PREÇO AUMENTE
         </p>
       </div>
 
       {/* Geometric Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Large triangular shapes */}
-        <div className="absolute top-20 right-10 w-0 h-0 border-l-[100px] border-l-transparent border-r-[100px] border-r-transparent border-b-[80px] border-b-cyan-400/20"></div>
-        <div className="absolute bottom-40 left-20 w-0 h-0 border-l-[60px] border-l-transparent border-r-[60px] border-r-transparent border-b-[50px] border-b-cyan-400/30"></div>
-        <div className="absolute top-1/2 left-10 w-0 h-0 border-l-[40px] border-l-transparent border-r-[40px] border-r-transparent border-b-[35px] border-b-cyan-400/25"></div>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+        {/* Top right triangle */}
+        <div className="absolute top-20 right-10" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
         
-        {/* Play button style triangles */}
-        <div className="absolute top-32 left-1/4 w-0 h-0 border-t-[15px] border-t-transparent border-l-[25px] border-l-cyan-400/40 border-b-[15px] border-b-transparent"></div>
-        <div className="absolute bottom-60 right-1/3 w-0 h-0 border-t-[20px] border-t-transparent border-l-[35px] border-l-cyan-400/30 border-b-[20px] border-b-transparent"></div>
-        <div className="absolute top-2/3 right-20 w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-cyan-400/50 border-b-[12px] border-b-transparent"></div>
+        {/* Bottom left triangle */}
+        <div className="absolute bottom-40 left-20" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+        
+        {/* Middle triangle */}
+        <div className="absolute top-1/2 left-1/4" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+        
+        {/* Top left triangle */}
+        <div className="absolute top-32 left-1/3" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+        
+        {/* Bottom right triangle */}
+        <div className="absolute bottom-60 right-1/4" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
       </div>
 
-      <div className="container mx-auto max-w-7xl px-4 py-20">
+      <div className="container mx-auto max-w-7xl px-4 py-20 relative z-10">
         {/* Main Title */}
         <div className="text-center mb-20">
           <h1 className="text-2xl md:text-4xl lg:text-5xl font-gilroy-black font-black text-white leading-tight" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>

@@ -41,8 +41,27 @@ const Benefits = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-black via-black via-85% to-slate-900">
-      <div className="max-w-[980px] mx-auto">
+    <section className="py-20 relative">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(https://i.ibb.co/s7fqbyq/site-1.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          boxShadow: 'inset 0 0 200px 200px rgba(0, 0, 0, 0.9)'
+        }}
+      />
+      {/* Gradient Overlay */}
+      <div 
+        className="absolute inset-0 z-0 bg-black/20"
+        style={{
+          background: 'radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, black 100%)'
+        }}
+      />
+      
+      <div className="max-w-[980px] mx-auto relative z-10">
         <div className="text-center mb-16 px-4">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
             A IMERSÃO ACELERE BRASIL É PARA TODOS QUE
