@@ -136,12 +136,13 @@ const VideoSection = () => {
             slidesPerView={1}
             breakpoints={{
               640: { slidesPerView: 2 },
-              768: { slidesPerView: 3 },
-              1024: { slidesPerView: 4 }
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 }
             }}
             navigation
             pagination={{ clickable: true }}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
+            loop={false}
             className="instagram-slider"
           >
             {instagramPosts.map((post) => (

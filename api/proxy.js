@@ -18,6 +18,7 @@ export default async function handler(request, response) {
 
     // Verificar o tipo de conteúdo
     const contentType = request.headers.get('content-type') || '';
+    console.log('Content-Type:', contentType);
 
     if (contentType.includes('application/json')) {
       formDataObject = await request.json();
@@ -28,11 +29,22 @@ export default async function handler(request, response) {
         formDataObject[key] = value;
       });
     } else if (contentType.includes('multipart/form-data')) {
-      const formData = await request.formData();
-      formData.forEach((value, key) => {
-        formDataObject[key] = value;
-      });
+      try {
+        const formData = await request.formData();
+        formData.forEach((value, key) => {
+          formDataObject[key] = value;
+        });
+      } catch (error) {
+        console.error('Error parsing form data:', error);
+        return response.status(400).json({
+          status: 'error',
+          message: 'Error parsing form data',
+          details: error.message
+        });
+      }
     }
+
+    console.log('Form data:', formDataObject);
 
     // Adicionar action para o WordPress se não existir
     if (!formDataObject.action) {
@@ -51,9 +63,11 @@ export default async function handler(request, response) {
       }
     });
 
+    console.log('WordPress response status:', res.status);
     const data = await res.text();
+    console.log('WordPress response:', data);
+
     let jsonData;
-    
     try {
       jsonData = JSON.parse(data);
     } catch (e) {
@@ -71,7 +85,8 @@ export default async function handler(request, response) {
     return response.status(500).json({ 
       status: 'error',
       message: 'Error forwarding request',
-      details: error.message 
+      details: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
     });
   }
 } 
