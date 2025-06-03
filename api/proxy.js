@@ -21,23 +21,10 @@ export default async function handler(request, response) {
     console.log('[Proxy] Content-Type:', contentType);
     console.log('[Proxy] Request Headers:', request.headers);
 
-    if (contentType.includes('application/json')) {
-      formDataObject = await request.json();
-      console.log('[Proxy] JSON Data:', formDataObject);
-    } else if (contentType.includes('application/x-www-form-urlencoded')) {
-      const formData = await request.text();
-      const params = new URLSearchParams(formData);
-      params.forEach((value, key) => {
-        formDataObject[key] = value;
-      });
-      console.log('[Proxy] Form URL Encoded Data:', formDataObject);
-    } else if (contentType.includes('multipart/form-data')) {
+    if (contentType.includes('multipart/form-data')) {
       try {
         const formData = await request.formData();
-        const entries = Array.from(formData.entries());
-        entries.forEach(([key, value]) => {
-          formDataObject[key] = value;
-        });
+        formDataObject = Object.fromEntries(formData);
         console.log('[Proxy] Multipart Form Data:', formDataObject);
       } catch (error) {
         console.error('[Proxy] Error parsing form data:', error);
@@ -69,6 +56,9 @@ export default async function handler(request, response) {
       });
     }
 
+    // Adicionar o campo action que é necessário para o Contact Form 7
+    formDataObject.action = 'wpcf7_submit';
+
     // Preparar os dados para envio
     const formBody = new URLSearchParams();
     Object.entries(formDataObject).forEach(([key, value]) => {
@@ -82,7 +72,7 @@ export default async function handler(request, response) {
       body: formBody.toString(),
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json, text/plain, */*',
+        'Accept': 'application/json',
         'Origin': 'https://acelerebrasil.com.br',
         'Referer': 'https://acelerebrasil.com.br',
         'User-Agent': 'Mozilla/5.0 (Vercel Serverless Function)',

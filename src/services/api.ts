@@ -47,13 +47,14 @@ export const submitHeroForm = async (data: {
   email: string;
   agreed: boolean;
 }) => {
+  console.log('Iniciando submissão do formulário hero:', data);
+  
   const formData = new FormData();
   formData.append('_wpcf7', '108');
   formData.append('_wpcf7_version', '5.8.4');
   formData.append('_wpcf7_locale', 'pt_BR');
   formData.append('_wpcf7_unit_tag', `wpcf7-f108-p2-o${Math.floor(Math.random() * 1000)}`);
   formData.append('_wpcf7_container_post', '2');
-  formData.append('action', 'wpcf7_submit');
   formData.append('your-name', data.name);
   formData.append('your-whatsapp', data.phone);
   formData.append('your-email', data.email);
@@ -62,14 +63,24 @@ export const submitHeroForm = async (data: {
   const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/proxy';
   
   try {
+    console.log('Enviando requisição para:', endpoint);
+    console.log('FormData:', Object.fromEntries(formData.entries()));
+    
     const response = await api.post(endpoint, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     });
+
+    console.log('Resposta recebida:', response);
     return response;
   } catch (error) {
-    console.error('Hero Form Error:', error);
+    console.error('Erro detalhado do formulário hero:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      headers: error.response?.headers
+    });
     throw error;
   }
 };
@@ -88,7 +99,6 @@ export const submitEbookForm = async (data: {
   formData.append('_wpcf7_locale', 'pt_BR');
   formData.append('_wpcf7_unit_tag', `wpcf7-f115-p2-o${Math.floor(Math.random() * 1000)}`);
   formData.append('_wpcf7_container_post', '2');
-  formData.append('action', 'wpcf7_submit');
   formData.append('your-name', data.name);
   formData.append('your-whatsapp', data.phone);
   formData.append('your-email', data.email);
@@ -102,8 +112,7 @@ export const submitEbookForm = async (data: {
     
     const response = await api.post(endpoint, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data',
-        'Accept': 'application/json, text/plain, */*'
+        'Content-Type': 'multipart/form-data'
       }
     });
 
