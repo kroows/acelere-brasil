@@ -79,21 +79,16 @@ const speakers = [
 
 const SpeakerCard = ({ speaker }) => (
   <div 
-    className="relative overflow-hidden bg-cover bg-center bg-no-repeat"
+    className="relative overflow-hidden bg-cover bg-center bg-no-repeat h-[450px] md:h-[500px] lg:h-[550px]"
     style={{
       backgroundImage: `url(${speaker.image})`,
       backgroundColor: '#1f5161',
       borderRadius: '20px',
-      paddingTop: '450px',
-      paddingRight: '1vw',
-      paddingBottom: '3vh',
-      paddingLeft: '1vw',
       backgroundSize: '100% auto',
       backgroundPosition: 'top center',
       float: 'left',
       position: 'relative',
       zIndex: 2,
-      minHeight: '1px',
       width: '100%'
     }}
   >
@@ -121,7 +116,7 @@ const SpeakerCard = ({ speaker }) => (
       
       {/* Descrição */}
       <div className="text-center text-white">
-        <p className="text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: speaker.description }}></p>
+        <p className="text-sm md:text-base lg:text-lg leading-relaxed font-rotunda" dangerouslySetInnerHTML={{ __html: speaker.description }}></p>
       </div>
     </div>
   </div>

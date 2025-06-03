@@ -89,7 +89,7 @@ const VideoSection = () => {
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
             COMO FOI A <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>ÚLTIMA EDIÇÃO</span>
           </h2>
-          <p className="text-xl text-gray-300" style={{ textShadow: '0 0 15px rgba(209, 213, 219, 0.3)' }}>
+          <p className="text-xl text-gray-300 font-rotunda" style={{ textShadow: '0 0 15px rgba(209, 213, 219, 0.3)' }}>
             Veja os depoimentos de quem participou e transformou seu negócio
           </p>
         </div>
@@ -373,17 +373,26 @@ const VideoSection = () => {
         {/* Ebook Form Section */}
         <div className="mt-16 rounded-[20px] overflow-hidden" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
           <div className="grid lg:grid-cols-2 gap-8 items-start p-8">
+            {/* Right side - Image (apenas mobile) */}
+            <div className="lg:hidden relative">
+              <img
+                src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/img-ebook-acelere-brasil.webp"
+                alt="Ebook Acelere Brasil"
+                className="w-full h-auto rounded-2xl"
+              />
+            </div>
+
             {/* Left side - Form */}
             <div className="space-y-6">
-              <div className="text-white space-y-4">
-                <h3 className="text-3xl lg:text-4xl font-bold leading-tight" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3)' }}>
+              <div className="text-white space-y-4 text-center lg:text-left">
+                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight font-rotunda" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3)' }}>
                   BAIXE AGORA NOSSO
                   <br />
                   <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>EBOOK</span> E ENTRE NO
                   <br />
                   <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>GRUPO</span> DO EVENTO
                 </h3>
-                <p className="text-gray-300" style={{ textShadow: '0 0 10px rgba(209, 213, 219, 0.3)' }}>
+                <p className="text-gray-300 font-rotunda" style={{ textShadow: '0 0 10px rgba(209, 213, 219, 0.3)' }}>
                   Preencha os dados abaixo, ganhe acesso imediato
                   <br />
                   e mantenha-se informado sobre as novidades do
@@ -428,8 +437,8 @@ const VideoSection = () => {
               </form>
             </div>
 
-            {/* Right side - Image e Botão */}
-            <div className="relative space-y-6">
+            {/* Right side - Image e Botão (desktop) */}
+            <div className="hidden lg:block relative space-y-6">
               <img
                 src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/img-ebook-acelere-brasil.webp"
                 alt="Ebook Acelere Brasil"
@@ -440,7 +449,22 @@ const VideoSection = () => {
                 href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-gilroy-black font-black text-3xl lg:text-4xl py-6 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-xl before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30 flex items-center justify-center text-center"
+                className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-2xl lg:text-3xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
+                style={{
+                  boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
+                }}
+              >
+                QUERO MEU EBOOK
+              </a>
+            </div>
+
+            {/* Botão (mobile) */}
+            <div className="lg:hidden">
+              <a 
+                href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-3xl lg:text-4xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
                 style={{
                   boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
                 }}
@@ -453,15 +477,15 @@ const VideoSection = () => {
 
         {/* Seção de Patrocinadores */}
         <div className="mt-20 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+          <h2 className="text-3xl lg:text-4xl font-bold mb-6 font-rotunda">
             <span className="text-white">SEJA UM </span>
             <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>PATROCINADOR</span>
             <span className="text-white"> DESSA EDIÇÃO</span>
           </h2>
 
           <div className="max-w-3xl mx-auto mb-10">
-            <p className="text-lg text-gray-300">
-              Nessa edição esperamos impactar mais de 1300 pessoas em dois dias de imersão.
+            <p className="text-sm md:text-lg text-gray-300 font-rotunda">
+              Nessa edição esperamos impactar mais de <strong>1300</strong> pessoas em <strong>dois dias</strong> de imersão.
               <br />
               Quer ter sua marca em destaque em nosso evento, matérias e mídia?
               <br />
@@ -476,7 +500,7 @@ const VideoSection = () => {
             href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
             target="_blank"
             rel="noopener noreferrer"
-            className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-gilroy-black font-black text-3xl lg:text-4xl py-6 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-xl before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30 flex items-center justify-center text-center"
+            className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-3xl lg:text-4xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
             style={{
               boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
             }}

@@ -39,12 +39,12 @@ const steps = [
 
 const Mission = () => {
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-black via-black via-70% to-black">
+    <section className="pt-0 pb-4 md:py-20 px-4 bg-gradient-to-b from-black via-black via-70% to-black">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
-            A <span className="text-white">IMERSÃO ACELERE BRASIL</span> GARANTE
-            <br />
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
+            A <span className="text-white">IMERSÃO ACELERE BRASIL</span> GARANTE{" "}
+            <br className="hidden md:block" />
             <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>5 VANTAGENS</span> NESTA NOVA EDIÇÃO
           </h2>
         </div>

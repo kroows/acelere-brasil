@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "./ui/input";
+import { Checkbox } from "./ui/checkbox";
 import { toast } from "@/hooks/use-toast";
 
 const Hero = () => {
@@ -140,64 +140,57 @@ const Hero = () => {
 
         {/* Main Content Card */}
         <div className="bg-black border border-slate-700 rounded-3xl overflow-hidden mb-20">
-          <div className="grid lg:grid-cols-2 gap-0 items-center min-h-[600px]">
+          <div className="grid lg:grid-cols-2 gap-0 items-center min-h-[400px] md:min-h-[600px]">
             {/* Left side - Form */}
-            <div className="p-8 lg:p-12 space-y-6">
+            <div className="p-4 md:p-8 lg:p-12 space-y-4 md:space-y-6 order-2 lg:order-1">
               <div className="text-white space-y-4 text-center">
-                <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-rotunda" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.2), 0 0 30px rgba(6, 182, 212, 0.15)' }}>
-                  Aprenda com os <span className="text-white font-bold" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>maiores nomes</span> do mercado
-                  <br />
-                  para <span className="text-white font-bold" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>acelerar o faturamento</span> da sua empresa
-                  <br />
+                <p className="text-sm md:text-xl lg:text-2xl leading-relaxed font-rotunda" style={{ textShadow: 'rgba(255, 255, 255, 0.2) 0px 0px 15px, rgba(6, 182, 212, 0.15) 0px 0px 30px' }}>
+                  Aprenda com os <span className="text-white font-bold" style={{ textShadow: 'rgba(255, 255, 255, 0.3) 0px 0px 15px' }}>maiores nomes</span> do mercado<br />
+                  para <span className="text-white font-bold" style={{ textShadow: 'rgba(255, 255, 255, 0.3) 0px 0px 15px' }}>acelerar o faturamento</span> da sua empresa<br />
                   ou construir um negócio do zero.
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form className="space-y-3 md:space-y-4">
                 <Input
                   type="text"
                   placeholder="Nome"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-14 rounded-full px-6 text-base font-rotunda"
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 md:h-14 rounded-xl px-4 md:px-6 text-sm md:text-base font-rotunda"
                   required
                 />
                 <Input
                   type="tel"
                   placeholder="Whatsapp com DDD"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-14 rounded-full px-6 text-base font-rotunda"
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 md:h-14 rounded-xl px-4 md:px-6 text-sm md:text-base font-rotunda"
                   required
                 />
                 <Input
                   type="email"
                   placeholder="E-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-14 rounded-full px-6 text-base font-rotunda"
+                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 md:h-14 rounded-xl px-4 md:px-6 text-sm md:text-base font-rotunda"
                   required
                 />
-                
+
                 <div className="flex items-start space-x-3 pt-2">
                   <Checkbox
                     id="agree"
-                    checked={agreed}
-                    onCheckedChange={(checked) => setAgreed(checked as boolean)}
                     className="mt-1 border-white data-[state=checked]:bg-cyan-400 data-[state=checked]:border-cyan-400"
                   />
-                  <label htmlFor="agree" className="text-sm text-white leading-relaxed font-rotunda" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.2)' }}>
-                    Concordo em fornecer meus dados para receber
-                    <br />
+                  <label
+                    htmlFor="agree"
+                    className="text-xs md:text-sm text-white leading-relaxed font-rotunda"
+                    style={{ textShadow: 'rgba(255, 255, 255, 0.2) 0px 0px 10px' }}
+                  >
+                    Concordo em fornecer meus dados para receber<br />
                     conteúdos do evento por e-mail ou outros meios
                   </label>
                 </div>
-                
-                <a 
+
+                <a
                   href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-gilroy-black font-black text-3xl md:text-4xl lg:text-5xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-8 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-xl before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30 flex items-center justify-center text-center"
+                  className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-lg md:text-4xl lg:text-5xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-xl before:blur-xl before:opacity-30 before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
                   style={{
                     boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
                   }}
@@ -208,14 +201,11 @@ const Hero = () => {
             </div>
 
             {/* Right side - Image */}
-            <div className="relative h-full min-h-[600px] bg-gradient-to-br from-slate-800 to-slate-900">
+            <div className="relative h-[300px] md:h-full md:min-h-[600px] bg-gradient-to-br from-slate-800 to-slate-900 order-1 lg:order-2 rounded-xl md:rounded-none overflow-hidden">
               <img
-                src="https://prnt.sc/ew3utIiRRerQ"
+                src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/header-acelere-brasil.webp"
                 alt="Acelere Brasil - Paulo Canargo, Mateus Maia, Juliano Custódio"
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.src = "https://acelerebrasil.com.br/wp-content/uploads/2025/05/header-acelere-brasil.webp";
-                }}
               />
             </div>
           </div>
