@@ -169,56 +169,47 @@ const Hero = () => {
 
         {/* Countdown Timer */}
         <div className="flex justify-center">
-          <div className="backdrop-blur-sm border border-slate-600/30 rounded-2xl px-10 py-6 shadow-lg bg-gradient-to-r from-green-400/10 to-cyan-400/10">
-            <div className="flex items-start space-x-8">
+          <div className="backdrop-blur-sm border border-slate-600/30 rounded-2xl px-4 md:px-10 py-6 shadow-lg bg-gradient-to-r from-green-400/10 to-cyan-400/10 w-full md:w-auto">
+            <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
               {/* Left side - Event info */}
               <div className="text-white space-y-2 text-center">
-                <p className="text-3xl lg:text-4xl font-gilroy-black font-black" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>04 E 05 DE OUTUBRO</p>
-                <p className="text-base lg:text-lg font-gilroy-black font-black" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.2)' }}>EM JOINVILLE</p>
-                <p className="text-xl lg:text-2xl font-gilroy-black font-black" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>IMERSÃO PRESENCIAL</p>
+                <p className="text-2xl md:text-3xl lg:text-4xl font-gilroy-black font-black" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>04 E 05 DE OUTUBRO</p>
+                <p className="text-sm md:text-base lg:text-lg font-gilroy-black font-black" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.2)' }}>EM JOINVILLE</p>
+                <p className="text-lg md:text-xl lg:text-2xl font-gilroy-black font-black" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)' }}>IMERSÃO PRESENCIAL</p>
               </div>
               
               {/* Right side - Countdown */}
-              <div className="flex space-x-4 items-center">
+              <div className="grid grid-cols-4 md:flex gap-2 md:gap-4 items-center">
                 {/* Days */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg" style={{ width: '100px', height: '100px' }}>
-                    <div className="text-5xl font-gilroy-black font-black text-white">{String(timeLeft.days).padStart(2, '0')}</div>
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg w-[70px] h-[70px] md:w-[100px] md:h-[100px]">
+                    <div className="text-3xl md:text-5xl font-gilroy-black font-black text-white">{String(timeLeft.days).padStart(2, '0')}</div>
                   </div>
-                  <div className="text-xs text-white font-gilroy-black font-black mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>DIAS</div>
+                  <div className="text-[10px] md:text-xs text-white font-gilroy-black font-black mt-1 md:mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>DIAS</div>
                 </div>
-                
-                {/* Separator */}
-                <div className="text-white text-5xl font-gilroy-black font-black flex items-center" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)', height: '100px' }}>:</div>
                 
                 {/* Hours */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg" style={{ width: '100px', height: '100px' }}>
-                    <div className="text-5xl font-gilroy-black font-black text-white">{String(timeLeft.hours).padStart(2, '0')}</div>
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg w-[70px] h-[70px] md:w-[100px] md:h-[100px]">
+                    <div className="text-3xl md:text-5xl font-gilroy-black font-black text-white">{String(timeLeft.hours).padStart(2, '0')}</div>
                   </div>
-                  <div className="text-xs text-white font-gilroy-black font-black mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>HORAS</div>
+                  <div className="text-[10px] md:text-xs text-white font-gilroy-black font-black mt-1 md:mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>HORAS</div>
                 </div>
-                
-                {/* Separator */}
-                <div className="text-white text-5xl font-gilroy-black font-black flex items-center" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)', height: '100px' }}>:</div>
                 
                 {/* Minutes */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg" style={{ width: '100px', height: '100px' }}>
-                    <div className="text-5xl font-gilroy-black font-black text-white">{String(timeLeft.minutes).padStart(2, '0')}</div>
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg w-[70px] h-[70px] md:w-[100px] md:h-[100px]">
+                    <div className="text-3xl md:text-5xl font-gilroy-black font-black text-white">{String(timeLeft.minutes).padStart(2, '0')}</div>
                   </div>
-                  <div className="text-xs text-white font-gilroy-black font-black mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>MINUTOS</div>
+                  <div className="text-[10px] md:text-xs text-white font-gilroy-black font-black mt-1 md:mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>MINUTOS</div>
                 </div>
-                
-                {/* Separator */}
-                <div className="text-white text-5xl font-gilroy-black font-black flex items-center" style={{ textShadow: '0 0 15px rgba(255, 255, 255, 0.3)', height: '100px' }}>:</div>
                 
                 {/* Seconds */}
                 <div className="flex flex-col items-center">
-                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-2xl flex items-center justify-center shadow-lg" style={{ width: '100px', height: '100px' }}>
-                    <div className="text-5xl font-gilroy-black font-black text-white">{String(timeLeft.seconds).padStart(2, '0')}</div>
+                  <div className="bg-gradient-to-r from-green-400 to-cyan-400 rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg w-[70px] h-[70px] md:w-[100px] md:h-[100px]">
+                    <div className="text-3xl md:text-5xl font-gilroy-black font-black text-white">{String(timeLeft.seconds).padStart(2, '0')}</div>
                   </div>
-                  <div className="text-xs text-white font-gilroy-black font-black mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>SEGUNDOS</div>
+                  <div className="text-[10px] md:text-xs text-white font-gilroy-black font-black mt-1 md:mt-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>SEGUNDOS</div>
                 </div>
               </div>
             </div>

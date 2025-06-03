@@ -1,8 +1,49 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 const Benefits = () => {
+  const situations = [
+    {
+      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-1.webp",
+      text: "Você ainda não domina as ferramentas certas para criar processos mais ágeis, práticos e rentáveis para o seu negócio."
+    },
+    {
+      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-2.webp",
+      text: "Sabe que seu negócio pode crescer muito mais, mas ainda não encontrou o caminho ideal e consistente para isso acontecer."
+    },
+    {
+      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-3.webp",
+      text: "Mesmo tendo uma equipe, sente que tudo depende de você e que, sem sua presença total, as operações simplesmente não andam."
+    },
+    {
+      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-4.webp",
+      text: "Não sabe como construir um time que realmente abrace o negócio e se comprometa tanto quanto você."
+    },
+    {
+      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-5.webp",
+      text: "Perde muito tempo com pequenas demandas que poderiam ser delegadas, deixando de planejar o futuro da empresa."
+    },
+    {
+      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-6.webp",
+      text: "Apesar de ter pessoas ao redor, frequentemente se sente sozinho, sobretudo nos momentos decisivos de solução de problemas complexos."
+    },
+    {
+      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-7.webp",
+      text: "Quer entender como as empresas de maior sucesso funcionam na prática e se mantêm em expansão constante todos os dias."
+    },
+    {
+      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-8.webp",
+      text: "Busca a oportunidade de trocar ideias com grandes empreendedores e descobrir os segredos por trás de seus resultados expressivos."
+    }
+  ];
+
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-black via-black via-85% to-slate-900">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
+    <section className="py-20 bg-gradient-to-b from-black via-black via-85% to-slate-900">
+      <div className="max-w-[980px] mx-auto">
+        <div className="text-center mb-16 px-4">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
             A IMERSÃO ACELERE BRASIL É PARA TODOS QUE
             <br />
@@ -10,15 +51,69 @@ const Benefits = () => {
           </h2>
         </div>
 
-        <div className="flex justify-center mb-8">
-          <img 
-            src="https://i.ibb.co/cSqqxPv0/pa-J1-Nzvz-T4-Suqe-Wz-Xy8-Hw.png" 
-            alt="Situações"
-            className="block"
-          />
+        {/* Grid de Situações - Desktop */}
+        <div className="hidden lg:grid grid-cols-4 gap-2">
+          {situations.map((situation, index) => (
+            <div 
+              key={index} 
+              className="relative bg-[#1f5161] rounded-[20px] overflow-hidden py-8 px-4 transition-all duration-300 flex flex-col justify-center w-[236px] h-[365px]"
+            >
+              <div className="flex flex-col items-center text-center space-y-6">
+                <div className="w-[90px] h-[82px] relative">
+                  <img
+                    src={situation.icon}
+                    alt=""
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed px-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.1)' }}>
+                  {situation.text}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="text-center mb-12">
+        {/* Swiper para Mobile */}
+        <div className="lg:hidden px-4">
+          <Swiper
+            modules={[Navigation]}
+            spaceBetween={16}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 2 }
+            }}
+            navigation
+            className="w-full"
+          >
+            {situations.map((situation, index) => (
+              <SwiperSlide key={index}>
+                <div 
+                  className="relative bg-[#1f5161] rounded-[20px] overflow-hidden py-8 px-4 transition-all duration-300 flex flex-col justify-center w-full h-[365px] mx-auto"
+                >
+                  <div className="flex flex-col items-center text-center space-y-6">
+                    <div className="w-[90px] h-[82px] relative">
+                      <img
+                        src={situation.icon}
+                        alt=""
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <p className="text-gray-300 text-sm md:text-base leading-relaxed px-2" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.1)' }}>
+                      {situation.text}
+                    </p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        <div className="text-center mt-12 mb-12 px-4">
           <p className="text-white text-lg md:text-xl max-w-4xl mx-auto" style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.3)' }}>
             Independente do momento em que você se encontra, se é empreendedor ou empresário,
             <br />
@@ -26,7 +121,7 @@ const Benefits = () => {
           </p>
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 px-4">
           <a 
             href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
             target="_blank"
