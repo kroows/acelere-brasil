@@ -2,10 +2,10 @@ export default async function handler(request, response) {
   // Configurar CORS
   response.setHeader('Access-Control-Allow-Credentials', true);
   response.setHeader('Access-Control-Allow-Origin', '*');
-  response.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
   response.setHeader(
     'Access-Control-Allow-Headers',
-    'Content-Type, Accept'
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
   );
 
   // Retornar para requisições OPTIONS
@@ -13,48 +13,49 @@ export default async function handler(request, response) {
     return response.status(200).end();
   }
 
-  // Apenas aceitar POST
-  if (request.method !== 'POST') {
-    return response.status(405).json({ 
-      status: 'error',
-      message: 'Method not allowed'
-    });
-  }
-
   try {
-    const WORDPRESS_URL = process.env.WORDPRESS_URL;
+    // Verificar o tipo de conteúdo
+    const contentType = request.headers['content-type'] || '';
+    console.log('[Proxy] Content-Type:', contentType);
+    console.log('[Proxy] Request Headers:', request.headers);
+    console.log('[Proxy] Request Body:', request.body);
 
-    if (!WORDPRESS_URL) {
-      throw new Error('WORDPRESS_URL environment variable is not set');
-    }
+    const WORDPRESS_URL = process.env.WORDPRESS_URL || 'https://acelerebrasil.com.br';
 
-    // Enviar para o WordPress
+    // Enviar diretamente para o WordPress
     const res = await fetch(`${WORDPRESS_URL}/wp-admin/admin-ajax.php`, {
       method: 'POST',
       body: request.body,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Origin': WORDPRESS_URL,
+        'Referer': WORDPRESS_URL,
+        'User-Agent': 'Mozilla/5.0 (Vercel Serverless Function)',
+        'X-Requested-With': 'XMLHttpRequest'
       }
     });
 
+    console.log('[Proxy] WordPress response status:', res.status);
     const data = await res.text();
+    console.log('[Proxy] WordPress response:', data);
 
     try {
-      // Tentar parsear como JSON
       const jsonData = JSON.parse(data);
       return response.status(res.status).json(jsonData);
-    } catch {
-      // Se não for JSON, retornar resposta formatada
+    } catch (e) {
       return response.status(res.status).json({
         status: res.ok ? 'mail_sent' : 'error',
-        message: data
+        message: data,
+        response: res.status
       });
     }
   } catch (error) {
+    console.error('[Proxy] Fatal error:', error);
     return response.status(500).json({ 
       status: 'error',
-      message: error.message
+      message: 'Error forwarding request',
+      details: error.message
     });
   }
 } 
