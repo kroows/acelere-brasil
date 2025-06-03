@@ -1,7 +1,26 @@
 const Footer = () => {
   return (
-    <footer className="bg-black py-20 px-4">
-      <div className="container mx-auto max-w-4xl flex flex-col items-center justify-center space-y-8">
+    <footer className="bg-black py-20 px-4 relative">
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(https://i.ibb.co/s7fqbyq/site-1.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          boxShadow: 'inset 0 0 200px 200px rgba(0, 0, 0, 0.9)'
+        }}
+      />
+      {/* Gradient Overlay */}
+      <div 
+        className="absolute inset-0 z-0 bg-black/20"
+        style={{
+          background: 'radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, black 100%)'
+        }}
+      />
+      
+      <div className="container mx-auto max-w-4xl flex flex-col items-center justify-center space-y-8 relative z-10">
         {/* Logo */}
         <div className="w-full max-w-[600px]">
           <img

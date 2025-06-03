@@ -173,30 +173,16 @@ const VideoSection = () => {
               <div className="flex items-start space-x-4">
                 <div className="w-8 h-8 flex items-center justify-center">
                   <svg 
+                    className="w-8 h-8 text-cyan-400" 
                     viewBox="0 0 24 24" 
                     fill="none" 
-                    className="w-8 h-8"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
                     <path 
-                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zM7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 2.88-2.88 7.19-5 9.88C9.92 16.21 7 11.85 7 9z" 
-                      className="fill-transparent"
-                      stroke="url(#gradient1)"
-                      strokeWidth="1.5"
+                      d="M12 2C8.13 2 5 5.13 5 9C5 13.17 9.42 18.92 11.24 21.11C11.64 21.59 12.37 21.59 12.77 21.11C14.58 18.92 19 13.17 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" 
+                      stroke="currentColor" 
+                      strokeWidth="2"
                     />
-                    <circle 
-                      cx="12" 
-                      cy="9" 
-                      r="2.5" 
-                      className="fill-transparent"
-                      stroke="url(#gradient1)"
-                      strokeWidth="1.5"
-                    />
-                    <defs>
-                      <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#4ade80" />
-                        <stop offset="100%" stopColor="#22d3ee" />
-                      </linearGradient>
-                    </defs>
                   </svg>
                 </div>
                 <div>
