@@ -3,12 +3,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "./ui/input";
 import { Checkbox } from "./ui/checkbox";
 import { toast } from "@/hooks/use-toast";
+import { submitHeroForm } from "@/services/api";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [agreed, setAgreed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [timeLeft, setTimeLeft] = useState({
     days: 88,
     hours: 88,
@@ -37,17 +39,36 @@ const Hero = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email && name && phone && agreed) {
-      toast({
-        title: "Inscrição realizada!",
-        description: "Você receberá mais informações em breve.",
-      });
-      setEmail("");
-      setName("");
-      setPhone("");
-      setAgreed(false);
+      try {
+        setIsSubmitting(true);
+        await submitHeroForm({
+          name,
+          phone,
+          email,
+          agreed
+        });
+        
+        toast({
+          title: "Inscrição realizada!",
+          description: "Você receberá mais informações em breve.",
+        });
+        
+        setEmail("");
+        setName("");
+        setPhone("");
+        setAgreed(false);
+      } catch (error) {
+        toast({
+          title: "Erro ao realizar inscrição",
+          description: "Por favor, tente novamente mais tarde.",
+          variant: "destructive"
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -151,22 +172,28 @@ const Hero = () => {
                 </p>
               </div>
 
-              <form className="space-y-3 md:space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
                 <Input
                   type="text"
                   placeholder="Nome"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   className="bg-white border-none text-black placeholder:text-gray-500 h-12 md:h-14 rounded-xl px-4 md:px-6 text-sm md:text-base font-rotunda"
                   required
                 />
                 <Input
                   type="tel"
                   placeholder="Whatsapp com DDD"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="bg-white border-none text-black placeholder:text-gray-500 h-12 md:h-14 rounded-xl px-4 md:px-6 text-sm md:text-base font-rotunda"
                   required
                 />
                 <Input
                   type="email"
                   placeholder="E-mail"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="bg-white border-none text-black placeholder:text-gray-500 h-12 md:h-14 rounded-xl px-4 md:px-6 text-sm md:text-base font-rotunda"
                   required
                 />
@@ -174,6 +201,8 @@ const Hero = () => {
                 <div className="flex items-start space-x-3 pt-2">
                   <Checkbox
                     id="agree"
+                    checked={agreed}
+                    onCheckedChange={(checked) => setAgreed(checked as boolean)}
                     className="mt-1 border-white data-[state=checked]:bg-cyan-400 data-[state=checked]:border-cyan-400"
                   />
                   <label
@@ -186,17 +215,16 @@ const Hero = () => {
                   </label>
                 </div>
 
-                <a
-                  href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Button
+                  type="submit"
+                  disabled={isSubmitting || !email || !name || !phone || !agreed}
                   className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-lg md:text-4xl lg:text-5xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-xl before:blur-xl before:opacity-30 before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
                   style={{
                     boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
                   }}
                 >
-                  QUERO PARTICIPAR
-                </a>
+                  {isSubmitting ? "ENVIANDO..." : "QUERO PARTICIPAR"}
+                </Button>
               </form>
             </div>
 

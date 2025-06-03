@@ -6,6 +6,8 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Button } from "@/components/ui/button";
+import { submitEbookForm } from "@/services/api";
 
 const instagramPosts = [
   {
@@ -40,6 +42,7 @@ const VideoSection = () => {
   const [email, setEmail] = useState("");
   const [niche, setNiche] = useState("");
   const [isAtBottom, setIsAtBottom] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,17 +71,36 @@ const VideoSection = () => {
     }
   };
 
-  const handleEbookSubmit = (e: React.FormEvent) => {
+  const handleEbookSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (name && phone && email && niche) {
-      toast({
-        title: "Solicitação enviada!",
-        description: "Você receberá o ebook em breve.",
-      });
-      setName("");
-      setPhone("");
-      setEmail("");
-      setNiche("");
+      try {
+        setIsSubmitting(true);
+        await submitEbookForm({
+          name,
+          phone,
+          email,
+          niche
+        });
+        
+        toast({
+          title: "Solicitação enviada!",
+          description: "Você receberá o ebook em breve.",
+        });
+        
+        setName("");
+        setPhone("");
+        setEmail("");
+        setNiche("");
+      } catch (error) {
+        toast({
+          title: "Erro ao enviar solicitação",
+          description: "Por favor, tente novamente mais tarde.",
+          variant: "destructive"
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -420,6 +442,17 @@ const VideoSection = () => {
                   className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
                   required
                 />
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting || !name || !phone || !email || !niche}
+                  className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-2xl lg:text-3xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
+                  style={{
+                    boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
+                  }}
+                >
+                  {isSubmitting ? "ENVIANDO..." : "QUERO MEU EBOOK"}
+                </Button>
               </form>
             </div>
 
