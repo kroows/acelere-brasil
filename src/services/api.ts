@@ -13,30 +13,17 @@ const api = axios.create({
 
 // Interceptor para logging
 api.interceptors.request.use(request => {
-  console.log('Request:', {
-    url: request.url,
-    method: request.method,
-    data: request.data,
-    headers: request.headers
-  });
+  console.log('Request:', request);
   return request;
 });
 
 api.interceptors.response.use(
   response => {
-    console.log('Response:', {
-      status: response.status,
-      data: response.data,
-      headers: response.headers
-    });
+    console.log('Response:', response);
     return response;
   },
   error => {
-    console.error('Response Error:', {
-      message: error.message,
-      response: error.response?.data,
-      status: error.response?.status
-    });
+    console.error('Response Error:', error);
     return Promise.reject(error);
   }
 );
@@ -49,12 +36,13 @@ export const submitHeroForm = async (data: {
 }) => {
   console.log('Iniciando submissão do formulário hero:', data);
   
-  const formData = new FormData();
+  const formData = new URLSearchParams();
   formData.append('_wpcf7', '108');
   formData.append('_wpcf7_version', '5.8.4');
   formData.append('_wpcf7_locale', 'pt_BR');
   formData.append('_wpcf7_unit_tag', `wpcf7-f108-p2-o${Math.floor(Math.random() * 1000)}`);
   formData.append('_wpcf7_container_post', '2');
+  formData.append('action', 'wpcf7_submit');
   formData.append('your-name', data.name);
   formData.append('your-whatsapp', data.phone);
   formData.append('your-email', data.email);
@@ -64,11 +52,11 @@ export const submitHeroForm = async (data: {
   
   try {
     console.log('Enviando requisição para:', endpoint);
-    console.log('FormData:', Object.fromEntries(formData.entries()));
+    console.log('FormData:', Object.fromEntries(formData));
     
-    const response = await api.post(endpoint, formData, {
+    const response = await api.post(endpoint, formData.toString(), {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'application/x-www-form-urlencoded'
       }
     });
 
@@ -93,12 +81,13 @@ export const submitEbookForm = async (data: {
 }) => {
   console.log('Iniciando submissão do formulário de e-book:', data);
   
-  const formData = new FormData();
+  const formData = new URLSearchParams();
   formData.append('_wpcf7', '115');
   formData.append('_wpcf7_version', '5.8.4');
   formData.append('_wpcf7_locale', 'pt_BR');
   formData.append('_wpcf7_unit_tag', `wpcf7-f115-p2-o${Math.floor(Math.random() * 1000)}`);
   formData.append('_wpcf7_container_post', '2');
+  formData.append('action', 'wpcf7_submit');
   formData.append('your-name', data.name);
   formData.append('your-whatsapp', data.phone);
   formData.append('your-email', data.email);
@@ -108,11 +97,11 @@ export const submitEbookForm = async (data: {
   
   try {
     console.log('Enviando requisição para:', endpoint);
-    console.log('FormData:', Object.fromEntries(formData.entries()));
+    console.log('FormData:', Object.fromEntries(formData));
     
-    const response = await api.post(endpoint, formData, {
+    const response = await api.post(endpoint, formData.toString(), {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'application/x-www-form-urlencoded'
       }
     });
 

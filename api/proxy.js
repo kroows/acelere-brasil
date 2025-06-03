@@ -21,11 +21,12 @@ export default async function handler(request, response) {
     console.log('[Proxy] Content-Type:', contentType);
     console.log('[Proxy] Request Headers:', request.headers);
 
-    if (contentType.includes('multipart/form-data')) {
+    if (contentType.includes('application/x-www-form-urlencoded')) {
       try {
-        const formData = await request.formData();
-        formDataObject = Object.fromEntries(formData);
-        console.log('[Proxy] Multipart Form Data:', formDataObject);
+        const body = await request.text();
+        const params = new URLSearchParams(body);
+        formDataObject = Object.fromEntries(params);
+        console.log('[Proxy] Form Data:', formDataObject);
       } catch (error) {
         console.error('[Proxy] Error parsing form data:', error);
         return response.status(400).json({
@@ -44,7 +45,7 @@ export default async function handler(request, response) {
     }
 
     // Verificar se temos os campos necessários
-    const requiredFields = ['_wpcf7', '_wpcf7_version', '_wpcf7_locale', '_wpcf7_unit_tag'];
+    const requiredFields = ['_wpcf7', '_wpcf7_version', '_wpcf7_locale', '_wpcf7_unit_tag', 'action'];
     const missingFields = requiredFields.filter(field => !formDataObject[field]);
     
     if (missingFields.length > 0) {
@@ -56,20 +57,11 @@ export default async function handler(request, response) {
       });
     }
 
-    // Adicionar o campo action que é necessário para o Contact Form 7
-    formDataObject.action = 'wpcf7_submit';
-
-    // Preparar os dados para envio
-    const formBody = new URLSearchParams();
-    Object.entries(formDataObject).forEach(([key, value]) => {
-      formBody.append(key, value);
-    });
-
-    console.log('[Proxy] Enviando para WordPress:', Object.fromEntries(formBody));
+    console.log('[Proxy] Enviando para WordPress:', formDataObject);
 
     const res = await fetch('https://acelerebrasil.com.br/wp-admin/admin-ajax.php', {
       method: 'POST',
-      body: formBody.toString(),
+      body: new URLSearchParams(formDataObject).toString(),
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
