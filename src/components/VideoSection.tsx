@@ -2,10 +2,37 @@ import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+
+const instagramPosts = [
+  {
+    id: 1,
+    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-1-980x1825.webp",
+    link: "https://www.instagram.com/p/DHv6kpVue2B/",
+    title: "Acelere Brasil"
+  },
+  {
+    id: 2,
+    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-2-980x1825.webp",
+    link: "https://www.instagram.com/p/DHwnTsPB-F8/",
+    title: "Bastidores do Evento"
+  },
+  {
+    id: 3,
+    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-3-980x1825.webp",
+    link: "https://www.instagram.com/acelerebrasiloficial/reel/DHzfozzgFqV/",
+    title: "Público Presente"
+  },
+  {
+    id: 4,
+    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-4-980x1825.webp",
+    link: "https://www.instagram.com/p/DIHERMjgozC/",
+    title: "Palestrantes"
+  }
+];
 
 const VideoSection = () => {
   const [name, setName] = useState("");
@@ -79,16 +106,50 @@ const VideoSection = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-4 mt-8">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="aspect-video bg-slate-800 rounded-lg overflow-hidden">
-              <img
-                src={`https://images.unsplash.com/photo-${1540575467063 + i * 1000}-178a50c2df87?w=300&h=200&fit=crop`}
-                alt={`Momento do evento ${i}`}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          ))}
+        {/* Instagram Posts Slider */}
+        <div className="mt-8">
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              1024: { slidesPerView: 4 }
+            }}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            className="instagram-slider"
+          >
+            {instagramPosts.map((post) => (
+              <SwiperSlide key={post.id}>
+                <a 
+                  href={post.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative rounded-[20px] overflow-hidden aspect-[4/5] group"
+                >
+                  {/* Overlay gradiente */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+                  
+                  {/* Thumbnail */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900">
+                    <img
+                      src={post.thumbnail}
+                      alt={post.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+
+                  {/* Título */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
+                    <h3 className="text-white text-lg font-bold">{post.title}</h3>
+                  </div>
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         {/* Container do mapa e informações */}
