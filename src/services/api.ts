@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const isDevelopment = import.meta.env.DEV;
-const baseURL = isDevelopment ? '' : '/api';
+const baseURL = isDevelopment ? '' : '';
 
 const api = axios.create({
   baseURL,
@@ -48,7 +48,7 @@ export const submitHeroForm = async (data: {
   formData.append('your-email', data.email);
   formData.append('acceptance-119', data.agreed ? '1' : '');
 
-  const endpoint = '/proxy';
+  const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/api/proxy';
   
   try {
     console.log('Enviando requisição para:', endpoint);
