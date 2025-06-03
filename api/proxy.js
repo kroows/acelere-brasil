@@ -14,57 +14,19 @@ export default async function handler(request, response) {
   }
 
   try {
-    let formDataObject = {};
-
     // Verificar o tipo de conteúdo
     const contentType = request.headers['content-type'] || '';
     console.log('[Proxy] Content-Type:', contentType);
-    console.log('[Proxy] Request Method:', request.method);
+    console.log('[Proxy] Request Headers:', request.headers);
 
-    if (contentType.includes('application/x-www-form-urlencoded')) {
-      const body = await request.text();
-      console.log('[Proxy] Raw body:', body);
-      
-      const params = new URLSearchParams(body);
-      formDataObject = Object.fromEntries(params);
-      console.log('[Proxy] Parsed Form Data:', formDataObject);
-    } else if (contentType.includes('multipart/form-data')) {
-      // Lidar com FormData
-      const formData = await request.formData();
-      formDataObject = {};
-      
-      for (const [key, value] of formData.entries()) {
-        formDataObject[key] = value;
-      }
-      console.log('[Proxy] Parsed FormData:', formDataObject);
-    } else {
-      console.error('[Proxy] Unsupported content type:', contentType);
-      return response.status(400).json({
-        status: 'error',
-        message: 'Unsupported content type',
-        contentType
-      });
-    }
+    // Obter o corpo da requisição como texto
+    const body = await request.text();
+    console.log('[Proxy] Raw body:', body);
 
-    // Verificar se temos os campos necessários
-    const requiredFields = ['_wpcf7', '_wpcf7_version', '_wpcf7_locale', '_wpcf7_unit_tag', 'action'];
-    const missingFields = requiredFields.filter(field => !formDataObject[field]);
-    
-    if (missingFields.length > 0) {
-      console.error('[Proxy] Missing required fields:', missingFields);
-      return response.status(400).json({
-        status: 'error',
-        message: 'Missing required fields',
-        missingFields,
-        receivedFields: Object.keys(formDataObject)
-      });
-    }
-
-    console.log('[Proxy] Enviando para WordPress:', formDataObject);
-
+    // Enviar diretamente para o WordPress
     const res = await fetch('https://acelerebrasil.com.br/wp-admin/admin-ajax.php', {
       method: 'POST',
-      body: new URLSearchParams(formDataObject).toString(),
+      body: body,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         'Accept': 'application/json',
@@ -79,31 +41,22 @@ export default async function handler(request, response) {
     const data = await res.text();
     console.log('[Proxy] WordPress response:', data);
 
-    let jsonData;
     try {
-      jsonData = JSON.parse(data);
-      console.log('[Proxy] Parsed JSON response:', jsonData);
+      const jsonData = JSON.parse(data);
+      return response.status(res.status).json(jsonData);
     } catch (e) {
-      console.error('[Proxy] Error parsing JSON response:', e);
-      jsonData = { 
+      return response.status(res.status).json({
         status: res.ok ? 'mail_sent' : 'error',
         message: data,
-        response: res.status,
-        raw_response: data.substring(0, 1000)
-      };
+        response: res.status
+      });
     }
-    
-    const responseStatus = jsonData.status === 'mail_sent' ? 200 : 
-                         res.status === 200 ? 200 : res.status;
-                         
-    return response.status(responseStatus).json(jsonData);
   } catch (error) {
     console.error('[Proxy] Fatal error:', error);
     return response.status(500).json({ 
       status: 'error',
       message: 'Error forwarding request',
-      details: error.message,
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+      details: error.message
     });
   }
 } 

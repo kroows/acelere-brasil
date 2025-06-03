@@ -36,34 +36,43 @@ export const submitHeroForm = async (data: {
 }) => {
   console.log('Iniciando submissão do formulário hero:', data);
   
-  const formData = new URLSearchParams();
-  formData.append('_wpcf7', '8335f54');
-  formData.append('_wpcf7_version', '5.8.4');
-  formData.append('_wpcf7_locale', 'pt_BR');
-  formData.append('_wpcf7_unit_tag', `wpcf7-f8335f54-p2-o${Math.floor(Math.random() * 1000)}`);
-  formData.append('_wpcf7_container_post', '2');
-  formData.append('action', 'wpcf7_submit');
-  formData.append('your-name', data.name);
-  formData.append('whatsapp', data.phone);
-  formData.append('your-email', data.email);
-  formData.append('acceptance-119', data.agreed ? '1' : '');
+  // Construindo a string do formulário manualmente
+  const formString = [
+    `_wpcf7=8335f54`,
+    `_wpcf7_version=5.8.4`,
+    `_wpcf7_locale=pt_BR`,
+    `_wpcf7_unit_tag=wpcf7-f8335f54-p2-o${Math.floor(Math.random() * 1000)}`,
+    `_wpcf7_container_post=2`,
+    `action=wpcf7_submit`,
+    `your-name=${encodeURIComponent(data.name)}`,
+    `whatsapp=${encodeURIComponent(data.phone)}`,
+    `your-email=${encodeURIComponent(data.email)}`,
+    `acceptance-119=${data.agreed ? '1' : ''}`
+  ].join('&');
 
   const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/api/proxy';
   
   try {
     console.log('Enviando requisição para:', endpoint);
-    console.log('FormData:', Object.fromEntries(formData));
+    console.log('Form String:', formString);
     
-    const response = await api.post(endpoint, formData.toString(), {
+    const response = await api.post(endpoint, formString, {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
       }
     });
 
     console.log('Resposta recebida:', response);
     return response;
   } catch (error) {
-    console.error('Erro detalhado do formulário hero:', error);
+    console.error('Erro detalhado do formulário hero:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      headers: error.response?.headers,
+      formData: formString
+    });
     throw error;
   }
 };
@@ -76,34 +85,43 @@ export const submitEbookForm = async (data: {
 }) => {
   console.log('Iniciando submissão do formulário de e-book:', data);
   
-  const formData = new URLSearchParams();
-  formData.append('_wpcf7', '567a523');
-  formData.append('_wpcf7_version', '5.8.4');
-  formData.append('_wpcf7_locale', 'pt_BR');
-  formData.append('_wpcf7_unit_tag', `wpcf7-f567a523-p2-o${Math.floor(Math.random() * 1000)}`);
-  formData.append('_wpcf7_container_post', '2');
-  formData.append('action', 'wpcf7_submit');
-  formData.append('your-name', data.name);
-  formData.append('whatsapp', data.phone);
-  formData.append('your-email', data.email);
-  formData.append('nicho', data.niche);
+  // Construindo a string do formulário manualmente
+  const formString = [
+    `_wpcf7=567a523`,
+    `_wpcf7_version=5.8.4`,
+    `_wpcf7_locale=pt_BR`,
+    `_wpcf7_unit_tag=wpcf7-f567a523-p2-o${Math.floor(Math.random() * 1000)}`,
+    `_wpcf7_container_post=2`,
+    `action=wpcf7_submit`,
+    `your-name=${encodeURIComponent(data.name)}`,
+    `whatsapp=${encodeURIComponent(data.phone)}`,
+    `your-email=${encodeURIComponent(data.email)}`,
+    `nicho=${encodeURIComponent(data.niche)}`
+  ].join('&');
 
   const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/api/proxy';
   
   try {
     console.log('Enviando requisição para:', endpoint);
-    console.log('FormData:', Object.fromEntries(formData));
+    console.log('Form String:', formString);
     
-    const response = await api.post(endpoint, formData.toString(), {
+    const response = await api.post(endpoint, formString, {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json'
       }
     });
 
     console.log('Resposta recebida:', response);
     return response;
   } catch (error) {
-    console.error('Erro detalhado do formulário de e-book:', error);
+    console.error('Erro detalhado do formulário de e-book:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      headers: error.response?.headers,
+      formData: formString
+    });
     throw error;
   }
 }; 
