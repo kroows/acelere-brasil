@@ -80,6 +80,8 @@ export const submitEbookForm = async (data: {
   email: string;
   niche: string;
 }) => {
+  console.log('Iniciando submissão do formulário de e-book:', data);
+  
   const formData = new FormData();
   formData.append('_wpcf7', '115');
   formData.append('_wpcf7_version', '5.8.4');
@@ -95,14 +97,25 @@ export const submitEbookForm = async (data: {
   const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/proxy';
   
   try {
+    console.log('Enviando requisição para:', endpoint);
+    console.log('FormData:', Object.fromEntries(formData.entries()));
+    
     const response = await api.post(endpoint, formData, {
       headers: {
-        'Content-Type': 'multipart/form-data'
+        'Content-Type': 'multipart/form-data',
+        'Accept': 'application/json, text/plain, */*'
       }
     });
+
+    console.log('Resposta recebida:', response);
     return response;
   } catch (error) {
-    console.error('Ebook Form Error:', error);
+    console.error('Erro detalhado do formulário de e-book:', {
+      message: error.message,
+      response: error.response?.data,
+      status: error.response?.status,
+      headers: error.response?.headers
+    });
     throw error;
   }
 }; 

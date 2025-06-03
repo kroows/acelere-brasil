@@ -17,7 +17,7 @@ export default async function handler(request, response) {
     let formDataObject = {};
 
     // Verificar o tipo de conteúdo
-    const contentType = request.headers.get('content-type') || '';
+    const contentType = request.headers['content-type'] || '';
     console.log('[Proxy] Content-Type:', contentType);
     console.log('[Proxy] Request Headers:', request.headers);
 
@@ -75,17 +75,18 @@ export default async function handler(request, response) {
       formBody.append(key, value);
     });
 
-    console.log('[Proxy] Sending to WordPress:', Object.fromEntries(formBody));
+    console.log('[Proxy] Enviando para WordPress:', Object.fromEntries(formBody));
 
     const res = await fetch('https://acelerebrasil.com.br/wp-admin/admin-ajax.php', {
       method: 'POST',
       body: formBody.toString(),
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json',
+        'Accept': 'application/json, text/plain, */*',
         'Origin': 'https://acelerebrasil.com.br',
         'Referer': 'https://acelerebrasil.com.br',
-        'User-Agent': 'Mozilla/5.0 (Vercel Serverless Function)'
+        'User-Agent': 'Mozilla/5.0 (Vercel Serverless Function)',
+        'X-Requested-With': 'XMLHttpRequest'
       }
     });
 
@@ -99,16 +100,17 @@ export default async function handler(request, response) {
       console.log('[Proxy] Parsed JSON response:', jsonData);
     } catch (e) {
       console.error('[Proxy] Error parsing JSON response:', e);
-      // Se não for JSON válido, criar um objeto com a resposta
       jsonData = { 
         status: res.ok ? 'mail_sent' : 'error',
         message: data,
-        response: res.status
+        response: res.status,
+        raw_response: data.substring(0, 1000)
       };
     }
     
-    // Definir o status da resposta com base no status do WordPress
-    const responseStatus = jsonData.status === 'mail_sent' ? 200 : res.status;
+    const responseStatus = jsonData.status === 'mail_sent' ? 200 : 
+                         res.status === 200 ? 200 : res.status;
+                         
     return response.status(responseStatus).json(jsonData);
   } catch (error) {
     console.error('[Proxy] Fatal error:', error);
