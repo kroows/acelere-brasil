@@ -1,52 +1,21 @@
 import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import { Button } from "@/components/ui/button";
-import { submitEbookForm } from "@/services/api";
-
-const instagramPosts = [
-  {
-    id: 1,
-    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-1-980x1825.webp",
-    link: "https://www.instagram.com/p/DHv6kpVue2B/",
-    title: "Acelere Brasil"
-  },
-  {
-    id: 2,
-    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-2-980x1825.webp",
-    link: "https://www.instagram.com/p/DHwnTsPB-F8/",
-    title: "Bastidores do Evento"
-  },
-  {
-    id: 3,
-    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-3-980x1825.webp",
-    link: "https://www.instagram.com/acelerebrasiloficial/reel/DHzfozzgFqV/",
-    title: "Público Presente"
-  },
-  {
-    id: 4,
-    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-4-980x1825.webp",
-    link: "https://www.instagram.com/p/DIHERMjgozC/",
-    title: "Palestrantes"
-  }
-];
+import { FormService } from "@/services/forms";
 
 const VideoSection = () => {
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [niche, setNiche] = useState("");
-  const [isAtBottom, setIsAtBottom] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    niche: ""
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAtBottom, setIsAtBottom] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Verifica se está próximo ao final da página
       const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 100;
       setIsAtBottom(bottom);
     };
@@ -57,13 +26,11 @@ const VideoSection = () => {
 
   const scrollToPosition = () => {
     if (isAtBottom) {
-      // Scroll para o topo
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
     } else {
-      // Scroll para o final
       window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: 'smooth'
@@ -71,485 +38,167 @@ const VideoSection = () => {
     }
   };
 
-  const handleEbookSubmit = async (e: React.FormEvent) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (name && phone && email && niche) {
-      try {
-        setIsSubmitting(true);
-        await submitEbookForm({
-          name,
-          phone,
-          email,
-          niche
-        });
-        
-        toast({
-          title: "Solicitação enviada!",
-          description: "Você receberá o ebook em breve.",
-        });
-        
-        setName("");
-        setPhone("");
-        setEmail("");
-        setNiche("");
-      } catch (error) {
-        toast({
-          title: "Erro ao enviar solicitação",
-          description: "Por favor, tente novamente mais tarde.",
-          variant: "destructive"
-        });
-      } finally {
-        setIsSubmitting(false);
-      }
+    const { name, phone, email, niche } = formData;
+
+    if (!name || !phone || !email || !niche) {
+      toast({
+        title: "Preencha todos os campos",
+        description: "Por favor, preencha todos os campos para continuar.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      await FormService.submitEbookForm(formData);
+      
+      toast({
+        title: "Solicitação enviada!",
+        description: "Você receberá o ebook em breve.",
+      });
+      
+      setFormData({
+        name: "",
+        phone: "",
+        email: "",
+        niche: ""
+      });
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar solicitação",
+        description: "Por favor, tente novamente mais tarde.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <section className="py-20 px-4 bg-black relative">
-      <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
-            COMO FOI A <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>ÚLTIMA EDIÇÃO</span>
+    <div className="grid lg:grid-cols-2 gap-8 items-center">
+      {/* Left side - Video */}
+      <div className="space-y-6">
+        <div className="aspect-video rounded-2xl overflow-hidden bg-black/20 backdrop-blur-sm border border-white/10">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/seu-video-id"
+            title="Launch IT - Evento Presencial"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="w-full h-full"
+          />
+        </div>
+
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white text-center">
+            Assista ao vídeo e descubra como o{" "}
+            <span className="bg-gradient-to-r from-green-400 to-cyan-400 text-transparent bg-clip-text">
+              Launch IT
+            </span>{" "}
+            pode transformar seu negócio
           </h2>
-          <p className="text-xl text-gray-300 font-rotunda" style={{ textShadow: '0 0 15px rgba(209, 213, 219, 0.3)' }}>
-            Veja os depoimentos de quem participou e transformou seu negócio
+          
+          <p className="text-white/80 text-center text-sm md:text-base">
+            Aprenda estratégias comprovadas de lançamento e marketing digital
+            que já geraram milhões em vendas.
           </p>
-        </div>
-
-        <div className="relative">
-          <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 overflow-hidden">
-            <iframe
-              src="https://www.youtube.com/embed/SEU_ID_DO_VIDEO_AQUI"
-              title="Acelere Brasil - Como foi a última edição"
-              className="w-full h-full"
-              allowFullScreen
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            />
-          </div>
-        </div>
-
-        {/* Instagram Posts Slider */}
-        <div className="mt-8">
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={20}
-            slidesPerView={1}
-            breakpoints={{
-              640: { slidesPerView: 1 },
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 2 }
-            }}
-            navigation
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            loop={false}
-            className="instagram-slider"
-          >
-            {instagramPosts.map((post) => (
-              <SwiperSlide key={post.id}>
-                <a 
-                  href={post.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block relative rounded-[20px] overflow-hidden aspect-[4/5] group"
-                >
-                  {/* Overlay gradiente */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
-                  
-                  {/* Thumbnail */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900">
-                    <img
-                      src={post.thumbnail}
-                      alt={post.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-                  {/* Título */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-                    <h3 className="text-white text-lg font-bold">{post.title}</h3>
-                  </div>
-                </a>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-
-        {/* Container do mapa e informações */}
-        <div className="mt-20 rounded-[20px] overflow-hidden" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 relative z-10">
-            {/* Coluna do Mapa */}
-            <div className="w-full h-full min-h-[300px] rounded-xl overflow-hidden">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3577.5751642816837!2d-48.85129772374376!3d-26.276446571039267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94deb04401d49f3d%3A0x7555af43bbcd2112!2sRua%20XV%20de%20Novembro%2C%204315%20-%20Gl%C3%B3ria%2C%20Joinville%20-%20SC%2C%2089216-201!5e0!3m2!1spt-BR!2sbr!4v1709926926800!5m2!1spt-BR!2sbr"
-                width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: '300px' }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-
-            {/* Coluna das Informações */}
-            <div className="space-y-6">
-              <div className="flex items-start space-x-4">
-                <div className="w-8 h-8 flex items-center justify-center">
-                  <svg 
-                    className="w-8 h-8 text-cyan-400" 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path 
-                      d="M12 2C8.13 2 5 5.13 5 9C5 13.17 9.42 18.92 11.24 21.11C11.64 21.59 12.37 21.59 12.77 21.11C14.58 18.92 19 13.17 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" 
-                      stroke="currentColor" 
-                      strokeWidth="2"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-3xl font-bold text-white mb-1">EXPOVILLE</h3>
-                  <p className="text-lg text-white">Rua XV Novembro, 4315</p>
-                  <p className="text-lg font-bold text-white">Glória Joinville – SC</p>
-                </div>
-              </div>
-
-              <div className="flex items-center space-x-4">
-                <div className="w-8 h-8 flex items-center justify-center">
-                  <svg 
-                    viewBox="0 0 24 24" 
-                    fill="none" 
-                    className="w-8 h-8"
-                  >
-                    <path 
-                      d="M19 4h-1V3c0-.55-.45-1-1-1s-1 .45-1 1v1H8V3c0-.55-.45-1-1-1s-1 .45-1 1v1H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z" 
-                      className="fill-transparent"
-                      stroke="url(#gradient2)"
-                      strokeWidth="1.5"
-                    />
-                    <defs>
-                      <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#4ade80" />
-                        <stop offset="100%" stopColor="#22d3ee" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-                <p className="text-lg sm:text-xl md:text-2xl leading-relaxed font-rotunda text-white">
-                  04 e 05 de outubro
-                </p>
-              </div>
-
-              <p className="text-lg sm:text-xl md:text-2xl leading-relaxed font-rotunda text-white text-center">
-                Dois dias intensos para <span className="font-bold">transformar</span> sua vida e
-                <br />
-                <span className="font-bold">acelerar</span> seu negócio
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Grid de imagens do local */}
-        <div className="hidden md:grid md:grid-cols-4 gap-4 mt-8">
-          <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
-            <img
-              loading="lazy"
-              decoding="async"
-              width="700"
-              height="465"
-              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp"
-              alt="Expoville 01"
-              className="rounded-xl w-full h-full object-cover"
-              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01-480x319.webp 480w"
-              sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
-            />
-          </div>
-          <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
-            <img
-              loading="lazy"
-              decoding="async"
-              width="700"
-              height="465"
-              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp"
-              alt="Expoville 02"
-              className="rounded-xl w-full h-full object-cover"
-              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02-480x319.webp 480w"
-              sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
-            />
-          </div>
-          <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
-            <img
-              loading="lazy"
-              decoding="async"
-              width="700"
-              height="465"
-              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp"
-              alt="Expoville 03"
-              className="rounded-xl w-full h-full object-cover"
-              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03-480x319.webp 480w"
-              sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
-            />
-          </div>
-          <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
-            <img
-              loading="lazy"
-              decoding="async"
-              width="700"
-              height="465"
-              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp"
-              alt="Expoville 04"
-              className="rounded-xl w-full h-full object-cover"
-              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04-480x319.webp 480w"
-              sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
-            />
-          </div>
-        </div>
-
-        {/* Swiper para versão mobile */}
-        <div className="md:hidden mt-8">
-          <Swiper
-            modules={[Navigation, Pagination]}
-            spaceBetween={16}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            className="w-full"
-          >
-            <SwiperSlide>
-              <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
-                <img
-                  loading="lazy"
-                  decoding="async"
-                  width="700"
-                  height="465"
-                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp"
-                  alt="Expoville 01"
-                  className="rounded-xl w-full h-full object-cover"
-                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01-480x319.webp 480w"
-                  sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
-                <img
-                  loading="lazy"
-                  decoding="async"
-                  width="700"
-                  height="465"
-                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp"
-                  alt="Expoville 02"
-                  className="rounded-xl w-full h-full object-cover"
-                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02-480x319.webp 480w"
-                  sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
-                <img
-                  loading="lazy"
-                  decoding="async"
-                  width="700"
-                  height="465"
-                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp"
-                  alt="Expoville 03"
-                  className="rounded-xl w-full h-full object-cover"
-                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03-480x319.webp 480w"
-                  sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
-                <img
-                  loading="lazy"
-                  decoding="async"
-                  width="700"
-                  height="465"
-                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp"
-                  alt="Expoville 04"
-                  className="rounded-xl w-full h-full object-cover"
-                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04-480x319.webp 480w"
-                  sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
-                />
-              </div>
-            </SwiperSlide>
-          </Swiper>
-        </div>
-
-        {/* Ebook Form Section */}
-        <div className="mt-16 rounded-[20px] overflow-hidden" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
-          <div className="grid lg:grid-cols-2 gap-8 items-start p-8">
-            {/* Right side - Image (apenas mobile) */}
-            <div className="lg:hidden relative">
-              <img
-                src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/img-ebook-acelere-brasil.webp"
-                alt="Ebook Acelere Brasil"
-                className="w-full h-auto rounded-2xl"
-              />
-            </div>
-
-            {/* Left side - Form */}
-            <div className="space-y-6">
-              <div className="text-white space-y-4 text-center lg:text-left">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight font-rotunda" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3)' }}>
-                  BAIXE AGORA NOSSO
-                  <br />
-                  <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>EBOOK</span> E ENTRE NO
-                  <br />
-                  <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>GRUPO</span> DO EVENTO
-                </h3>
-                <p className="text-gray-300 font-rotunda" style={{ textShadow: '0 0 10px rgba(209, 213, 219, 0.3)' }}>
-                  Preencha os dados abaixo, ganhe acesso imediato
-                  <br />
-                  e mantenha-se informado sobre as novidades do
-                  <br />
-                  <strong>Acelere Brasil Joinville</strong>.
-                </p>
-              </div>
-
-              <form onSubmit={handleEbookSubmit} className="space-y-4">
-                <Input
-                  type="text"
-                  placeholder="Nome"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
-                  required
-                />
-                <Input
-                  type="tel"
-                  placeholder="Telefone com DDD"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
-                  required
-                />
-                <Input
-                  type="email"
-                  placeholder="E-mail"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
-                  required
-                />
-                <Input
-                  type="text"
-                  placeholder="Nicho"
-                  value={niche}
-                  onChange={(e) => setNiche(e.target.value)}
-                  className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
-                  required
-                />
-
-                <Button
-                  type="submit"
-                  aria-disabled={isSubmitting || !name || !phone || !email || !niche}
-                  className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-2xl lg:text-3xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30 disabled:cursor-not-allowed"
-                  style={{
-                    boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
-                  }}
-                  onClick={(e) => {
-                    if (isSubmitting || !name || !phone || !email || !niche) {
-                      e.preventDefault();
-                      toast({
-                        title: "Preencha todos os campos",
-                        description: "Por favor, preencha todos os campos para receber o ebook.",
-                        variant: "destructive"
-                      });
-                    }
-                  }}
-                >
-                  {isSubmitting ? "ENVIANDO..." : "QUERO MEU EBOOK"}
-                </Button>
-              </form>
-            </div>
-
-            {/* Right side - Image e Botão (desktop) */}
-            <div className="hidden lg:block relative space-y-6">
-              <img
-                src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/img-ebook-acelere-brasil.webp"
-                alt="Ebook Acelere Brasil"
-                className="w-full h-auto rounded-2xl"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Seção de Patrocinadores */}
-        <div className="mt-20 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-6 font-rotunda">
-            <span className="text-white">SEJA UM </span>
-            <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>PATROCINADOR</span>
-            <span className="text-white"> DESSA EDIÇÃO</span>
-          </h2>
-
-          <div className="max-w-3xl mx-auto mb-10">
-            <p className="text-sm md:text-lg text-gray-300 font-rotunda">
-              Nessa edição esperamos impactar mais de <strong>1300</strong> pessoas em <strong>dois dias</strong> de imersão.
-              <br />
-              Quer ter sua marca em destaque em nosso evento, matérias e mídia?
-              <br />
-              Deseja ter um Stand no espaço durante os dois dias de evento, de 14 x 14 ou até de
-              14 x 21, recebendo clientes e impactando pessoas?
-              <br />
-              Vai ser um grande prazer ter a sua empresa apoiando e se conectando com o nosso propósito.
-            </p>
-          </div>
-
-          <a 
-            href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-3xl lg:text-4xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
-            style={{
-              boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
-            }}
-          >
-            ENTRE EM CONTATO COM NOSSA EQUIPE
-          </a>
         </div>
       </div>
 
-      {/* Botão flutuante circular */}
-      <button
+      {/* Right side - Form */}
+      <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10">
+        <div className="space-y-6">
+          <div className="text-center">
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+              Baixe Nosso E-book Gratuito
+            </h3>
+            <p className="text-white/80 text-sm md:text-base">
+              Receba um guia completo sobre como estruturar seu primeiro lançamento
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              type="text"
+              name="name"
+              placeholder="Nome"
+              value={formData.name}
+              onChange={handleInputChange}
+              className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
+              required
+            />
+            <Input
+              type="tel"
+              name="phone"
+              placeholder="Telefone com DDD"
+              value={formData.phone}
+              onChange={handleInputChange}
+              className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
+              required
+            />
+            <Input
+              type="email"
+              name="email"
+              placeholder="E-mail"
+              value={formData.email}
+              onChange={handleInputChange}
+              className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
+              required
+            />
+            <Input
+              type="text"
+              name="niche"
+              placeholder="Nicho"
+              value={formData.niche}
+              onChange={handleInputChange}
+              className="bg-white border-none text-black placeholder:text-gray-500 h-12 rounded-full px-6"
+              required
+            />
+
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold py-3 rounded-full transition-all duration-300 transform hover:scale-105"
+            >
+              {isSubmitting ? "Enviando..." : "Baixar E-book Grátis"}
+            </Button>
+          </form>
+        </div>
+      </div>
+
+      {/* Floating scroll button */}
+      <Button
         onClick={scrollToPosition}
-        className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white w-12 h-12 rounded-full transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-full before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30 flex items-center justify-center"
-        style={{
-          boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
-        }}
+        className="fixed bottom-8 right-8 rounded-full w-12 h-12 bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white shadow-lg transition-all duration-300 transform hover:scale-110"
       >
-        {isAtBottom ? (
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6" 
-            viewBox="0 0 20 20" 
-            fill="currentColor"
-          >
-            <path 
-              fillRule="evenodd" 
-              d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" 
-              clipRule="evenodd" 
-            />
-          </svg>
-        ) : (
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6" 
-            viewBox="0 0 20 20" 
-            fill="currentColor"
-          >
-            <path 
-              fillRule="evenodd" 
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" 
-              clipRule="evenodd" 
-            />
-          </svg>
-        )}
-      </button>
-    </section>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className={`h-6 w-6 transition-transform duration-300 ${isAtBottom ? 'rotate-180' : ''}`}
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 14l-7 7m0 0l-7-7m7 7V3"
+          />
+        </svg>
+      </Button>
+    </div>
   );
 };
 
