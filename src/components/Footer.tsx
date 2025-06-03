@@ -20,7 +20,7 @@ const Footer = () => {
         }}
       />
       
-      <div className="container mx-auto max-w-4xl flex flex-col items-center justify-center space-y-8 relative z-10">
+      <div className="container mx-auto max-w-4xl flex flex-col items-center justify-center space-y-8 relative z-10 pb-16">
         {/* Logo */}
         <div className="w-full max-w-[600px]">
           <img
@@ -107,6 +107,18 @@ const Footer = () => {
           }}
         >
           GARANTIR MEU INGRESSO
+        </a>
+      </div>
+
+      {/* Assinatura do Desenvolvedor */}
+      <div className="absolute bottom-4 left-0 right-0 text-center z-10">
+        <a 
+          href="https://github.com/ThallesCosta-dev"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/60 hover:text-white text-sm font-rotunda transition-colors duration-300"
+        >
+          Desenvolvido por ThallesCosta®
         </a>
       </div>
     </footer>
