@@ -37,10 +37,10 @@ export const submitHeroForm = async (data: {
   console.log('Iniciando submissão do formulário hero:', data);
   
   const formData = new URLSearchParams();
-  formData.append('_wpcf7', '108');
+  formData.append('_wpcf7', '8335f54');
   formData.append('_wpcf7_version', '5.8.4');
   formData.append('_wpcf7_locale', 'pt_BR');
-  formData.append('_wpcf7_unit_tag', `wpcf7-f108-p2-o${Math.floor(Math.random() * 1000)}`);
+  formData.append('_wpcf7_unit_tag', `wpcf7-f8335f54-p2-o${Math.floor(Math.random() * 1000)}`);
   formData.append('_wpcf7_container_post', '2');
   formData.append('action', 'wpcf7_submit');
   formData.append('your-name', data.name);
@@ -63,12 +63,7 @@ export const submitHeroForm = async (data: {
     console.log('Resposta recebida:', response);
     return response;
   } catch (error) {
-    console.error('Erro detalhado do formulário hero:', {
-      message: error.message,
-      response: error.response?.data,
-      status: error.response?.status,
-      headers: error.response?.headers
-    });
+    console.error('Erro detalhado do formulário hero:', error);
     throw error;
   }
 };
@@ -82,10 +77,10 @@ export const submitEbookForm = async (data: {
   console.log('Iniciando submissão do formulário de e-book:', data);
   
   const formData = new URLSearchParams();
-  formData.append('_wpcf7', '115');
+  formData.append('_wpcf7', '567a523');
   formData.append('_wpcf7_version', '5.8.4');
   formData.append('_wpcf7_locale', 'pt_BR');
-  formData.append('_wpcf7_unit_tag', `wpcf7-f115-p2-o${Math.floor(Math.random() * 1000)}`);
+  formData.append('_wpcf7_unit_tag', `wpcf7-f567a523-p2-o${Math.floor(Math.random() * 1000)}`);
   formData.append('_wpcf7_container_post', '2');
   formData.append('action', 'wpcf7_submit');
   formData.append('your-name', data.name);
@@ -93,7 +88,7 @@ export const submitEbookForm = async (data: {
   formData.append('your-email', data.email);
   formData.append('your-niche', data.niche);
 
-  const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/proxy';
+  const endpoint = isDevelopment ? '/wp-admin/admin-ajax.php' : '/api/proxy';
   
   try {
     console.log('Enviando requisição para:', endpoint);
@@ -108,12 +103,7 @@ export const submitEbookForm = async (data: {
     console.log('Resposta recebida:', response);
     return response;
   } catch (error) {
-    console.error('Erro detalhado do formulário de e-book:', {
-      message: error.message,
-      response: error.response?.data,
-      status: error.response?.status,
-      headers: error.response?.headers
-    });
+    console.error('Erro detalhado do formulário de e-book:', error);
     throw error;
   }
 }; 

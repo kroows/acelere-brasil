@@ -19,25 +19,24 @@ export default async function handler(request, response) {
     // Verificar o tipo de conteúdo
     const contentType = request.headers['content-type'] || '';
     console.log('[Proxy] Content-Type:', contentType);
-    console.log('[Proxy] Request Headers:', request.headers);
     console.log('[Proxy] Request Method:', request.method);
 
     if (contentType.includes('application/x-www-form-urlencoded')) {
-      try {
-        const body = await request.text();
-        console.log('[Proxy] Raw body:', body);
-        
-        const params = new URLSearchParams(body);
-        formDataObject = Object.fromEntries(params);
-        console.log('[Proxy] Parsed Form Data:', formDataObject);
-      } catch (error) {
-        console.error('[Proxy] Error parsing form data:', error);
-        return response.status(400).json({
-          status: 'error',
-          message: 'Error parsing form data',
-          details: error.message
-        });
+      const body = await request.text();
+      console.log('[Proxy] Raw body:', body);
+      
+      const params = new URLSearchParams(body);
+      formDataObject = Object.fromEntries(params);
+      console.log('[Proxy] Parsed Form Data:', formDataObject);
+    } else if (contentType.includes('multipart/form-data')) {
+      // Lidar com FormData
+      const formData = await request.formData();
+      formDataObject = {};
+      
+      for (const [key, value] of formData.entries()) {
+        formDataObject[key] = value;
       }
+      console.log('[Proxy] Parsed FormData:', formDataObject);
     } else {
       console.error('[Proxy] Unsupported content type:', contentType);
       return response.status(400).json({
