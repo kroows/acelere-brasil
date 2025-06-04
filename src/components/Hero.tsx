@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "./ui/input";
 import { Checkbox } from "./ui/checkbox";
 import { toast } from "@/hooks/use-toast";
-import { submitHeroForm } from "@/services/api";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -44,32 +43,36 @@ const Hero = () => {
     if (email && name && phone && agreed) {
       try {
         setIsSubmitting(true);
-        const response = await fetch('/api/proxy', {
+        const response = await fetch('https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/8335f54/feedback', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            formType: 'hero',
             'your-name': name,
-            'whatsapp': phone,
             'your-email': email,
-            'acceptance-119': agreed ? '1' : ''
-          })
+            'whatsapp': phone,
+            'acceptance-119': agreed ? '1' : '',
+          }),
         });
-        
+
         const data = await response.json();
-        
+
         if (data.status === 'mail_sent') {
           toast({
             title: "Inscrição realizada!",
             description: "Você receberá mais informações em breve.",
           });
-          
-          setEmail("");
-          setName("");
-          setPhone("");
+          setEmail('');
+          setName('');
+          setPhone('');
           setAgreed(false);
+        } else if (data.status === 'validation_failed') {
+          toast({
+            title: "Erro na validação",
+            description: data.message || 'Erro na validação. Por favor, verifique os dados e tente novamente.',
+            variant: "destructive"
+          });
         } else {
           throw new Error(data.message || 'Erro ao enviar formulário');
         }

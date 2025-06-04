@@ -7,7 +7,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Button } from "@/components/ui/button";
-import { submitEbookForm } from "@/services/api";
 
 const instagramPosts = [
   {
@@ -76,32 +75,36 @@ const VideoSection = () => {
     if (name && phone && email && niche) {
       try {
         setIsSubmitting(true);
-        const response = await fetch('/api/proxy', {
+        const response = await fetch('https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/567a523/feedback', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            formType: 'ebook',
             'your-name': name,
-            'whatsapp': phone,
             'your-email': email,
-            'nicho': niche
-          })
+            'whatsapp': phone,
+            'nicho': niche,
+          }),
         });
-        
+
         const data = await response.json();
-        
+
         if (data.status === 'mail_sent') {
           toast({
             title: "E-book enviado!",
             description: "Verifique seu e-mail para acessar o conteúdo.",
           });
-          
-          setName("");
-          setPhone("");
-          setEmail("");
-          setNiche("");
+          setName('');
+          setPhone('');
+          setEmail('');
+          setNiche('');
+        } else if (data.status === 'validation_failed') {
+          toast({
+            title: "Erro na validação",
+            description: data.message || 'Erro na validação. Por favor, verifique os dados e tente novamente.',
+            variant: "destructive"
+          });
         } else {
           throw new Error(data.message || 'Erro ao enviar formulário');
         }
@@ -466,20 +469,10 @@ const VideoSection = () => {
 
                 <Button
                   type="submit"
-                  aria-disabled={isSubmitting || !name || !phone || !email || !niche}
+                  disabled={isSubmitting || !name || !phone || !email || !niche}
                   className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-2xl lg:text-3xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30 disabled:cursor-not-allowed"
                   style={{
                     boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
-                  }}
-                  onClick={(e) => {
-                    if (isSubmitting || !name || !phone || !email || !niche) {
-                      e.preventDefault();
-                      toast({
-                        title: "Preencha todos os campos",
-                        description: "Por favor, preencha todos os campos para receber o ebook.",
-                        variant: "destructive"
-                      });
-                    }
                   }}
                 >
                   {isSubmitting ? "ENVIANDO..." : "QUERO MEU EBOOK"}

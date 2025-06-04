@@ -1,55 +1,55 @@
-export default async function handler(req, res) {
-  // IDs dos formulários
-  const FORM_IDS = {
-    hero: '8335f54',
-    ebook: '567a523'
-  };
+const fetch = require('node-fetch');
 
+module.exports = async (req, res) => {
+  // Habilitar CORS
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
+
+  // Responder imediatamente às requisições OPTIONS
   if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    return res.status(200).end();
+    res.status(200).end();
+    return;
+  }
+
+  if (req.method !== 'POST') {
+    return res.status(405).json({ message: 'Método não permitido' });
   }
 
   try {
-    const { formType, ...formData } = req.body;
-    const formId = FORM_IDS[formType];
-
-    if (!formId) {
-      throw new Error('Tipo de formulário inválido');
-    }
-
+    const formData = req.body;
+    const formId = formData.formType === 'hero' ? '8335f54' : '567a523';
     const url = `https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
 
-    console.log('Enviando dados para o WordPress:', {
-      url,
-      formType,
-      formId,
-      data: formData
-    });
+    // Preparar os dados do formulário no formato esperado pelo Contact Form 7
+    const cfData = {
+      'your-name': formData.name,
+      'your-email': formData.email,
+      'whatsapp': formData.phone,
+      ...(formData.formType === 'hero' 
+        ? { 'acceptance-119': formData.agreed ? '1' : '' }
+        : { 'nicho': formData.niche })
+    };
 
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(cfData),
     });
 
-    console.log('Status da resposta:', response.status);
     const data = await response.json();
-    console.log('Dados da resposta:', data);
-
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(response.status).json(data);
   } catch (error) {
-    console.error('Erro na requisição:', error);
+    console.error('Erro no proxy:', error);
     res.status(500).json({ 
-      error: 'Erro ao processar a requisição', 
-      details: error.message,
-      stack: error.stack 
+      status: 'error',
+      message: 'Erro ao processar a requisição'
     });
   }
-} 
+};
