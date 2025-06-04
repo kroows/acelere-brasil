@@ -43,33 +43,33 @@ const Hero = () => {
     if (email && name && phone && agreed) {
       try {
         setIsSubmitting(true);
-        const formData = new FormData();
-        formData.append('your-name', name);
-        formData.append('your-email', email);
-        formData.append('whatsapp', phone);
-        formData.append('acceptance-119', agreed ? '1' : '');
-        formData.append('_wpcf7', '198');
-        formData.append('_wpcf7_unit_tag', `wpcf7-f198-p${Date.now()}-o1`);
-        formData.append('_wpcf7_container_post', '0');
+        const payload = {
+          formType: 'hero',
+          'your-name': name,
+          'your-email': email,
+          whatsapp: phone,
+          'acceptance-119': agreed ? '1' : ''
+        };
 
-        const response = await fetch('https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/198/feedback', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbznMfyYNXb-7VqLY5i71PkkjLQ4kENZDy748c26ey92PKtzn0CIumgg-HuyRKSAHKpi9w/exec', {
           method: 'POST',
-          body: formData,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
         });
 
         const data = await response.json();
 
-        if (data.status === 'mail_sent') {
+        if (data.status === 'success') {
           toast({
             title: "Inscrição realizada!",
-            description: "Você receberá mais informações em breve.",
+            description: "Dados enviados para o Google Sheets.",
           });
           setEmail('');
           setName('');
           setPhone('');
           setAgreed(false);
         } else {
-          throw new Error(data.message || `Erro desconhecido: ${JSON.stringify(data)}`);
+          throw new Error(data.message || 'Erro ao enviar dados');
         }
       } catch (error: any) {
         console.error('Erro ao enviar formulário:', error);
