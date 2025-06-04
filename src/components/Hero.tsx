@@ -43,17 +43,15 @@ const Hero = () => {
     if (email && name && phone && agreed) {
       try {
         setIsSubmitting(true);
+        const formData = new FormData();
+        formData.append('your-name', name);
+        formData.append('your-email', email);
+        formData.append('whatsapp', phone);
+        formData.append('acceptance-119', agreed ? '1' : '');
+
         const response = await fetch('https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/108/feedback', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            'your-name': name,
-            'your-email': email,
-            'whatsapp': phone,
-            'acceptance-119': agreed ? '1' : '',
-          }),
+          body: formData,
         });
 
         const data = await response.json();
@@ -240,20 +238,10 @@ const Hero = () => {
 
                 <Button
                   type="submit"
-                  aria-disabled={isSubmitting || !email || !name || !phone || !agreed}
+                  disabled={isSubmitting || !email || !name || !phone || !agreed}
                   className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-lg md:text-4xl lg:text-5xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-xl before:blur-xl before:opacity-30 before:-z-10 active:scale-95 md:border-2 md:border-green-300/30 disabled:cursor-not-allowed"
                   style={{
                     boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
-                  }}
-                  onClick={(e) => {
-                    if (isSubmitting || !email || !name || !phone || !agreed) {
-                      e.preventDefault();
-                      toast({
-                        title: "Preencha todos os campos",
-                        description: "Por favor, preencha todos os campos e aceite os termos para continuar.",
-                        variant: "destructive"
-                      });
-                    }
                   }}
                 >
                   {isSubmitting ? "ENVIANDO..." : "QUERO PARTICIPAR"}

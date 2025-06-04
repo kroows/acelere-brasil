@@ -75,17 +75,15 @@ const VideoSection = () => {
     if (name && phone && email && niche) {
       try {
         setIsSubmitting(true);
+        const formData = new FormData();
+        formData.append('your-name', name);
+        formData.append('your-email', email);
+        formData.append('whatsapp', phone);
+        formData.append('nicho', niche);
+
         const response = await fetch('https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/115/feedback', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            'your-name': name,
-            'your-email': email,
-            'whatsapp': phone,
-            'nicho': niche,
-          }),
+          body: formData,
         });
 
         const data = await response.json();
