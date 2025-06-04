@@ -48,8 +48,11 @@ const Hero = () => {
         formData.append('your-email', email);
         formData.append('whatsapp', phone);
         formData.append('acceptance-119', agreed ? '1' : '');
+        formData.append('_wpcf7', '198'); // ID do formulário
+        formData.append('_wpcf7_unit_tag', `wpcf7-f198-p${Date.now()}-o1`); // Unit tag dinâmico
+        formData.append('_wpcf7_container_post', '0');
 
-        const response = await fetch('https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/108/feedback', {
+        const response = await fetch('https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/198/feedback', {
           method: 'POST',
           body: formData,
         });
