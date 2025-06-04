@@ -75,7 +75,7 @@ const VideoSection = () => {
     if (name && phone && email && niche) {
       try {
         setIsSubmitting(true);
-        const response = await fetch('https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/567a523/feedback', {
+        const response = await fetch('https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/115/feedback', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -43,7 +43,7 @@ const Hero = () => {
     if (email && name && phone && agreed) {
       try {
         setIsSubmitting(true);
-        const response = await fetch('https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/8335f54/feedback', {
+        const response = await fetch('https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/108/feedback', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

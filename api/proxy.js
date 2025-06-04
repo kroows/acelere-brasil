@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
   }
 
   const { formType, ...formData } = req.body;
-  const formId = formType === 'hero' ? '8335f54' : '567a523';
+  const formId = formType === 'hero' ? '108' : '115';
   const url = `https://acelerebrasil.com.br/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback`;
 
   try {
