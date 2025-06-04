@@ -100,20 +100,14 @@ const VideoSection = () => {
           setPhone('');
           setEmail('');
           setNiche('');
-        } else if (data.status === 'validation_failed') {
-          toast({
-            title: "Erro na validação",
-            description: data.message || 'Erro na validação. Por favor, verifique os dados e tente novamente.',
-            variant: "destructive"
-          });
         } else {
-          throw new Error(data.message || 'Erro ao enviar formulário');
+          throw new Error(data.message || `Erro desconhecido: ${JSON.stringify(data)}`);
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error('Erro ao enviar formulário:', error);
         toast({
           title: "Erro ao enviar",
-          description: "Por favor, tente novamente mais tarde.",
+          description: error.message || "Por favor, tente novamente mais tarde.",
           variant: "destructive"
         });
       } finally {
