@@ -1,8 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
+import 'swiper/css/navigation';
 
 const speakers = [
   {
@@ -135,7 +136,7 @@ const Speakers = () => {
         {/* Desktop Carousel (3 slides) */}
         <div className="hidden md:block">
           <Swiper
-            modules={[Autoplay]}
+            modules={[Autoplay, Navigation]}
             spaceBetween={30}
             slidesPerView={3}
             centeredSlides={true}
@@ -143,8 +144,9 @@ const Speakers = () => {
               delay: 3000,
               disableOnInteraction: false,
             }}
+            navigation
             loop={true}
-            className="pb-12"
+            className="pb-12 speakers-swiper"
           >
             {speakers.map((speaker, index) => (
               <SwiperSlide 
@@ -162,7 +164,7 @@ const Speakers = () => {
         {/* Mobile Carousel (1 slide) */}
         <div className="md:hidden">
           <Swiper
-            modules={[Autoplay]}
+            modules={[Autoplay, Navigation]}
             spaceBetween={20}
             slidesPerView={1}
             centeredSlides={true}
@@ -170,8 +172,9 @@ const Speakers = () => {
               delay: 3000,
               disableOnInteraction: false,
             }}
+            navigation
             loop={true}
-            className="pb-12"
+            className="pb-12 speakers-swiper"
             style={{
               maxWidth: '500px',
               margin: '0 auto'

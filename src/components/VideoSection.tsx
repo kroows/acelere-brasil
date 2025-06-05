@@ -94,7 +94,8 @@ const VideoSection = () => {
         // Como 'no-cors' não permite leitura da resposta, assumimos sucesso
         toast({
           title: "E-book solicitado!",
-          description: "Dados enviados para o Google Sheets.",
+          description: "Sua inscrição foi efetuada com sucesso.",
+          duration: 3000, // 3 segundos
         });
         setName('');
         setPhone('');
@@ -256,11 +257,15 @@ const VideoSection = () => {
                 </p>
               </div>
 
-              <p className="text-lg sm:text-xl md:text-2xl leading-relaxed font-rotunda text-white text-center">
-                Dois dias intensos para <span className="font-bold">transformar</span> sua vida e
-                <br />
-                <span className="font-bold">acelerar</span> seu negócio
-              </p>
+              <div className="flex justify-center">
+                <div className="md:max-w-[600px] w-full">
+                  <p className="text-lg sm:text-xl md:text-2xl leading-relaxed font-rotunda text-white text-center md:text-left">
+                    Dois dias intensos para <span className="font-bold">transformar</span> sua vida e
+                    <br className="hidden md:block" />
+                    <span className="font-bold">acelerar</span> seu negócio.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -408,15 +413,15 @@ const VideoSection = () => {
 
             {/* Left side - Form */}
             <div className="space-y-6">
-              <div className="text-white space-y-4 text-center lg:text-left">
-                <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold leading-tight font-rotunda" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3)' }}>
+              <div className="text-white space-y-2 text-center lg:text-left">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight font-rotunda" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3)' }}>
                   BAIXE AGORA NOSSO
                   <br />
                   <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>EBOOK</span> E ENTRE NO
                   <br />
                   <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>GRUPO</span> DO EVENTO
                 </h3>
-                <p className="text-gray-300 font-rotunda" style={{ textShadow: '0 0 10px rgba(209, 213, 219, 0.3)' }}>
+                <p className="text-xs md:text-sm text-gray-300 font-rotunda leading-tight" style={{ textShadow: '0 0 10px rgba(209, 213, 219, 0.3)' }}>
                   Preencha os dados abaixo, ganhe acesso imediato
                   <br />
                   e mantenha-se informado sobre as novidades do
