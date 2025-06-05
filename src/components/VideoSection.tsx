@@ -83,7 +83,7 @@ const VideoSection = () => {
           nicho: niche
         };
 
-        const response = await fetch('https://script.google.com/macros/s/AKfycbznMfyYNXb-7VqLY5i71PkkjLQ4kENZDy748c26ey92PKtzn0CIumgg-HuyRKSAHKpi9w/exec', {
+        const response = await fetch('/api/proxy', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
