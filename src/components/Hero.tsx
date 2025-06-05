@@ -43,13 +43,49 @@ const Hero = () => {
     if (email && name && phone && agreed) {
       try {
         setIsSubmitting(true);
-        const payload = {
-          formType: 'hero',
-          'your-name': name,
-          'your-email': email,
-          whatsapp: phone,
-          'acceptance-119': agreed ? '1' : ''
-        };
+        const formData = new FormData();
+        formData.append('formType', 'hero');
+        formData.append('your-name', name);
+        formData.append('your-email', email);
+        formData.append('whatsapp', phone);
+        formData.append('acceptance-119', agreed ? '1' : '');
+  
+        console.log('Payload Hero:', Object.fromEntries(formData)); // Log para depuração
+  
+        const response = await fetch('https://script.google.com/macros/s/AKfycbyOIKvX5SpM1jhukowD6Y_qMpTMlZbfyyf04ePeUlY3tZBvEiNFjflRJgJ-SANW9rW_pQ/exec', {
+          method: 'POST',
+          body: formData // Envia como FormData
+        });
+  
+        console.log('Resposta Hero:', response); // Log para depuração
+  
+        // Como 'no-cors' não permite leitura da resposta, assumimos sucesso
+        toast({
+          title: "Inscrição realizada!",
+          description: "Sua Inscrição foi efetuada com Sucesso.",
+        });
+        setEmail('');
+        setName('');
+        setPhone('');
+        setAgreed(false);
+      } catch (error: any) {
+        console.error('Erro ao enviar formulário Hero:', error);
+        toast({
+          title: "Erro ao realizar inscrição",
+          description: error.message || "Por favor, tente novamente mais tarde.",
+          variant: "destructive"
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
+    } else {
+      toast({
+        title: "Preencha todos os campos",
+        description: "Por favor, preencha todos os campos e aceite os termos para continuar.",
+        variant: "destructive"
+      });
+    }
+  };
   
         const response = await fetch('https://script.google.com/macros/s/AKfycby9CaQoRRE8dg8-WbnujMLMLAgk1ApO06aP-dlDfuvR7-_4BEDaEJoZo7S32gqaFXF88A/exec ', {
           method: 'POST',

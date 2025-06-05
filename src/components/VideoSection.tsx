@@ -75,22 +75,23 @@ const VideoSection = () => {
     if (name && phone && email && niche) {
       try {
         setIsSubmitting(true);
-        const payload = {
-          formType: 'videosection',
-          'your-name': name,
-          'your-email': email,
-          whatsapp: phone,
-          nicho: niche
-        };
+        const formData = new FormData();
+        formData.append('formType', 'videosection');
+        formData.append('your-name', name);
+        formData.append('your-email', email);
+        formData.append('whatsapp', phone);
+        formData.append('nicho', niche);
   
-        const response = await fetch('https://script.google.com/macros/s/AKfycby9CaQoRRE8dg8-WbnujMLMLAgk1ApO06aP-dlDfuvR7-_4BEDaEJoZo7S32gqaFXF88A/exec', {
+        console.log('Payload VideoSection:', Object.fromEntries(formData)); // Log para depuração
+  
+        const response = await fetch('https://script.google.com/macros/s/AKfycbyOIKvX5SpM1jhukowD6Y_qMpTMlZbfyyf04ePeUlY3tZBvEiNFjflRJgJ-SANW9rW_pQ/exec', {
           method: 'POST',
-          mode: 'no-cors', // Necessário para evitar problemas de CORS com GAS
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: formData // Envia como FormData
         });
   
-        // Como 'no-cors' não permite ler o corpo da resposta, assumimos sucesso se não houver erro
+        console.log('Resposta VideoSection:', response); // Log para depuração
+  
+        // Como 'no-cors' não permite leitura da resposta, assumimos sucesso
         toast({
           title: "E-book solicitado!",
           description: "Dados enviados para o Google Sheets.",
@@ -100,7 +101,7 @@ const VideoSection = () => {
         setEmail('');
         setNiche('');
       } catch (error: any) {
-        console.error('Erro ao enviar formulário:', error);
+        console.error('Erro ao enviar formulário VideoSection:', error);
         toast({
           title: "Erro ao enviar",
           description: error.message || "Por favor, tente novamente mais tarde.",
