@@ -84,7 +84,7 @@ const VideoSection = () => {
   
         console.log('Payload VideoSection:', Object.fromEntries(formData)); // Log para depuração
   
-        const response = await fetch('https://script.google.com/macros/s/AKfycbyOIKvX5SpM1jhukowD6Y_qMpTMlZbfyyf04ePeUlY3tZBvEiNFjflRJgJ-SANW9rW_pQ/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbwpb83lvpsydCCdork1tXtNjI35ZNXHRJX1_SPUxKBPuqxFN5lSAzOVC7ABpnzNhhxfrw/exec', {
           method: 'POST',
           body: formData // Envia como FormData
         });
