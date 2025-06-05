@@ -50,27 +50,23 @@ const Hero = () => {
           whatsapp: phone,
           'acceptance-119': agreed ? '1' : ''
         };
-
-        const response = await fetch('/api/proxy', {
+  
+        const response = await fetch('https://script.google.com/macros/s/AKfycbzUavfcY3Y5mty92oMmxruH2kWERL-aRcONfFTVut9iEzXuOZkZsQPbAMk-TAieS8rfyA/exec', {
           method: 'POST',
+          mode: 'no-cors', // Necessário para evitar problemas de CORS com GAS
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-
-        const data = await response.json();
-
-        if (data.status === 'success') {
-          toast({
-            title: "Inscrição realizada!",
-            description: "Dados enviados para o Google Sheets.",
-          });
-          setEmail('');
-          setName('');
-          setPhone('');
-          setAgreed(false);
-        } else {
-          throw new Error(data.message || 'Erro ao enviar dados');
-        }
+  
+        // Como 'no-cors' não permite ler o corpo da resposta, assumimos sucesso se não houver erro
+        toast({
+          title: "Inscrição realizada!",
+          description: "Dados enviados para o Google Sheets.",
+        });
+        setEmail('');
+        setName('');
+        setPhone('');
+        setAgreed(false);
       } catch (error: any) {
         console.error('Erro ao enviar formulário:', error);
         toast({

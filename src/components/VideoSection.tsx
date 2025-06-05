@@ -76,33 +76,29 @@ const VideoSection = () => {
       try {
         setIsSubmitting(true);
         const payload = {
-          formType: 'ebook',
+          formType: 'videosection',
           'your-name': name,
           'your-email': email,
           whatsapp: phone,
           nicho: niche
         };
-
-        const response = await fetch('/api/proxy', {
+  
+        const response = await fetch('https://script.google.com/macros/s/AKfycbytlj7d7TFHeUFzppyj1h5bFKLPsTmOfnZFY_e28KzR/dev', {
           method: 'POST',
+          mode: 'no-cors', // Necessário para evitar problemas de CORS com GAS
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-
-        const data = await response.json();
-
-        if (data.status === 'success') {
-          toast({
-            title: "E-book solicitado!",
-            description: "Dados enviados para o Google Sheets.",
-          });
-          setName('');
-          setPhone('');
-          setEmail('');
-          setNiche('');
-        } else {
-          throw new Error(data.message || 'Erro ao enviar dados');
-        }
+  
+        // Como 'no-cors' não permite ler o corpo da resposta, assumimos sucesso se não houver erro
+        toast({
+          title: "E-book solicitado!",
+          description: "Dados enviados para o Google Sheets.",
+        });
+        setName('');
+        setPhone('');
+        setEmail('');
+        setNiche('');
       } catch (error: any) {
         console.error('Erro ao enviar formulário:', error);
         toast({
