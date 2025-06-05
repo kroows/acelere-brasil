@@ -83,7 +83,7 @@ const VideoSection = () => {
           nicho: niche
         };
   
-        const response = await fetch('https://script.google.com/macros/s/AKfycbytlj7d7TFHeUFzppyj1h5bFKLPsTmOfnZFY_e28KzR/dev', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycby9CaQoRRE8dg8-WbnujMLMLAgk1ApO06aP-dlDfuvR7-_4BEDaEJoZo7S32gqaFXF88A/exec', {
           method: 'POST',
           mode: 'no-cors', // Necessário para evitar problemas de CORS com GAS
           headers: { 'Content-Type': 'application/json' },

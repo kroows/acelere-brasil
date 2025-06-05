@@ -51,7 +51,7 @@ const Hero = () => {
           'acceptance-119': agreed ? '1' : ''
         };
   
-        const response = await fetch('https://script.google.com/macros/s/AKfycbzUavfcY3Y5mty92oMmxruH2kWERL-aRcONfFTVut9iEzXuOZkZsQPbAMk-TAieS8rfyA/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycby9CaQoRRE8dg8-WbnujMLMLAgk1ApO06aP-dlDfuvR7-_4BEDaEJoZo7S32gqaFXF88A/exec ', {
           method: 'POST',
           mode: 'no-cors', // Necessário para evitar problemas de CORS com GAS
           headers: { 'Content-Type': 'application/json' },
@@ -61,14 +61,14 @@ const Hero = () => {
         // Como 'no-cors' não permite ler o corpo da resposta, assumimos sucesso se não houver erro
         toast({
           title: "Inscrição realizada!",
-          description: "Dados enviados para o Google Sheets.",
+          description: "Sua Inscrição foi efetuada com Sucesso.",
         });
         setEmail('');
         setName('');
         setPhone('');
         setAgreed(false);
       } catch (error: any) {
-        console.error('Erro ao enviar formulário:', error);
+        console.error('Erro ao enviar inscrição:', error);
         toast({
           title: "Erro ao realizar inscrição",
           description: error.message || "Por favor, tente novamente mais tarde.",
