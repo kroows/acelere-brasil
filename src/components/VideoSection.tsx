@@ -346,9 +346,7 @@ const VideoSection = () => {
               <div className="flex justify-center">
                 <div className="md:max-w-[600px] w-full">
                   <p className="text-lg sm:text-xl md:text-2xl leading-relaxed font-rotunda text-white text-center md:text-left">
-                    Dois dias intensos para <span className="font-bold">transformar</span> sua vida e
-                    <br className="hidden md:block" />
-                    <span className="font-bold">acelerar</span> seu negócio.
+                    Dois dias intensos para <span className="font-bold">transformar</span> sua vida e <span className="font-bold">acelerar</span> seu negócio.
                   </p>
                 </div>
               </div>
