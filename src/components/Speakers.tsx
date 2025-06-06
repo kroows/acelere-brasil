@@ -216,20 +216,22 @@ const Speakers = () => {
         <div className="md:hidden">
           <div className="relative">
             <Swiper
-              modules={[Autoplay, Navigation, Pagination]}
+              modules={[Navigation, Pagination, Autoplay]}
               spaceBetween={20}
               slidesPerView={1}
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 }
               }}
               navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.speakers-swiper-button-next',
+                prevEl: '.speakers-swiper-button-prev',
               }}
               pagination={{ clickable: true }}
+              autoplay={{ delay: 5000, disableOnInteraction: false }}
               loop={true}
-              className="pb-12 speakers-swiper"
+              className="speakers-swiper"
             >
               {speakers.map((speaker, index) => (
                 <SwiperSlide 
@@ -242,8 +244,8 @@ const Speakers = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <div className="swiper-button-prev"></div>
-            <div className="swiper-button-next"></div>
+            <div className="speakers-swiper-button-prev"></div>
+            <div className="speakers-swiper-button-next"></div>
           </div>
         </div>
       </div>
