@@ -495,7 +495,7 @@ const VideoSection = () => {
           </h2>
 
           <div className="max-w-3xl mx-auto mb-10">
-            <p className="text-sm md:text-lg text-gray-300 font-rotunda">
+            <p className="text-sm md:text-lg text-white-300 font-rotunda">
               Nessa edição esperamos impactar mais de <strong>1300</strong> pessoas em <strong>dois dias</strong> de imersão.
               <br />
               Quer ter sua marca em destaque em nosso evento, matérias e mídia?
