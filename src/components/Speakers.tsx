@@ -125,8 +125,97 @@ const SpeakerCard = ({ speaker }) => (
 
 const Speakers = () => {
   return (
-    <section className="py-20 px-4 bg-black">
-      <div className="container mx-auto max-w-6xl">
+    <section className="py-20 px-4 bg-black relative">
+      {/* Geometric Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Top left triangle */}
+        <div className="absolute top-32 left-20 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+        
+        {/* Bottom right triangle */}
+        <div className="absolute bottom-40 right-24" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+        
+        {/* Middle left triangle */}
+        <div className="absolute top-1/2 left-1/4 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+
+        {/* Additional triangles for desktop */}
+        <div className="absolute top-60 right-1/3 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '45px 45px',
+          width: '45px',
+          height: '45px',
+          opacity: 0.2
+        }} />
+
+        <div className="absolute bottom-80 left-1/3 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '55px 55px',
+          width: '55px',
+          height: '55px',
+          opacity: 0.25
+        }} />
+
+        <div className="absolute top-1/3 right-20 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '40px 40px',
+          width: '40px',
+          height: '40px',
+          opacity: 0.2
+        }} />
+        
+        {/* Mobile specific triangles */}
+        <div className="absolute top-20 left-5 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '50px 50px',
+          width: '50px',
+          height: '50px',
+          opacity: 0.3
+        }} />
+        
+        <div className="absolute bottom-32 right-8 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '50px 50px',
+          width: '50px',
+          height: '50px',
+          opacity: 0.3
+        }} />
+
+        {/* Additional triangles for mobile */}
+        <div className="absolute top-1/2 right-6 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '35px 35px',
+          width: '35px',
+          height: '35px',
+          opacity: 0.2
+        }} />
+
+        <div className="absolute bottom-60 left-10 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '40px 40px',
+          width: '40px',
+          height: '40px',
+          opacity: 0.25
+        }} />
+      </div>
+
+      <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
             PALESTRANTES <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>CONFIRMADOS</span>

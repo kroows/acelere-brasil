@@ -60,6 +60,95 @@ const Benefits = () => {
           background: 'radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, black 100%)'
         }}
       />
+
+      {/* Geometric Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Top right triangle */}
+        <div className="absolute top-40 right-32 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+        
+        {/* Bottom left triangle */}
+        <div className="absolute bottom-60 left-40" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+        
+        {/* Middle triangle */}
+        <div className="absolute top-1/2 right-1/3 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+
+        {/* Additional triangles for desktop */}
+        <div className="absolute top-96 left-1/4 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '45px 45px',
+          width: '45px',
+          height: '45px',
+          opacity: 0.2
+        }} />
+
+        <div className="absolute bottom-1/3 right-1/4 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '50px 50px',
+          width: '50px',
+          height: '50px',
+          opacity: 0.25
+        }} />
+
+        <div className="absolute top-60 left-20 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '40px 40px',
+          width: '40px',
+          height: '40px',
+          opacity: 0.2
+        }} />
+        
+        {/* Mobile specific triangles */}
+        <div className="absolute top-32 right-4 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '50px 50px',
+          width: '50px',
+          height: '50px',
+          opacity: 0.3
+        }} />
+        
+        <div className="absolute bottom-40 left-6 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '50px 50px',
+          width: '50px',
+          height: '50px',
+          opacity: 0.3
+        }} />
+
+        {/* Additional triangles for mobile */}
+        <div className="absolute top-80 left-8 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '35px 35px',
+          width: '35px',
+          height: '35px',
+          opacity: 0.2
+        }} />
+
+        <div className="absolute bottom-80 right-8 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '40px 40px',
+          width: '40px',
+          height: '40px',
+          opacity: 0.25
+        }} />
+      </div>
       
       <div className="max-w-[980px] mx-auto relative z-10">
         <div className="text-center mb-8 md:mb-16">

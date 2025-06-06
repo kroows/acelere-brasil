@@ -122,7 +122,96 @@ const VideoSection = () => {
 
   return (
     <section className="py-20 px-4 bg-black relative">
-      <div className="container mx-auto max-w-4xl">
+      {/* Geometric Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        {/* Top right triangle */}
+        <div className="absolute top-40 right-20 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+        
+        {/* Bottom left triangle */}
+        <div className="absolute bottom-96 left-32" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+        
+        {/* Middle right triangle */}
+        <div className="absolute top-1/2 right-1/4 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '70px 70px',
+          width: '70px',
+          height: '70px',
+          opacity: 0.3
+        }} />
+
+        {/* Additional triangles for desktop */}
+        <div className="absolute top-80 left-1/4 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '50px 50px',
+          width: '50px',
+          height: '50px',
+          opacity: 0.2
+        }} />
+
+        <div className="absolute bottom-1/3 right-40 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '40px 40px',
+          width: '40px',
+          height: '40px',
+          opacity: 0.2
+        }} />
+
+        <div className="absolute top-1/4 right-1/3 hidden md:block" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '45px 45px',
+          width: '45px',
+          height: '45px',
+          opacity: 0.25
+        }} />
+        
+        {/* Mobile specific triangles */}
+        <div className="absolute top-60 right-10 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '50px 50px',
+          width: '50px',
+          height: '50px',
+          opacity: 0.3
+        }} />
+        
+        <div className="absolute bottom-40 left-5 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '50px 50px',
+          width: '50px',
+          height: '50px',
+          opacity: 0.3
+        }} />
+
+        {/* Additional triangles for mobile */}
+        <div className="absolute top-1/3 left-12 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '35px 35px',
+          width: '35px',
+          height: '35px',
+          opacity: 0.2
+        }} />
+
+        <div className="absolute bottom-1/4 right-16 md:hidden" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '40px 40px',
+          width: '40px',
+          height: '40px',
+          opacity: 0.25
+        }} />
+      </div>
+
+      <div className="container mx-auto max-w-4xl relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
             COMO FOI A <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>ÚLTIMA EDIÇÃO</span>
@@ -495,7 +584,7 @@ const VideoSection = () => {
           </h2>
 
           <div className="max-w-3xl mx-auto mb-10">
-            <p className="text-sm md:text-lg text-white-300 font-rotunda">
+            <p className="text-sm md:text-lg text-white font-rotunda">
               Nessa edição esperamos impactar mais de <strong>1300</strong> pessoas em <strong>dois dias</strong> de imersão.
               <br />
               Quer ter sua marca em destaque em nosso evento, matérias e mídia?
