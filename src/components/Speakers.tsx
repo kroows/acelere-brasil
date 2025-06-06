@@ -125,51 +125,8 @@ const SpeakerCard = ({ speaker }) => (
 
 const Speakers = () => {
   return (
-    <section className="py-20 px-4 bg-black relative">
-      {/* Geometric Background Elements - Mobile Only */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
-        <div className="md:hidden absolute top-1/4 right-1/3" style={{
-          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
-          backgroundSize: '50px 50px',
-          width: '50px',
-          height: '50px',
-          opacity: 0.3
-        }} />
-
-        <div className="md:hidden absolute bottom-1/4 left-1/3" style={{
-          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
-          backgroundSize: '60px 60px',
-          width: '60px',
-          height: '60px',
-          opacity: 0.3
-        }} />
-
-        <div className="md:hidden absolute top-3/4 right-10" style={{
-          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
-          backgroundSize: '40px 40px',
-          width: '40px',
-          height: '40px',
-          opacity: 0.3
-        }} />
-
-        <div className="md:hidden absolute bottom-1/3 right-1/4" style={{
-          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
-          backgroundSize: '45px 45px',
-          width: '45px',
-          height: '45px',
-          opacity: 0.3
-        }} />
-
-        <div className="md:hidden absolute top-2/3 left-10" style={{
-          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
-          backgroundSize: '55px 55px',
-          width: '55px',
-          height: '55px',
-          opacity: 0.3
-        }} />
-      </div>
-
-      <div className="container mx-auto max-w-7xl relative" style={{ zIndex: 1 }}>
+    <section className="py-20 px-4 bg-black">
+      <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
             PALESTRANTES <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>CONFIRMADOS</span>
@@ -216,22 +173,20 @@ const Speakers = () => {
         <div className="md:hidden">
           <div className="relative">
             <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
+              modules={[Autoplay, Navigation, Pagination]}
               spaceBetween={20}
               slidesPerView={1}
-              breakpoints={{
-                640: { slidesPerView: 2 },
-                768: { slidesPerView: 3 },
-                1024: { slidesPerView: 4 }
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
               }}
               navigation={{
-                nextEl: '.speakers-swiper-button-next',
-                prevEl: '.speakers-swiper-button-prev',
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
               }}
               pagination={{ clickable: true }}
-              autoplay={{ delay: 5000, disableOnInteraction: false }}
               loop={true}
-              className="speakers-swiper"
+              className="pb-12 speakers-swiper"
             >
               {speakers.map((speaker, index) => (
                 <SwiperSlide 
@@ -244,8 +199,8 @@ const Speakers = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-            <div className="speakers-swiper-button-prev"></div>
-            <div className="speakers-swiper-button-next"></div>
+            <div className="swiper-button-prev"></div>
+            <div className="swiper-button-next"></div>
           </div>
         </div>
       </div>

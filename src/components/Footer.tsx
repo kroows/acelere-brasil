@@ -1,49 +1,6 @@
 const Footer = () => {
   return (
     <footer className="bg-black py-20 px-4 relative">
-      {/* Geometric Background Elements - Mobile Only */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
-        <div className="md:hidden absolute top-1/4 right-1/3" style={{
-          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
-          backgroundSize: '50px 50px',
-          width: '50px',
-          height: '50px',
-          opacity: 0.3
-        }} />
-
-        <div className="md:hidden absolute bottom-1/4 left-1/3" style={{
-          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
-          backgroundSize: '60px 60px',
-          width: '60px',
-          height: '60px',
-          opacity: 0.3
-        }} />
-
-        <div className="md:hidden absolute top-3/4 right-10" style={{
-          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
-          backgroundSize: '40px 40px',
-          width: '40px',
-          height: '40px',
-          opacity: 0.3
-        }} />
-
-        <div className="md:hidden absolute bottom-1/3 right-1/4" style={{
-          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
-          backgroundSize: '45px 45px',
-          width: '45px',
-          height: '45px',
-          opacity: 0.3
-        }} />
-
-        <div className="md:hidden absolute top-2/3 left-10" style={{
-          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
-          backgroundSize: '55px 55px',
-          width: '55px',
-          height: '55px',
-          opacity: 0.3
-        }} />
-      </div>
-
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0"
@@ -52,7 +9,7 @@ const Footer = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          boxShadow: 'inset 0 0 150px 150px rgba(0, 0, 0, 0.8)'
+          boxShadow: 'inset 0 0 200px 200px rgba(0, 0, 0, 0.9)'
         }}
       />
       {/* Gradient Overlay */}
@@ -63,7 +20,7 @@ const Footer = () => {
         }}
       />
       
-      <div className="container mx-auto max-w-4xl relative" style={{ zIndex: 1 }}>
+      <div className="container mx-auto max-w-4xl flex flex-col items-center justify-center space-y-8 relative z-10 pb-16">
         {/* Logo */}
         <div className="w-full max-w-[600px]">
           <img
