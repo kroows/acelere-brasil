@@ -61,6 +61,49 @@ const Benefits = () => {
         }}
       />
       
+      {/* Geometric Background Elements - Mobile Only */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-10">
+        <div className="md:hidden absolute top-1/4 right-1/3" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '50px 50px',
+          width: '50px',
+          height: '50px',
+          opacity: 0.3
+        }} />
+
+        <div className="md:hidden absolute bottom-1/4 left-1/3" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '60px 60px',
+          width: '60px',
+          height: '60px',
+          opacity: 0.3
+        }} />
+
+        <div className="md:hidden absolute top-3/4 right-10" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '40px 40px',
+          width: '40px',
+          height: '40px',
+          opacity: 0.3
+        }} />
+
+        <div className="md:hidden absolute bottom-1/3 right-1/4" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '45px 45px',
+          width: '45px',
+          height: '45px',
+          opacity: 0.3
+        }} />
+
+        <div className="md:hidden absolute top-2/3 left-10" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '55px 55px',
+          width: '55px',
+          height: '55px',
+          opacity: 0.3
+        }} />
+      </div>
+
       <div className="max-w-[980px] mx-auto relative z-10">
         <div className="text-center mb-8 md:mb-16">
           <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-2 md:mb-4 font-rotunda" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>

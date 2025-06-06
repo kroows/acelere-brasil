@@ -161,6 +161,47 @@ const Hero = () => {
           height: '70px',
           opacity: 0.3
         }} />
+
+        {/* Mobile-only triangles */}
+        <div className="md:hidden absolute top-1/4 right-1/3" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '50px 50px',
+          width: '50px',
+          height: '50px',
+          opacity: 0.3
+        }} />
+
+        <div className="md:hidden absolute bottom-1/4 left-1/3" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '60px 60px',
+          width: '60px',
+          height: '60px',
+          opacity: 0.3
+        }} />
+
+        <div className="md:hidden absolute top-3/4 right-10" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '40px 40px',
+          width: '40px',
+          height: '40px',
+          opacity: 0.3
+        }} />
+
+        <div className="md:hidden absolute bottom-1/3 right-1/4" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '45px 45px',
+          width: '45px',
+          height: '45px',
+          opacity: 0.3
+        }} />
+
+        <div className="md:hidden absolute top-2/3 left-10" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '55px 55px',
+          width: '55px',
+          height: '55px',
+          opacity: 0.3
+        }} />
       </div>
 
       <div className="container mx-auto max-w-7xl px-4 py-20 relative z-10">
@@ -246,7 +287,7 @@ const Hero = () => {
             {/* Right side - Image */}
             <div className="relative h-[300px] md:h-full md:min-h-[600px] bg-gradient-to-br from-slate-800 to-slate-900 order-1 lg:order-2 rounded-xl md:rounded-none overflow-hidden">
               <img
-                src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/header-acelere-brasil.webp"
+                src="https://acelerebrasil.com.br/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-06-at-09.37.57.jpeg"
                 alt="Acelere Brasil - Paulo Canargo, Mateus Maia, Juliano Custódio"
                 className="w-full h-full object-cover"
               />

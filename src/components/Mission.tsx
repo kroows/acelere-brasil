@@ -39,8 +39,56 @@ const steps = [
 
 const Mission = () => {
   return (
-    <section className="pt-0 pb-4 md:py-20 px-4 bg-gradient-to-b from-black via-black via-70% to-black">
-      <div className="container mx-auto max-w-6xl">
+    <section className="py-20 px-4 bg-black relative">
+      {/* Geometric Background Elements - Mobile Only */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
+        {/* Top left */}
+        <div className="md:hidden absolute top-0 left-4" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '45px 45px',
+          width: '45px',
+          height: '45px',
+          opacity: 0.3
+        }} />
+
+        {/* Top right */}
+        <div className="md:hidden absolute top-12 right-8" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '60px 60px',
+          width: '60px',
+          height: '60px',
+          opacity: 0.3
+        }} />
+
+        {/* Bottom left */}
+        <div className="md:hidden absolute bottom-20 left-6" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '40px 40px',
+          width: '40px',
+          height: '40px',
+          opacity: 0.3
+        }} />
+
+        {/* Bottom center */}
+        <div className="md:hidden absolute -bottom-4 left-1/2 -translate-x-1/2" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '50px 50px',
+          width: '50px',
+          height: '50px',
+          opacity: 0.3
+        }} />
+
+        {/* Bottom right */}
+        <div className="md:hidden absolute bottom-32 right-4" style={{
+          backgroundImage: 'url(https://i.ibb.co/DH2V36B8/Layer-3.png)',
+          backgroundSize: '55px 55px',
+          width: '55px',
+          height: '55px',
+          opacity: 0.3
+        }} />
+      </div>
+
+      <div className="container mx-auto max-w-4xl relative" style={{ zIndex: 1 }}>
         <div className="text-center mb-8 md:mb-16">
           <h2 className="text-xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
             A <span className="text-white">IMERSÃO ACELERE BRASIL</span> GARANTE{" "}
