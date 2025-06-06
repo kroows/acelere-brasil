@@ -134,68 +134,59 @@ const VideoSection = () => {
 
         <div className="relative">
           <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 overflow-hidden">
-            <iframe
-              src="https://www.youtube.com/embed/SEU_ID_DO_VIDEO_AQUI"
-              title="Acelere Brasil - Como foi a última edição"
-              className="w-full h-full"
-              allowFullScreen
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            <img
+              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-00.webp"
+              alt="Acelere Brasil - Como foi a última edição"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
 
         {/* Instagram Posts Slider */}
         <div className="mt-8">
-          <div className="relative">
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
-              spaceBetween={20}
-              slidesPerView={1}
-              breakpoints={{
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 2 }
-              }}
-              navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-              }}
-              pagination={{ clickable: true }}
-              autoplay={{ delay: 5000, disableOnInteraction: false }}
-              loop={false}
-              className="instagram-slider"
-            >
-              {instagramPosts.map((post) => (
-                <SwiperSlide key={post.id}>
-                  <a 
-                    href={post.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block relative rounded-[20px] overflow-hidden aspect-[4/5] group"
-                  >
-                    {/* Overlay gradiente */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
-                    
-                    {/* Thumbnail */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900">
-                      <img
-                        src={post.thumbnail}
-                        alt={post.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 2 }
+            }}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
+            loop={false}
+            className="instagram-slider"
+          >
+            {instagramPosts.map((post) => (
+              <SwiperSlide key={post.id}>
+                <a 
+                  href={post.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative rounded-[20px] overflow-hidden aspect-[4/5] group"
+                >
+                  {/* Overlay gradiente */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+                  
+                  {/* Thumbnail */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900">
+                    <img
+                      src={post.thumbnail}
+                      alt={post.title}
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-                    {/* Título */}
-                    <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-                      <h3 className="text-white text-lg font-bold">{post.title}</h3>
-                    </div>
-                  </a>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <div className="swiper-button-prev"></div>
-            <div className="swiper-button-next"></div>
-          </div>
+                  {/* Título */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
+                    <h3 className="text-white text-lg font-bold">{post.title}</h3>
+                  </div>
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         {/* Container do mapa e informações */}

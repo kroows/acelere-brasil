@@ -135,73 +135,64 @@ const Speakers = () => {
 
         {/* Desktop Carousel (3 slides) */}
         <div className="hidden md:block">
-          <div className="relative">
-            <Swiper
-              modules={[Autoplay, Navigation, Pagination]}
-              spaceBetween={30}
-              slidesPerView={3}
-              centeredSlides={true}
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-              }}
-              navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-              }}
-              pagination={{ clickable: true }}
-              loop={true}
-              className="pb-12 speakers-swiper"
-            >
-              {speakers.map((speaker, index) => (
-                <SwiperSlide 
-                  key={index}
-                  style={{
-                    marginBottom: '30px'
-                  }}
-                >
-                  <SpeakerCard speaker={speaker} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <div className="swiper-button-prev"></div>
-            <div className="swiper-button-next"></div>
-          </div>
+          <Swiper
+            modules={[Autoplay, Navigation, Pagination]}
+            spaceBetween={30}
+            slidesPerView={3}
+            centeredSlides={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            navigation
+            pagination={{ clickable: true }}
+            loop={true}
+            className="pb-12 speakers-swiper"
+          >
+            {speakers.map((speaker, index) => (
+              <SwiperSlide 
+                key={index}
+                style={{
+                  marginBottom: '30px'
+                }}
+              >
+                <SpeakerCard speaker={speaker} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         {/* Mobile Carousel (1 slide) */}
         <div className="md:hidden">
-          <div className="relative">
-            <Swiper
-              modules={[Autoplay, Navigation, Pagination]}
-              spaceBetween={20}
-              slidesPerView={1}
-              autoplay={{
-                delay: 3000,
-                disableOnInteraction: false,
-              }}
-              navigation={{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-              }}
-              pagination={{ clickable: true }}
-              loop={true}
-              className="pb-12 speakers-swiper"
-            >
-              {speakers.map((speaker, index) => (
-                <SwiperSlide 
-                  key={index}
-                  style={{
-                    marginBottom: '30px'
-                  }}
-                >
-                  <SpeakerCard speaker={speaker} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <div className="swiper-button-prev"></div>
-            <div className="swiper-button-next"></div>
-          </div>
+          <Swiper
+            modules={[Autoplay, Navigation, Pagination]}
+            spaceBetween={20}
+            slidesPerView={1}
+            centeredSlides={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            navigation
+            pagination={{ clickable: true }}
+            loop={true}
+            className="pb-12 speakers-swiper"
+            style={{
+              maxWidth: '500px',
+              margin: '0 auto'
+            }}
+          >
+            {speakers.map((speaker, index) => (
+              <SwiperSlide 
+                key={index}
+                style={{
+                  marginBottom: '30px'
+                }}
+              >
+                <SpeakerCard speaker={speaker} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </section>
