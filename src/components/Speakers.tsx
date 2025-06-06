@@ -1,9 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
+import 'swiper/css/autoplay';
+import 'swiper/css/pagination';
 
 const speakers = [
   {
@@ -225,7 +225,7 @@ const Speakers = () => {
         {/* Desktop Carousel (3 slides) */}
         <div className="hidden md:block">
           <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
+            modules={[Autoplay, Navigation]}
             spaceBetween={30}
             slidesPerView={3}
             centeredSlides={true}
@@ -234,7 +234,6 @@ const Speakers = () => {
               disableOnInteraction: false,
             }}
             navigation
-            pagination={{ clickable: true }}
             loop={true}
             className="pb-12 speakers-swiper"
           >
@@ -254,7 +253,7 @@ const Speakers = () => {
         {/* Mobile Carousel (1 slide) */}
         <div className="md:hidden">
           <Swiper
-            modules={[Autoplay, Navigation, Pagination]}
+            modules={[Autoplay, Navigation]}
             spaceBetween={20}
             slidesPerView={1}
             centeredSlides={true}
@@ -263,7 +262,6 @@ const Speakers = () => {
               disableOnInteraction: false,
             }}
             navigation
-            pagination={{ clickable: true }}
             loop={true}
             className="pb-12 speakers-swiper"
             style={{

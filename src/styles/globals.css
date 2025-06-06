@@ -83,21 +83,127 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-.speakers-swiper {
+.speakers-swiper,
+.benefits-swiper {
   padding: 20px 10px 60px !important;
 }
 
-.speakers-swiper .swiper-pagination-bullet {
-  background: #22d3ee;
-  opacity: 0.5;
+/* Estilos compartilhados para os Swipers dos speakers e benefits */
+.speakers-swiper .swiper-button-next,
+.speakers-swiper .swiper-button-prev,
+.benefits-swiper .swiper-button-next,
+.benefits-swiper .swiper-button-prev {
+  color: white !important;
+  font-weight: bold !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+               0 0 20px rgba(255, 255, 255, 0.3),
+               0 0 30px rgba(255, 255, 255, 0.2) !important;
+  top: auto !important;
+  bottom: 10px !important;
+  transform: translateY(0) !important;
+  width: 44px !important;
+  height: 44px !important;
 }
 
-.speakers-swiper .swiper-pagination-bullet-active {
-  background: #4ade80;
-  opacity: 1;
+.speakers-swiper .swiper-button-prev,
+.benefits-swiper .swiper-button-prev {
+  left: calc(50% - 100px) !important;
 }
 
 .speakers-swiper .swiper-button-next,
-.speakers-swiper .swiper-button-prev {
-  top: 45%;
+.benefits-swiper .swiper-button-next {
+  right: calc(50% - 100px) !important;
+}
+
+.speakers-swiper .swiper-button-next:after,
+.speakers-swiper .swiper-button-prev:after,
+.benefits-swiper .swiper-button-next:after,
+.benefits-swiper .swiper-button-prev:after {
+  font-size: 44px !important;
+  font-weight: 900 !important;
+}
+
+@media (max-width: 768px) {
+  .speakers-swiper .swiper-button-next:after,
+  .speakers-swiper .swiper-button-prev:after,
+  .benefits-swiper .swiper-button-next:after,
+  .benefits-swiper .swiper-button-prev:after {
+    font-size: 34px !important;
+  }
+  
+  .speakers-swiper .swiper-button-prev,
+  .benefits-swiper .swiper-button-prev {
+    left: calc(50% - 80px) !important;
+  }
+  
+  .speakers-swiper .swiper-button-next,
+  .benefits-swiper .swiper-button-next {
+    right: calc(50% - 80px) !important;
+  }
+
+  .event-info-mobile {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 20 !important;
+    text-align: center !important;
+    width: 100% !important;
+    padding: 20px !important;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9)) !important;
+    border-radius: 15px !important;
+    backdrop-filter: blur(5px) !important;
+  }
+
+  .event-info-mobile h3,
+  .event-info-mobile p {
+    margin: 0 !important;
+    line-height: 1.2 !important;
+  }
+
+  .event-info-mobile h3 {
+    font-size: 2rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .event-info-mobile p {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+}
+
+.speakers-swiper .swiper-button-next:hover,
+.speakers-swiper .swiper-button-prev:hover,
+.benefits-swiper .swiper-button-next:hover,
+.benefits-swiper .swiper-button-prev:hover {
+  transform: scale(1.1) !important;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7),
+               0 0 25px rgba(255, 255, 255, 0.5),
+               0 0 35px rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Estilos para o Swiper dos vídeos */
+.instagram-slider .swiper-button-next,
+.instagram-slider .swiper-button-prev {
+  color: white !important;
+  font-weight: bold !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+               0 0 20px rgba(255, 255, 255, 0.3),
+               0 0 30px rgba(255, 255, 255, 0.2) !important;
+}
+
+.instagram-slider .swiper-button-next:after,
+.instagram-slider .swiper-button-prev:after {
+  font-size: 24px !important;
+  font-weight: 900 !important;
+}
+
+.instagram-slider .swiper-button-next:hover,
+.instagram-slider .swiper-button-prev:hover {
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7),
+               0 0 25px rgba(255, 255, 255, 0.5),
+               0 0 35px rgba(255, 255, 255, 0.3) !important;
 }

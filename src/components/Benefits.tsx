@@ -194,7 +194,7 @@ const Benefits = () => {
               640: { slidesPerView: 2 }
             }}
             navigation
-            className="w-full"
+            className="w-full benefits-swiper"
           >
             {situations.map((situation, index) => (
               <SwiperSlide key={index}>

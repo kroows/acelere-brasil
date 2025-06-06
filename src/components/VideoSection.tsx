@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -234,7 +234,7 @@ const VideoSection = () => {
         {/* Instagram Posts Slider */}
         <div className="mt-8">
           <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
+            modules={[Navigation, Autoplay]}
             spaceBetween={20}
             slidesPerView={1}
             breakpoints={{
@@ -243,7 +243,6 @@ const VideoSection = () => {
               1024: { slidesPerView: 2 }
             }}
             navigation
-            pagination={{ clickable: true }}
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             loop={false}
             className="instagram-slider"
@@ -311,10 +310,16 @@ const VideoSection = () => {
                     />
                   </svg>
                 </div>
-                <div>
+                <div className="hidden md:block">
                   <h3 className="text-3xl font-bold text-white mb-1">EXPOVILLE</h3>
                   <p className="text-lg text-white">Rua XV Novembro, 4315</p>
                   <p className="text-lg font-bold text-white">Glória Joinville – SC</p>
+                </div>
+                {/* Versão mobile do texto */}
+                <div className="md:hidden event-info-mobile">
+                  <h3 className="text-white font-bold">04•05<br/>OUTUBRO</h3>
+                  <p className="text-white">LOCAL</p>
+                  <p className="text-white font-bold">EXPOVILLE</p>
                 </div>
               </div>
 
@@ -416,11 +421,11 @@ const VideoSection = () => {
         {/* Swiper para versão mobile */}
         <div className="md:hidden mt-8">
           <Swiper
-            modules={[Navigation, Pagination]}
+            modules={[Navigation, Autoplay]}
             spaceBetween={16}
             slidesPerView={1}
             navigation
-            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
             className="w-full"
           >
             <SwiperSlide>
