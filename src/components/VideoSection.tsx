@@ -245,7 +245,7 @@ const VideoSection = () => {
             navigation
             autoplay={{ delay: 5000, disableOnInteraction: false }}
             loop={false}
-            className="instagram-slider"
+            className="instagram-slider pb-12"
           >
             {instagramPosts.map((post) => (
               <SwiperSlide key={post.id}>
@@ -263,9 +263,9 @@ const VideoSection = () => {
                     <img
                       src={post.thumbnail}
                       alt={post.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
                   {/* Título */}
                   <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
@@ -310,16 +310,10 @@ const VideoSection = () => {
                     />
                   </svg>
                 </div>
-                <div className="hidden md:block">
+                <div>
                   <h3 className="text-3xl font-bold text-white mb-1">EXPOVILLE</h3>
                   <p className="text-lg text-white">Rua XV Novembro, 4315</p>
                   <p className="text-lg font-bold text-white">Glória Joinville – SC</p>
-                </div>
-                {/* Versão mobile do texto */}
-                <div className="md:hidden event-info-mobile">
-                  <h3 className="text-white font-bold">04•05<br/>OUTUBRO</h3>
-                  <p className="text-white">LOCAL</p>
-                  <p className="text-white font-bold">EXPOVILLE</p>
                 </div>
               </div>
 
@@ -426,7 +420,7 @@ const VideoSection = () => {
             slidesPerView={1}
             navigation
             autoplay={{ delay: 5000, disableOnInteraction: false }}
-            className="w-full"
+            className="w-full pb-12"
           >
             <SwiperSlide>
               <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
@@ -513,16 +507,12 @@ const VideoSection = () => {
                   <br />
                   <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>GRUPO</span> DO EVENTO
                 </h3>
-                <p className="text-xs md:text-sm text-gray-300 font-rotunda leading-tight" style={{ textShadow: '0 0 10px rgba(209, 213, 219, 0.3)' }}>
-                  Preencha os dados abaixo, ganhe acesso imediato
-                  <br />
-                  e mantenha-se informado sobre as novidades do
-                  <br />
-                  <strong>Acelere Brasil Joinville</strong>.
+                <p className="text-sm md:text-base text-white font-rotunda leading-tight" style={{ textShadow: '0 0 10px rgba(209, 213, 219, 0.3)' }}>
+                  Preencha os dados abaixo, ganhe acesso imediato e mantenha-se informado sobre as novidades do <strong>Acelere Brasil Joinville</strong>.
                 </p>
               </div>
 
-              <form onSubmit={handleEbookSubmit} className="space-y-4">
+              <form id="ebook-form" onSubmit={handleEbookSubmit} className="space-y-4">
                 <Input
                   type="text"
                   placeholder="Nome"
@@ -556,16 +546,19 @@ const VideoSection = () => {
                   required
                 />
 
-                <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-2xl lg:text-3xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30 disabled:cursor-not-allowed"
-                  style={{
-                    boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
-                  }}
-                >
-                  {isSubmitting ? "ENVIANDO..." : "QUERO MEU EBOOK"}
-                </Button>
+                {/* Botão visível apenas no mobile */}
+                <div className="lg:hidden">
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-2xl lg:text-3xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30 disabled:cursor-not-allowed"
+                    style={{
+                      boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
+                    }}
+                  >
+                    {isSubmitting ? "ENVIANDO..." : "QUERO MEU EBOOK"}
+                  </Button>
+                </div>
               </form>
             </div>
 
@@ -576,6 +569,19 @@ const VideoSection = () => {
                 alt="Ebook Acelere Brasil"
                 className="w-full h-auto rounded-2xl"
               />
+              
+              {/* Botão visível apenas no desktop */}
+              <Button
+                type="submit"
+                form="ebook-form"
+                disabled={isSubmitting}
+                className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-[13px] sm:text-base md:text-2xl lg:text-3xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30 disabled:cursor-not-allowed"
+                style={{
+                  boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
+                }}
+              >
+                {isSubmitting ? "ENVIANDO..." : "QUERO MEU EBOOK"}
+              </Button>
             </div>
           </div>
         </div>

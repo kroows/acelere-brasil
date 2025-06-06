@@ -22,7 +22,7 @@ const Footer = () => {
       
       <div className="container mx-auto max-w-4xl flex flex-col items-center justify-center space-y-8 relative z-10 pb-16">
         {/* Logo */}
-        <div className="w-full max-w-[600px]">
+        <div className="w-full max-w-[300px] md:max-w-[600px]">
           <img
             src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/logo-acelere-brasil.webp"
             alt="Acelere Brasil Joinville"
@@ -31,11 +31,11 @@ const Footer = () => {
         </div>
 
         {/* Data e Local */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-16 mt-8">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mt-8">
           {/* Data */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col md:flex-row items-center md:items-center gap-4">
             <svg 
-              className="w-10 h-10 text-cyan-400" 
+              className="w-8 h-8 md:w-10 md:h-10 text-cyan-400" 
               viewBox="0 0 24 24" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
@@ -68,17 +68,17 @@ const Footer = () => {
               />
             </svg>
             <div className="flex flex-col text-center md:text-left">
-              <span className="text-[2.5rem] font-bold text-white tracking-tight leading-none">
+              <span className="text-[2rem] md:text-[2.5rem] font-bold text-white tracking-tight leading-none">
                 <span className="mr-1">04</span>•<span className="ml-1">05</span>
               </span>
-              <span className="text-lg uppercase text-white tracking-wide">OUTUBRO</span>
+              <span className="text-base md:text-lg uppercase text-white tracking-wide">OUTUBRO</span>
             </div>
           </div>
 
           {/* Local */}
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col md:flex-row items-center md:items-center gap-4">
             <svg 
-              className="w-10 h-10 text-cyan-400" 
+              className="w-8 h-8 md:w-10 md:h-10 text-cyan-400" 
               viewBox="0 0 24 24" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
@@ -90,8 +90,8 @@ const Footer = () => {
               />
             </svg>
             <div className="flex flex-col text-center md:text-left">
-              <span className="text-lg uppercase text-white tracking-wide">LOCAL</span>
-              <span className="text-[2.5rem] font-bold text-white tracking-wider leading-none">EXPOVILLE</span>
+              <span className="text-base md:text-lg uppercase text-white tracking-wide">LOCAL</span>
+              <span className="text-[2rem] md:text-[2.5rem] font-bold text-white tracking-wider leading-none">EXPOVILLE</span>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@ const Footer = () => {
           href="https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7"
           target="_blank"
           rel="noopener noreferrer"
-          className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-lg md:text-4xl lg:text-5xl py-6 md:py-8 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
+          className="relative w-full bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white font-bold md:font-gilroy-black md:font-black text-lg md:text-4xl lg:text-5xl py-4 md:py-6 h-auto rounded-xl transition-all duration-300 transform hover:scale-105 mt-6 flex items-center justify-center text-center md:before:absolute md:before:inset-0 md:before:bg-gradient-to-r md:before:from-green-300 md:before:to-cyan-300 md:before:rounded-xl md:before:blur-xl md:before:opacity-30 md:before:-z-10 active:scale-95 md:border-2 md:border-green-300/30"
           style={{
             boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
           }}
@@ -116,7 +116,7 @@ const Footer = () => {
           href="https://github.com/ThallesCosta-dev"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-white/60 hover:text-white text-sm font-rotunda transition-colors duration-300"
+          className="text-white/60 hover:text-white text-xs md:text-sm font-rotunda transition-colors duration-300"
         >
           Desenvolvido por ThallesCosta®
         </a>
