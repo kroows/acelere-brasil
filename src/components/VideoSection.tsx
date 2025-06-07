@@ -8,6 +8,17 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Button } from "@/components/ui/button";
 
+// Declaração de tipo para o objeto instgrm do Instagram
+declare global {
+  interface Window {
+    instgrm?: {
+      Embeds: {
+        process(): void;
+      };
+    };
+  }
+}
+
 const instagramPosts = [
   {
     id: 1,
@@ -42,6 +53,25 @@ const VideoSection = () => {
   const [niche, setNiche] = useState("");
   const [isAtBottom, setIsAtBottom] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    // Carrega o script do Instagram
+    const script = document.createElement('script');
+    script.src = '//www.instagram.com/embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  useEffect(() => {
+    // Recarrega o embed do Instagram quando disponível
+    if (window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -222,12 +252,14 @@ const VideoSection = () => {
         </div>
 
         <div className="relative">
-          <div className="aspect-video bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 overflow-hidden">
-            <img
-              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-00.webp"
-              alt="Acelere Brasil - Como foi a última edição"
-              className="w-full h-full object-cover"
-            />
+          <div className="aspect-[4/5] max-w-[400px] mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 overflow-hidden">
+            <blockquote 
+              className="instagram-media w-full h-full" 
+              data-instgrm-permalink="https://www.instagram.com/p/DHv6kpVue2B/"
+              data-instgrm-version="14"
+            >
+            </blockquote>
+            <script async src="//www.instagram.com/embed.js"></script>
           </div>
         </div>
 
