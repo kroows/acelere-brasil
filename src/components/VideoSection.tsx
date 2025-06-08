@@ -255,7 +255,7 @@ const VideoSection = () => {
           <div className="aspect-[4/5] max-w-[400px] mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 overflow-hidden">
             <blockquote 
               className="instagram-media w-full h-full" 
-              data-instgrm-permalink="https://www.instagram.com/p/DHwX3ljhLNs/"
+              data-instgrm-permalink="https://www.instagram.com/p/DHv6kpVue2B/"
               data-instgrm-version="14"
             >
             </blockquote>

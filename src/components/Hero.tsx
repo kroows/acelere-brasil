@@ -244,11 +244,11 @@ const Hero = () => {
             </div>
 
             {/* Right side - Image */}
-            <div className="relative h-[300px] md:h-full md:min-h-[600px] bg-gradient-to-br from-slate-800 to-slate-900 order-1 lg:order-2 rounded-xl md:rounded-none overflow-hidden">
+            <div className="relative h-[400px] md:h-full md:min-h-[600px] bg-gradient-to-br from-slate-800 to-slate-900 order-1 lg:order-2 rounded-xl md:rounded-none overflow-hidden">
               <img
                 src="https://acelerebrasil.com.br/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-06-at-09.37.57.jpeg"
                 alt="Acelere Brasil - Paulo Canargo, Mateus Maia, Juliano Custódio"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain md:object-cover"
               />
             </div>
           </div>
