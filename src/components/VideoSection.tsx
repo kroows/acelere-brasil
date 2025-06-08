@@ -442,15 +442,61 @@ const VideoSection = () => {
           </div>
         </div>
 
-        {/* Swiper para versão mobile */}
+        {/* Swiper para Mobile */}
         <div className="md:hidden mt-8">
+          <style>
+            {`
+              .expoville-swiper .swiper-button-next,
+              .expoville-swiper .swiper-button-prev {
+                color: white;
+                font-weight: bold;
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+                transition: all 0.3s ease;
+                width: 44px;
+                height: 44px;
+                margin-top: 0;
+                transform: translateY(-50%);
+              }
+
+              .expoville-swiper .swiper-button-next {
+                right: 10px;
+              }
+
+              .expoville-swiper .swiper-button-prev {
+                left: 10px;
+              }
+
+              .expoville-swiper .swiper-button-next:hover,
+              .expoville-swiper .swiper-button-prev:hover {
+                transform: translateY(-50%) scale(1.1);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+              }
+
+              .expoville-swiper .swiper-button-next:after,
+              .expoville-swiper .swiper-button-prev:after {
+                font-size: 24px;
+                font-weight: bold;
+              }
+
+              @media (max-width: 768px) {
+                .expoville-swiper .swiper-button-next:after,
+                .expoville-swiper .swiper-button-prev:after {
+                  font-size: 20px;
+                }
+              }
+            `}
+          </style>
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={16}
             slidesPerView={1}
             navigation
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            className="w-full pb-12"
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            className="w-full expoville-swiper !overflow-visible pb-12"
           >
             <SwiperSlide>
               <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
@@ -654,7 +700,7 @@ const VideoSection = () => {
       {/* Botão flutuante circular */}
       <button
         onClick={scrollToPosition}
-        className="fixed bottom-8 right-8 z-50 bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white w-12 h-12 rounded-full transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-full before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30 flex items-center justify-center"
+        className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[100] bg-gradient-to-r from-green-400 to-cyan-400 hover:from-green-500 hover:to-cyan-500 text-white w-10 h-10 md:w-12 md:h-12 rounded-full transition-all duration-300 transform hover:scale-110 shadow-2xl hover:shadow-green-400/50 before:absolute before:inset-0 before:bg-gradient-to-r before:from-green-300 before:to-cyan-300 before:rounded-full before:blur-xl before:opacity-30 before:-z-10 active:scale-95 border-2 border-green-300/30 flex items-center justify-center"
         style={{
           boxShadow: '0 30px 60px rgba(34, 197, 94, 0.4), 0 15px 30px rgba(6, 182, 212, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.2), inset 0 -4px 8px rgba(0, 0, 0, 0.15)'
         }}
@@ -662,7 +708,7 @@ const VideoSection = () => {
         {isAtBottom ? (
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6" 
+            className="h-4 w-4 md:h-6 md:w-6" 
             viewBox="0 0 20 20" 
             fill="currentColor"
           >
@@ -675,7 +721,7 @@ const VideoSection = () => {
         ) : (
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            className="h-6 w-6" 
+            className="h-4 w-4 md:h-6 md:w-6" 
             viewBox="0 0 20 20" 
             fill="currentColor"
           >

@@ -1,8 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
+import 'swiper/css/navigation';
 
 const steps = [
   {
@@ -40,6 +41,38 @@ const steps = [
 const Mission = () => {
   return (
     <section className="pt-0 pb-4 md:py-20 px-4 bg-gradient-to-b from-black via-black via-70% to-black">
+      <style>
+        {`
+          .mission-swiper .swiper-button-next,
+          .mission-swiper .swiper-button-prev {
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+          }
+
+          .mission-swiper .swiper-button-next:hover,
+          .mission-swiper .swiper-button-prev:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+          }
+
+          @media (max-width: 768px) {
+            .mission-swiper .swiper-button-next,
+            .mission-swiper .swiper-button-prev {
+              font-size: 34px;
+            }
+          }
+
+          @media (min-width: 769px) {
+            .mission-swiper .swiper-button-next,
+            .mission-swiper .swiper-button-prev {
+              font-size: 44px;
+            }
+          }
+        `}
+      </style>
+
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-8 md:mb-16">
           <h2 className="text-xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
@@ -69,7 +102,7 @@ const Mission = () => {
         {/* Mobile - Carrossel */}
         <div className="md:hidden">
           <Swiper
-            modules={[Autoplay]}
+            modules={[Autoplay, Navigation]}
             spaceBetween={20}
             slidesPerView={1}
             centeredSlides={true}
@@ -77,8 +110,9 @@ const Mission = () => {
               delay: 3000,
               disableOnInteraction: false,
             }}
+            navigation
             loop={true}
-            className="pb-12"
+            className="pb-12 mission-swiper"
           >
             {steps.map((step, index) => (
               <SwiperSlide key={index}>

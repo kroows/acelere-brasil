@@ -1,8 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 
 const Benefits = () => {
   const situations = [
@@ -42,6 +43,49 @@ const Benefits = () => {
 
   return (
     <section className="pt-0 pb-4 md:py-20 relative">
+      <style>
+        {`
+          .benefits-swiper .swiper-button-next,
+          .benefits-swiper .swiper-button-prev {
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            width: 44px;
+            height: 44px;
+            margin-top: 0;
+            transform: translateY(-50%);
+          }
+
+          .benefits-swiper .swiper-button-next {
+            right: 10px;
+          }
+
+          .benefits-swiper .swiper-button-prev {
+            left: 10px;
+          }
+
+          .benefits-swiper .swiper-button-next:hover,
+          .benefits-swiper .swiper-button-prev:hover {
+            transform: translateY(-50%) scale(1.1);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+          }
+
+          .benefits-swiper .swiper-button-next:after,
+          .benefits-swiper .swiper-button-prev:after {
+            font-size: 24px;
+            font-weight: bold;
+          }
+
+          @media (max-width: 768px) {
+            .benefits-swiper .swiper-button-next:after,
+            .benefits-swiper .swiper-button-prev:after {
+              font-size: 20px;
+            }
+          }
+        `}
+      </style>
+
       {/* Background Image */}
       <div 
         className="absolute inset-0 z-0"
@@ -153,9 +197,8 @@ const Benefits = () => {
       <div className="max-w-[980px] mx-auto relative z-10">
         <div className="text-center mb-8 md:mb-16">
           <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-white mb-2 md:mb-4 font-rotunda" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(6, 182, 212, 0.2)' }}>
-            A IMERSÃO ACELERE BRASIL É PARA TODOS QUE
-            <br className="hidden md:block" />
-            PASSAM POR QUALQUER UMA DESSAS <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>SITUAÇÕES</span>
+            A IMERSÃO ACELERE BRASIL É PARA TODOS QUE PASSAM POR QUALQUER UMA DESSAS{" "}
+            <span className="bg-gradient-to-r from-green-400 to-cyan-400 bg-clip-text text-transparent" style={{ textShadow: '0 0 20px rgba(34, 197, 94, 0.4), 0 0 40px rgba(6, 182, 212, 0.3)' }}>SITUAÇÕES</span>
           </h2>
         </div>
 
@@ -187,14 +230,19 @@ const Benefits = () => {
         {/* Swiper para Mobile */}
         <div className="lg:hidden px-4">
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay]}
             spaceBetween={16}
             slidesPerView={1}
             breakpoints={{
               640: { slidesPerView: 2 }
             }}
             navigation
-            className="w-full benefits-swiper"
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            className="w-full benefits-swiper !overflow-visible"
           >
             {situations.map((situation, index) => (
               <SwiperSlide key={index}>
