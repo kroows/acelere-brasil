@@ -1,8 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
 const Benefits = () => {
@@ -51,23 +50,11 @@ const Benefits = () => {
             font-weight: bold;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             transition: all 0.3s ease;
-            width: 44px;
-            height: 44px;
-            margin-top: 0;
-            transform: translateY(-50%);
-          }
-
-          .benefits-swiper .swiper-button-next {
-            right: 10px;
-          }
-
-          .benefits-swiper .swiper-button-prev {
-            left: 10px;
           }
 
           .benefits-swiper .swiper-button-next:hover,
           .benefits-swiper .swiper-button-prev:hover {
-            transform: translateY(-50%) scale(1.1);
+            transform: scale(1.1);
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
           }
 
@@ -242,7 +229,7 @@ const Benefits = () => {
               disableOnInteraction: false,
             }}
             loop={true}
-            className="w-full benefits-swiper !overflow-visible"
+            className="w-full benefits-swiper pb-12"
           >
             {situations.map((situation, index) => (
               <SwiperSlide key={index}>

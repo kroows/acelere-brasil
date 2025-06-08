@@ -1,9 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
-import 'swiper/css/pagination';
 
 const speakers = [
   {
@@ -126,7 +125,36 @@ const SpeakerCard = ({ speaker }) => (
 const Speakers = () => {
   return (
     <section className="py-20 px-4 bg-black relative">
+      <style>
+        {`
+          .speakers-swiper .swiper-button-next,
+          .speakers-swiper .swiper-button-prev {
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+          }
 
+          .speakers-swiper .swiper-button-next:hover,
+          .speakers-swiper .swiper-button-prev:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+          }
+
+          .speakers-swiper .swiper-button-next:after,
+          .speakers-swiper .swiper-button-prev:after {
+            font-size: 24px;
+            font-weight: bold;
+          }
+
+          @media (max-width: 768px) {
+            .speakers-swiper .swiper-button-next:after,
+            .speakers-swiper .swiper-button-prev:after {
+              font-size: 20px;
+            }
+          }
+        `}
+      </style>
 
       <div className="container mx-auto max-w-6xl relative z-10">
         <div className="text-center mb-16">
@@ -138,15 +166,15 @@ const Speakers = () => {
         {/* Desktop Carousel (3 slides) */}
         <div className="hidden md:block">
           <Swiper
-            modules={[Autoplay, Navigation]}
+            modules={[Navigation, Autoplay]}
             spaceBetween={30}
             slidesPerView={3}
             centeredSlides={true}
+            navigation
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
             }}
-            navigation
             loop={true}
             className="pb-12 speakers-swiper"
           >
@@ -166,15 +194,15 @@ const Speakers = () => {
         {/* Mobile Carousel (1 slide) */}
         <div className="md:hidden">
           <Swiper
-            modules={[Autoplay, Navigation]}
+            modules={[Navigation, Autoplay]}
             spaceBetween={20}
             slidesPerView={1}
             centeredSlides={true}
+            navigation
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
             }}
-            navigation
             loop={true}
             className="pb-12 speakers-swiper"
             style={{

@@ -152,6 +152,45 @@ const VideoSection = () => {
 
   return (
     <section className="py-20 px-4 bg-black relative">
+      <style>
+        {`
+          .instagram-slider .swiper-button-next,
+          .instagram-slider .swiper-button-prev,
+          .expoville-swiper .swiper-button-next,
+          .expoville-swiper .swiper-button-prev {
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+          }
+
+          .instagram-slider .swiper-button-next:hover,
+          .instagram-slider .swiper-button-prev:hover,
+          .expoville-swiper .swiper-button-next:hover,
+          .expoville-swiper .swiper-button-prev:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+          }
+
+          .instagram-slider .swiper-button-next:after,
+          .instagram-slider .swiper-button-prev:after,
+          .expoville-swiper .swiper-button-next:after,
+          .expoville-swiper .swiper-button-prev:after {
+            font-size: 24px;
+            font-weight: bold;
+          }
+
+          @media (max-width: 768px) {
+            .instagram-slider .swiper-button-next:after,
+            .instagram-slider .swiper-button-prev:after,
+            .expoville-swiper .swiper-button-next:after,
+            .expoville-swiper .swiper-button-prev:after {
+              font-size: 20px;
+            }
+          }
+        `}
+      </style>
+
       {/* Geometric Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         {/* Top right triangle */}
@@ -275,8 +314,8 @@ const VideoSection = () => {
               1024: { slidesPerView: 2 }
             }}
             navigation
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            loop={false}
+            autoplay={{ delay: 3000, disableOnInteraction: false }}
+            loop={true}
             className="instagram-slider pb-12"
           >
             {instagramPosts.map((post) => (
@@ -444,48 +483,6 @@ const VideoSection = () => {
 
         {/* Swiper para Mobile */}
         <div className="md:hidden mt-8">
-          <style>
-            {`
-              .expoville-swiper .swiper-button-next,
-              .expoville-swiper .swiper-button-prev {
-                color: white;
-                font-weight: bold;
-                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-                transition: all 0.3s ease;
-                width: 44px;
-                height: 44px;
-                margin-top: 0;
-                transform: translateY(-50%);
-              }
-
-              .expoville-swiper .swiper-button-next {
-                right: 10px;
-              }
-
-              .expoville-swiper .swiper-button-prev {
-                left: 10px;
-              }
-
-              .expoville-swiper .swiper-button-next:hover,
-              .expoville-swiper .swiper-button-prev:hover {
-                transform: translateY(-50%) scale(1.1);
-                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-              }
-
-              .expoville-swiper .swiper-button-next:after,
-              .expoville-swiper .swiper-button-prev:after {
-                font-size: 24px;
-                font-weight: bold;
-              }
-
-              @media (max-width: 768px) {
-                .expoville-swiper .swiper-button-next:after,
-                .expoville-swiper .swiper-button-prev:after {
-                  font-size: 20px;
-                }
-              }
-            `}
-          </style>
           <Swiper
             modules={[Navigation, Autoplay]}
             spaceBetween={16}
@@ -496,7 +493,7 @@ const VideoSection = () => {
               disableOnInteraction: false,
             }}
             loop={true}
-            className="w-full expoville-swiper !overflow-visible pb-12"
+            className="expoville-swiper pb-12"
           >
             <SwiperSlide>
               <div className="rounded-[20px] overflow-hidden p-1" style={{ backgroundColor: 'rgba(31, 81, 97, 0.6)' }}>
