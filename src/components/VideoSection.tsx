@@ -22,25 +22,25 @@ declare global {
 const instagramPosts = [
   {
     id: 1,
-    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-1.webp",
+    thumbnail: "https://i.ibb.co/j9D7gQJR/video-1-1031x1800.webp",
     link: "https://www.instagram.com/reel/DHv6kpVue2B/?utm_source=ig_embed&ig_rid=eb2369b2-3617-48b4-903a-1c3c22c979b8",
     title: "Acelere Brasil"
   },
   {
     id: 2,
-    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-2-980x1825.webp",
+    thumbnail: "https://i.ibb.co/FvLXdRX/video-2-980x1825.webp",
     link: "https://www.instagram.com/p/DHwnTsPB-F8/",
     title: "Bastidores do Evento"
   },
   {
     id: 3,
-    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-3-980x1825.webp",
+    thumbnail: "https://i.ibb.co/VkpdgPb/video-3-1031x1800.webp",
     link: "https://www.instagram.com/acelerebrasiloficial/reel/DHzfozzgFqV/",
     title: "Público Presente"
   },
   {
     id: 4,
-    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-4-980x1825.webp",
+    thumbnail: "https://i.ibb.co/0p9HMqQV/video-4-1031x1800.webp",
     link: "https://www.instagram.com/p/DIHERMjgozC/",
     title: "Palestrantes"
   }
