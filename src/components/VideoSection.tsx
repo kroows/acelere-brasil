@@ -448,10 +448,10 @@ const VideoSection = () => {
               decoding="async"
               width="700"
               height="465"
-              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp"
+              src="https://construtoraviseu.com.br/wp-content/uploads/2018/04/expoville.jpg"
               alt="Expoville 01"
               className="rounded-xl w-full h-full object-cover"
-              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01-480x319.webp 480w"
+              srcSet="https://construtoraviseu.com.br/wp-content/uploads/2018/04/expoville.jpg 700w, https://construtoraviseu.com.br/wp-content/uploads/2018/04/expoville.jpg 480w"
               sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
             />
           </div>
@@ -461,10 +461,10 @@ const VideoSection = () => {
               decoding="async"
               width="700"
               height="465"
-              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp"
+              src="https://hotelrealexecutive.com.br/wp-content/uploads/2019/06/expoville-960x600.jpg"
               alt="Expoville 02"
               className="rounded-xl w-full h-full object-cover"
-              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02-480x319.webp 480w"
+              srcSet="https://hotelrealexecutive.com.br/wp-content/uploads/2019/06/expoville-960x600.jpg 700w, https://hotelrealexecutive.com.br/wp-content/uploads/2019/06/expoville-960x600.jpg 480w"
               sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
             />
           </div>
@@ -474,10 +474,10 @@ const VideoSection = () => {
               decoding="async"
               width="700"
               height="465"
-              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp"
+              src="https://framerusercontent.com/images/hUGEdYUndmvs6csHKO14wOqW0.png"
               alt="Expoville 03"
               className="rounded-xl w-full h-full object-cover"
-              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03-480x319.webp 480w"
+              srcSet="https://framerusercontent.com/images/hUGEdYUndmvs6csHKO14wOqW0.png 700w, https://framerusercontent.com/images/hUGEdYUndmvs6csHKO14wOqW0.png 480w"
               sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
             />
           </div>
@@ -487,10 +487,10 @@ const VideoSection = () => {
               decoding="async"
               width="700"
               height="465"
-              src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp"
+              src="https://img.dhost.cloud/P-UfCNyuWLxbzD3uzRZWLxp3LgI=/1280x720/smart/https://s3.regiopolis.cloud/images/98680/81211495ef95599776ef16b1008ce479477.jpg?name=maior-centro-de-convencoes-e-exposicoes-do-sul-do-brasil-localizado-em-joinville-a-expoville-registra-crescimento-de-15-na-comercializacao-de-eventos-realizada-no-primeiro-semestre-de-2018-comparado-com-o-mesmo-periodo-do-ano-passado.jpg"
               alt="Expoville 04"
               className="rounded-xl w-full h-full object-cover"
-              srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04-480x319.webp 480w"
+              srcSet="https://img.dhost.cloud/P-UfCNyuWLxbzD3uzRZWLxp3LgI=/1280x720/smart/https://s3.regiopolis.cloud/images/98680/81211495ef95599776ef16b1008ce479477.jpg?name=maior-centro-de-convencoes-e-exposicoes-do-sul-do-brasil-localizado-em-joinville-a-expoville-registra-crescimento-de-15-na-comercializacao-de-eventos-realizada-no-primeiro-semestre-de-2018-comparado-com-o-mesmo-periodo-do-ano-passado.jpg 700w, https://img.dhost.cloud/P-UfCNyuWLxbzD3uzRZWLxp3LgI=/1280x720/smart/https://s3.regiopolis.cloud/images/98680/81211495ef95599776ef16b1008ce479477.jpg?name=maior-centro-de-convencoes-e-exposicoes-do-sul-do-brasil-localizado-em-joinville-a-expoville-registra-crescimento-de-15-na-comercializacao-de-eventos-realizada-no-primeiro-semestre-de-2018-comparado-com-o-mesmo-periodo-do-ano-passado.jpg 480w"
               sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
             />
           </div>
@@ -517,10 +517,10 @@ const VideoSection = () => {
                   decoding="async"
                   width="700"
                   height="465"
-                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp"
+                  src="https://construtoraviseu.com.br/wp-content/uploads/2018/04/expoville.jpg"
                   alt="Expoville 01"
                   className="rounded-xl w-full h-full object-cover"
-                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-01-480x319.webp 480w"
+                  srcSet="https://construtoraviseu.com.br/wp-content/uploads/2018/04/expoville.jpg 700w, https://construtoraviseu.com.br/wp-content/uploads/2018/04/expoville.jpg 480w"
                   sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
                 />
               </div>
@@ -532,10 +532,10 @@ const VideoSection = () => {
                   decoding="async"
                   width="700"
                   height="465"
-                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp"
+                  src="https://hotelrealexecutive.com.br/wp-content/uploads/2019/06/expoville-960x600.jpg"
                   alt="Expoville 02"
                   className="rounded-xl w-full h-full object-cover"
-                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-02-480x319.webp 480w"
+                  srcSet="https://hotelrealexecutive.com.br/wp-content/uploads/2019/06/expoville-960x600.jpg 700w, https://hotelrealexecutive.com.br/wp-content/uploads/2019/06/expoville-960x600.jpg 480w"
                   sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
                 />
               </div>
@@ -547,10 +547,10 @@ const VideoSection = () => {
                   decoding="async"
                   width="700"
                   height="465"
-                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp"
+                  src="https://framerusercontent.com/images/hUGEdYUndmvs6csHKO14wOqW0.png"
                   alt="Expoville 03"
                   className="rounded-xl w-full h-full object-cover"
-                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-03-480x319.webp 480w"
+                  srcSet="https://framerusercontent.com/images/hUGEdYUndmvs6csHKO14wOqW0.png 700w, https://framerusercontent.com/images/hUGEdYUndmvs6csHKO14wOqW0.png 480w"
                   sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
                 />
               </div>
@@ -562,10 +562,10 @@ const VideoSection = () => {
                   decoding="async"
                   width="700"
                   height="465"
-                  src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp"
+                  src="https://img.dhost.cloud/P-UfCNyuWLxbzD3uzRZWLxp3LgI=/1280x720/smart/https://s3.regiopolis.cloud/images/98680/81211495ef95599776ef16b1008ce479477.jpg?name=maior-centro-de-convencoes-e-exposicoes-do-sul-do-brasil-localizado-em-joinville-a-expoville-registra-crescimento-de-15-na-comercializacao-de-eventos-realizada-no-primeiro-semestre-de-2018-comparado-com-o-mesmo-periodo-do-ano-passado.jpg"
                   alt="Expoville 04"
                   className="rounded-xl w-full h-full object-cover"
-                  srcSet="https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04.webp 700w, https://acelerebrasil.com.br/wp-content/uploads/2025/05/expoville-04-480x319.webp 480w"
+                  srcSet="https://img.dhost.cloud/P-UfCNyuWLxbzD3uzRZWLxp3LgI=/1280x720/smart/https://s3.regiopolis.cloud/images/98680/81211495ef95599776ef16b1008ce479477.jpg?name=maior-centro-de-convencoes-e-exposicoes-do-sul-do-brasil-localizado-em-joinville-a-expoville-registra-crescimento-de-15-na-comercializacao-de-eventos-realizada-no-primeiro-semestre-de-2018-comparado-com-o-mesmo-periodo-do-ano-passado.jpg 700w, https://img.dhost.cloud/P-UfCNyuWLxbzD3uzRZWLxp3LgI=/1280x720/smart/https://s3.regiopolis.cloud/images/98680/81211495ef95599776ef16b1008ce479477.jpg?name=maior-centro-de-convencoes-e-exposicoes-do-sul-do-brasil-localizado-em-joinville-a-expoville-registra-crescimento-de-15-na-comercializacao-de-eventos-realizada-no-primeiro-semestre-de-2018-comparado-com-o-mesmo-periodo-do-ano-passado.jpg 480w"
                   sizes="(min-width: 0px) and (max-width: 480px) 480px, (min-width: 481px) 700px, 100vw"
                 />
               </div>
