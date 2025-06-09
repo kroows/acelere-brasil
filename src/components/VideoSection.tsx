@@ -22,8 +22,8 @@ declare global {
 const instagramPosts = [
   {
     id: 1,
-    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/06/Screenshot_3.png",
-    link: "https://www.instagram.com/p/DHwX3ljhLNs/",
+    thumbnail: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/video-1.webp",
+    link: "https://www.instagram.com/reel/DHv6kpVue2B/?utm_source=ig_embed&ig_rid=eb2369b2-3617-48b4-903a-1c3c22c979b8",
     title: "Acelere Brasil"
   },
   {
@@ -292,9 +292,14 @@ const VideoSection = () => {
 
         <div className="relative">
           <div className="aspect-[4/5] max-w-[400px] mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 overflow-hidden">
+            <img 
+              src="https://acelerebrasil.com.br/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-08-at-09.08.39.jpeg"
+              alt="Vídeo do Instagram"
+              className="w-full h-full object-cover"
+            />
             <blockquote 
               className="instagram-media w-full h-full" 
-              data-instgrm-permalink="https://www.instagram.com/p/DHv6kpVue2B/"
+              data-instgrm-permalink="https://www.instagram.com/p/DHwX3ljhLNs/"
               data-instgrm-version="14"
             >
             </blockquote>
