@@ -292,18 +292,28 @@ const VideoSection = () => {
 
         <div className="relative">
           <div className="aspect-[4/5] max-w-[400px] mx-auto bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border border-slate-700 overflow-hidden">
-            <img 
-              src="https://acelerebrasil.com.br/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-08-at-09.08.39.jpeg"
-              alt="Vídeo do Instagram"
-              className="w-full h-full object-cover"
-            />
-            <blockquote 
-              className="instagram-media w-full h-full" 
-              data-instgrm-permalink="https://www.instagram.com/p/DHwX3ljhLNs/"
-              data-instgrm-version="14"
+            <a 
+              href="https://www.instagram.com/p/DHwX3ljhLNs/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block relative h-full"
             >
-            </blockquote>
-            <script async src="//www.instagram.com/embed.js"></script>
+              {/* Overlay gradiente */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+              
+              <img 
+                src="https://acelerebrasil.com.br/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-08-at-09.08.39.jpeg"
+                alt="Vídeo do Instagram"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 flex items-center justify-center z-20">
+                <img 
+                  src="https://i.ibb.co/WN37CPfD/player.png"
+                  alt="Play"
+                  className="w-16 h-16 hover:scale-110 transition-transform duration-200"
+                />
+              </div>
+            </a>
           </div>
         </div>
 
