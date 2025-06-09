@@ -579,7 +579,7 @@ const VideoSection = () => {
             {/* Right side - Image (apenas mobile) */}
             <div className="lg:hidden relative">
               <img
-                src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/img-ebook-acelere-brasil.webp"
+                src="https://i.ibb.co/CKc9Z4Qk/img-ebook-acelere-brasil.webp"
                 alt="Ebook Acelere Brasil"
                 className="w-full h-auto rounded-2xl"
               />
@@ -653,7 +653,7 @@ const VideoSection = () => {
             {/* Right side - Image e Botão (desktop) */}
             <div className="hidden lg:block relative space-y-6">
               <img
-                src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/img-ebook-acelere-brasil.webp"
+                src="https://i.ibb.co/CKc9Z4Qk/img-ebook-acelere-brasil.webp"
                 alt="Ebook Acelere Brasil"
                 className="w-full h-auto rounded-2xl"
               />

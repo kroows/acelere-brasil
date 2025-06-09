@@ -7,35 +7,35 @@ import 'swiper/css/autoplay';
 const Benefits = () => {
   const situations = [
     {
-      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-1.webp",
+      icon: "https://i.ibb.co/fdv4Qm0s/icon-1.webp",
       text: "Você ainda não domina as ferramentas certas para criar processos mais ágeis, práticos e rentáveis para o seu negócio."
     },
     {
-      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-2.webp",
+      icon: "https://i.ibb.co/k652tW22/icon-2.webp",
       text: "Sabe que seu negócio pode crescer muito mais, mas ainda não encontrou o caminho ideal e consistente para isso acontecer."
     },
     {
-      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-3.webp",
+      icon: "https://i.ibb.co/Hpq1ML7n/icon-3.webp",
       text: "Mesmo tendo uma equipe, sente que tudo depende de você e que, sem sua presença total, as operações simplesmente não andam."
     },
     {
-      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-4.webp",
+      icon: "https://i.ibb.co/YFBs3zvS/icon-4.webp",
       text: "Não sabe como construir um time que realmente abrace o negócio e se comprometa tanto quanto você."
     },
     {
-      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-5.webp",
+      icon: "https://i.ibb.co/Q70nwPdR/icon-5.webp",
       text: "Perde muito tempo com pequenas demandas que poderiam ser delegadas, deixando de planejar o futuro da empresa."
     },
     {
-      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-6.webp",
+      icon: "https://i.ibb.co/1f87CWZK/icon-6.webp",
       text: "Apesar de ter pessoas ao redor, frequentemente se sente sozinho, sobretudo nos momentos decisivos de solução de problemas complexos."
     },
     {
-      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-7.webp",
+      icon: "https://i.ibb.co/4nJjj6SQ/icon-7.webp",
       text: "Quer entender como as empresas de maior sucesso funcionam na prática e se mantêm em expansão constante todos os dias."
     },
     {
-      icon: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/icon-8.webp",
+      icon: "https://i.ibb.co/Yg4rc95/icon-8.webp",
       text: "Busca a oportunidade de trocar ideias com grandes empreendedores e descobrir os segredos por trás de seus resultados expressivos."
     }
   ];

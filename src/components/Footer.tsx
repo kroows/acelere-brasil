@@ -24,7 +24,7 @@ const Footer = () => {
         {/* Logo */}
         <div className="w-full max-w-[300px] md:max-w-[600px]">
           <img
-            src="https://acelerebrasil.com.br/wp-content/uploads/2025/05/logo-acelere-brasil.webp"
+            src="https://i.ibb.co/pr9nzxXc/logo-acelere-brasil.webp"
             alt="Acelere Brasil Joinville"
             className="w-full h-auto"
           />
