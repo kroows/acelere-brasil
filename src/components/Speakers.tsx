@@ -10,70 +10,70 @@ const speakers = [
     title: "",
     company: "",
     description: "Empresário, fundador do Instituto Projetando Felicidade e CEO da Acelere Brasil, especialista em Desenvolvimento Pessoal.",
-    image: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/mateus-maia.webp"
+    image: "https://i.ibb.co/b5sgynxP/mateus-maia-1080x1800.webp"
   },
   {
     name: "PAULO CAMARGO",
     title: "",
     company: "",
     description: "CEO da Zamp (Burger King e Popeyes) e ex-CEO do McDonald's Brasil, Espaçolaser e Iron Mountain. Premiado como CEO do ano pelo LIDE Brasil.",
-    image: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/paulo-camargo.webp"
+    image: "https://i.ibb.co/nMRv6CD9/paulo-camargo-1080x1800.webp"
   },
   {
     name: "JULIANO CUSTÓDIO",
     title: "",
     company: "",
     description: "Fundador e CEO da EQI Investimento, corretora com mais de 40 bilhões de reais sob custódia e mais de 600 assessores de investimento.",
-    image: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/juliano-custodio.webp"
+    image: "https://i.ibb.co/d0S3sS6b/juliano-custodio-1080x1800.webp"
   },
   {
     name: "KAKÁ DINIZ",
     title: "CEO da",
     company: "Non Stop Produções",
     description: "Empresário que transformou histórias e impulsionou carreiras no digital. CEO da maior agência de influenciadores da América Latina, com faturamento superior a R$ 100 milhões.",
-    image: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/kaka.webp"
+    image: "https://i.ibb.co/r2X6y8TP/kaka-1080x1800.webp"
   },
   {
     name: "ALFREDO SOARES",
     title: "Co-fundador da",
     company: "G4 Educação",
     description: "Co-fundador da G4 Educação e um dos principais nomes do novo empreendedorismo brasileiro. Fundador da Xtech e sócio da VTEX. Autor best-seller e mentor de milhares de empreendedores.",
-    image: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/alfredo.webp"
+    image: "https://i.ibb.co/JjnFX9sf/alfredo-1080x1800.webp"
   },
   {
     name: "SANDRO LUCAS",
     title: "Empresário",
     company: "Setor Imobiliário",
     description: "Empresário visionário do ramo imobiliário que acredita no poder da visão de futuro. Especialista em empreendimentos de alto padrão e transformação urbana.",
-    image: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/sandro.webp"
+    image: "https://i.ibb.co/Xk55tkPc/sandro.webp"
   },
   {
     name: "FABRÍCIO OLIVEIRA",
     title: "Ex-prefeito de",
     company: "Balneário Camboriú",
     description: "Líder público e empreendedor apaixonado por cidades inteligentes e desenvolvimento sustentável. Liderou uma gestão que reposicionou a cidade como um dos maiores cases de inovação urbana do país.",
-    image: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/fabricio.webp"
+    image: "https://i.ibb.co/p80VMwN/fabricio.webp"
   },
   {
     name: "MOHAMAD ABOU WADI",
     title: "Fundador da",
     company: "Rede IOA",
     description: "Empresário, educador e visionário. Fundador da Rede IOA, Rede ITC, Instituto Lapidare, PIB Education, Uniavan e Life UniCedu. Um dos maiores transformadores da educação no Brasil.",
-    image: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/mohamed.webp"
+    image: "https://i.ibb.co/tPTXm2P5/mohamed.webp"
   },
   {
     name: "REGINALDO BOEIRA",
     title: "Fundador da",
     company: "KELMER",
     description: "Empresário e investidor com trajetória marcada pela coragem e reinvenção. Revolucionou o setor industrial ao transformar desafios em oportunidades de crescimento exponencial.",
-    image: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/reginaldo.webp"
+    image: "https://i.ibb.co/d4C24MGJ/reginaldo.webp"
   },
   {
     name: "EIKE BATISTA",
     title: "Fundador do",
     company: "Grupo EBX",
     description: "Um dos empresários mais emblemáticos da história do Brasil. Com uma trajetória repleta de altos e baixos, Eike é símbolo de ousadia, visão e ambição no mundo dos negócios.",
-    image: "https://acelerebrasil.com.br/wp-content/uploads/2025/05/eike.webp"
+    image: "https://i.ibb.co/3GF57BC/eike.webp"
   }
 ];
 
