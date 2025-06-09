@@ -302,7 +302,7 @@ const VideoSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
               
               <img 
-                src="https://acelerebrasil.com.br/wp-content/uploads/2025/06/WhatsApp-Image-2025-06-08-at-09.08.39.jpeg"
+                src="https://i.ibb.co/B2dL0v11/Whats-App-Image-2025-06-08-at-22-33-28.jpg"
                 alt="Vídeo do Instagram"
                 className="w-full h-full object-cover"
               />
