@@ -131,6 +131,11 @@ const VideoSection = () => {
         setPhone('');
         setEmail('');
         setNiche('');
+
+        setTimeout(() => {
+          window.location.href = "https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7";
+        }, 1500);
+        
       } catch (error: any) {
         console.error('Erro ao enviar formulário VideoSection:', error);
         toast({
