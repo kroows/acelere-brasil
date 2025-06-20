@@ -68,6 +68,11 @@ const Hero = () => {
         setName('');
         setPhone('');
         setAgreed(false);
+        
+        setTimeout(() => {
+          window.location.href = "https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7";
+        }, 1500); // 1.5 segundos
+        
       } catch (error: any) {
         console.error('Erro ao enviar formulário Hero:', error);
         toast({
