@@ -70,11 +70,10 @@ const Hero = () => {
         setAgreed(false);
         
         setTimeout(() => {
-          try {
-            window.open("https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7", "_blank");
-          } catch {
-            window.location.href = "https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7";
-          }
+          const a = document.createElement('a');
+          a.href = 'https://chat.whatsapp.com/CYSVYE63EbQIayoK0QXgz7';
+          a.target = '_blank'; // ou '_self' para abrir na mesma aba
+          a.click();
         }, 1500);
         
       } catch (error: any) {
